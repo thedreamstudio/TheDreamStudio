@@ -1,0 +1,123 @@
+annotation.processing.enabled=true
+annotation.processing.enabled.in.editor=false
+annotation.processing.run.all.processors=true
+annotation.processing.source.output=${build.generated.sources.dir}/ap-source-output
+application.title=j2seServer
+application.vendor=truongps
+auxiliary.org-netbeans-modules-projectimport-eclipse-core.key=src=src;src=lib;file=lib/commons-lang-2.6.jar;file=lib/commons-logging-1.0.3.jar;file=lib/javassist-3.11.0.GA.jar;file=lib/javassist-3.7.ga.jar;file=lib/jcl-over-slf4j-1.6.1.jar;file=lib/jzlib-1.0.7.jar;file=lib/ognl-3.0.1.jar;file=lib/slf4j-api-1.6.1.jar;file=lib/spring-2.5.6.jar;file=lib/tomcat-apr-5.5.23.jar;file=lib/xbean-spring-3.7.jar;file=dist/mina-core-2.0.4.jar;file=dist/mina-example-2.0.4.jar;file=dist/mina-filter-compression-2.0.4.jar;file=dist/mina-integration-beans-2.0.4.jar;file=dist/mina-integration-jmx-2.0.4.jar;file=dist/mina-integration-ognl-2.0.4.jar;file=dist/mina-integration-xbean-2.0.4.jar;file=dist/mina-statemachine-2.0.4.jar;file=dist/mina-transport-apr-2.0.4.jar;file=slf4j/slf4j-jdk14-1.6.4.jar;output=bin;
+auxiliary.org-netbeans-modules-projectimport-eclipse-core.project=.
+auxiliary.org-netbeans-modules-projectimport-eclipse-core.timestamp=1339254550000
+build.classes.dir=${build.dir}/classes
+build.classes.excludes=**/*.java,**/*.form
+# This directory is removed when the project is cleaned:
+build.dir=build
+build.generated.dir=${build.dir}/generated
+build.generated.sources.dir=${build.dir}/generated-sources
+# Only compile against the classpath explicitly listed here:
+build.sysclasspath=ignore
+build.test.classes.dir=${build.dir}/test/classes
+build.test.results.dir=${build.dir}/test/results
+# Uncomment to specify the preferred debugger connection transport:
+#debug.transport=dt_socket
+debug.classpath=\
+    ${run.classpath}
+debug.test.classpath=\
+    ${run.test.classpath}
+# This directory is removed when the project is cleaned:
+dist.dir=nbdist
+dist.jar=${dist.dir}/j2seServer.jar
+dist.javadoc.dir=${dist.dir}/javadoc
+endorsed.classpath=
+excludes=
+file.reference.commons-lang-2.6.jar=lib/commons-lang-2.6.jar
+file.reference.commons-logging-1.0.3.jar=lib/commons-logging-1.0.3.jar
+file.reference.j2seServer-lib=lib
+file.reference.j2seServer-src=src
+file.reference.javassist-3.11.0.GA.jar=lib/javassist-3.11.0.GA.jar
+file.reference.javassist-3.7.ga.jar=lib/javassist-3.7.ga.jar
+file.reference.jcl-over-slf4j-1.6.1.jar=lib/jcl-over-slf4j-1.6.1.jar
+file.reference.jzlib-1.0.7.jar=lib/jzlib-1.0.7.jar
+file.reference.mina-core-2.0.4.jar=dist/mina-core-2.0.4.jar
+file.reference.mina-example-2.0.4.jar=dist/mina-example-2.0.4.jar
+file.reference.mina-filter-compression-2.0.4.jar=dist/mina-filter-compression-2.0.4.jar
+file.reference.mina-integration-beans-2.0.4.jar=dist/mina-integration-beans-2.0.4.jar
+file.reference.mina-integration-jmx-2.0.4.jar=dist/mina-integration-jmx-2.0.4.jar
+file.reference.mina-integration-ognl-2.0.4.jar=dist/mina-integration-ognl-2.0.4.jar
+file.reference.mina-integration-xbean-2.0.4.jar=dist/mina-integration-xbean-2.0.4.jar
+file.reference.mina-statemachine-2.0.4.jar=dist/mina-statemachine-2.0.4.jar
+file.reference.mina-transport-apr-2.0.4.jar=dist/mina-transport-apr-2.0.4.jar
+file.reference.mysql-connector-java-5.1.20-bin.jar=lib/mysql-connector-java-5.1.20-bin.jar
+file.reference.ognl-3.0.1.jar=lib/ognl-3.0.1.jar
+file.reference.slf4j-api-1.6.1.jar=lib/slf4j-api-1.6.1.jar
+file.reference.slf4j-jdk14-1.6.4.jar=slf4j/slf4j-jdk14-1.6.4.jar
+file.reference.spring-2.5.6.jar=lib/spring-2.5.6.jar
+file.reference.tomcat-apr-5.5.23.jar=lib/tomcat-apr-5.5.23.jar
+file.reference.xbean-spring-3.7.jar=lib/xbean-spring-3.7.jar
+includes=**
+jar.compress=false
+javac.classpath=\
+    ${file.reference.commons-lang-2.6.jar}:\
+    ${file.reference.commons-logging-1.0.3.jar}:\
+    ${file.reference.javassist-3.11.0.GA.jar}:\
+    ${file.reference.javassist-3.7.ga.jar}:\
+    ${file.reference.jcl-over-slf4j-1.6.1.jar}:\
+    ${file.reference.jzlib-1.0.7.jar}:\
+    ${file.reference.ognl-3.0.1.jar}:\
+    ${file.reference.slf4j-api-1.6.1.jar}:\
+    ${file.reference.spring-2.5.6.jar}:\
+    ${file.reference.tomcat-apr-5.5.23.jar}:\
+    ${file.reference.xbean-spring-3.7.jar}:\
+    ${file.reference.mina-core-2.0.4.jar}:\
+    ${file.reference.mina-example-2.0.4.jar}:\
+    ${file.reference.mina-filter-compression-2.0.4.jar}:\
+    ${file.reference.mina-integration-beans-2.0.4.jar}:\
+    ${file.reference.mina-integration-jmx-2.0.4.jar}:\
+    ${file.reference.mina-integration-ognl-2.0.4.jar}:\
+    ${file.reference.mina-integration-xbean-2.0.4.jar}:\
+    ${file.reference.mina-statemachine-2.0.4.jar}:\
+    ${file.reference.mina-transport-apr-2.0.4.jar}:\
+    ${file.reference.slf4j-jdk14-1.6.4.jar}:\
+    ${file.reference.mysql-connector-java-5.1.20-bin.jar}:\
+    ${reference.ServerCore.jar}
+# Space-separated list of extra javac options
+javac.compilerargs=
+javac.deprecation=false
+javac.processorpath=\
+    ${javac.classpath}
+javac.source=1.6
+javac.target=1.6
+javac.test.classpath=\
+    ${javac.classpath}:\
+    ${build.classes.dir}
+javac.test.processorpath=\
+    ${javac.test.classpath}
+javadoc.additionalparam=
+javadoc.author=false
+javadoc.encoding=${source.encoding}
+javadoc.noindex=false
+javadoc.nonavbar=false
+javadoc.notree=false
+javadoc.private=false
+javadoc.splitindex=true
+javadoc.use=true
+javadoc.version=false
+javadoc.windowtitle=
+lib.dir=${file.reference.j2seServer-lib}
+main.class=game.MinaTimeServer
+meta.inf.dir=${src.dir}/META-INF
+mkdist.disabled=true
+platform.active=default_platform
+project.ServerCore=../ServerCore
+reference.ServerCore.jar=${project.ServerCore}/dist/ServerCore.jar
+run.classpath=\
+    ${javac.classpath}:\
+    ${build.classes.dir}
+# Space-separated list of JVM arguments used when running the project
+# (you may also define separate properties like run-sys-prop.name=value instead of -Dname=value
+# or test-sys-prop.name=value to set system properties for unit tests):
+run.jvmargs=
+run.test.classpath=\
+    ${javac.test.classpath}:\
+    ${build.test.classes.dir}
+source.encoding=UTF-8
+src.dir=${file.reference.j2seServer-src}

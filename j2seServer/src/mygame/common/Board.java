@@ -11,8 +11,14 @@ import core.network.Message;
 import java.util.Random;
 import java.util.Vector;
 import mygame.game.army.Archer;
+import mygame.game.army.Artillery;
 import mygame.game.army.Cavalry;
+import mygame.game.army.Cowboy;
+import mygame.game.army.Geezer;
+import mygame.game.army.Indian;
 import mygame.game.army.Infantry;
+import mygame.game.army.Mexico;
+import mygame.game.army.Scout;
 import mygame.game.army.Soldier;
 import mygame.game.map.Map;
 import mygame.game.map.MapFactory;
@@ -282,12 +288,24 @@ public class Board {
 
     private Soldier createSodier(int typeID) {
         switch (typeID) {
-            case Soldier.TYPE_ARCHER:
-                return (new Archer());
-            case Soldier.TYPE_CAVARLY:
-                return (new Cavalry());
-            case Soldier.TYPE_INFANTRY:
-                return (new Infantry());
+//            case Soldier.TYPE_ARCHER:
+//                return (new Archer());
+//            case Soldier.TYPE_CAVARLY:
+//                return (new Cavalry());
+//            case Soldier.TYPE_INFANTRY:
+//                return (new Infantry());
+            case Soldier.TYPE_ARTILLERY:
+                return (new Artillery());
+            case Soldier.TYPE_COWBOY:
+                return (new Cowboy());
+            case Soldier.TYPE_GEEZER:
+                return (new Geezer());
+            case Soldier.TYPE_INDIAN:
+                return (new Indian());
+            case Soldier.TYPE_MEXICO:
+                return (new Mexico());
+            case Soldier.TYPE_SCOUT:
+                return (new Scout());
         }
         return null;
     }

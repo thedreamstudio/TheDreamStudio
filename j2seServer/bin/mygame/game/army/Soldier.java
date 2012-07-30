@@ -15,15 +15,39 @@ public class Soldier {
     /**
      * Linh cung.
      */
-    public static final int TYPE_ARCHER = 0;
+//    public static final int TYPE_ARCHER = 0;
+//    /**
+//     * Linh bo.
+//     */
+//    public static final int TYPE_INFANTRY = 1;
+//    /**
+//     * Ki binh.
+//     */
+//    public static final int TYPE_CAVARLY = 2;
     /**
-     * Linh bo.
+     * Pháo binh.
      */
-    public static final int TYPE_INFANTRY = 1;
+    public static final int TYPE_ARTILLERY = 0;
     /**
-     * Ki binh.
+     * Lính già.
      */
-    public static final int TYPE_CAVARLY = 2;
+    public static final int TYPE_GEEZER = 1;
+    /**
+     * Linh cao boi.
+     */
+    public static final int TYPE_COWBOY = 2;
+    /**
+     * Tho dan.
+     */
+    public static final int TYPE_INDIAN = 3;
+    /**
+     * Lính người mexico.
+     */
+    public static final int TYPE_MEXICO = 4;
+    /**
+     * Lính bắn tỉa, bắn súng ngắm.
+     */
+    public static final int TYPE_SCOUT = 5;
     /**
      * Player là chủ cua doi quan nay.
      */

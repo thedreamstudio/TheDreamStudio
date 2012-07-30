@@ -3,41 +3,11 @@ svn:wc:ra_dav:version-url
 V 37
 /svn/!svn/ver/85/trunk/j2seServer/lib
 END
-mina-filter-compression-2.0.4.jar
-K 25
-svn:wc:ra_dav:version-url
-V 71
-/svn/!svn/ver/85/trunk/j2seServer/lib/mina-filter-compression-2.0.4.jar
-END
-spring-2.5.6.jar
-K 25
-svn:wc:ra_dav:version-url
-V 53
-/svn/!svn/ver/4/trunk/j2seServer/lib/spring-2.5.6.jar
-END
 mina-core-2.0.4.jar
 K 25
 svn:wc:ra_dav:version-url
 V 57
 /svn/!svn/ver/85/trunk/j2seServer/lib/mina-core-2.0.4.jar
-END
-javassist-3.11.0.GA.jar
-K 25
-svn:wc:ra_dav:version-url
-V 60
-/svn/!svn/ver/4/trunk/j2seServer/lib/javassist-3.11.0.GA.jar
-END
-jzlib-1.0.7.jar
-K 25
-svn:wc:ra_dav:version-url
-V 52
-/svn/!svn/ver/4/trunk/j2seServer/lib/jzlib-1.0.7.jar
-END
-mina-example-2.0.4.jar
-K 25
-svn:wc:ra_dav:version-url
-V 60
-/svn/!svn/ver/85/trunk/j2seServer/lib/mina-example-2.0.4.jar
 END
 ServerCore.jar
 K 25
@@ -57,18 +27,6 @@ svn:wc:ra_dav:version-url
 V 58
 /svn/!svn/ver/54/trunk/j2seServer/lib/commons-pool-1.6.jar
 END
-mina-statemachine-2.0.4.jar
-K 25
-svn:wc:ra_dav:version-url
-V 65
-/svn/!svn/ver/85/trunk/j2seServer/lib/mina-statemachine-2.0.4.jar
-END
-mina-integration-beans-2.0.4.jar
-K 25
-svn:wc:ra_dav:version-url
-V 70
-/svn/!svn/ver/85/trunk/j2seServer/lib/mina-integration-beans-2.0.4.jar
-END
 slf4j-api-1.6.1.jar
 K 25
 svn:wc:ra_dav:version-url
@@ -81,69 +39,15 @@ svn:wc:ra_dav:version-url
 V 62
 /svn/!svn/ver/4/trunk/j2seServer/lib/commons-logging-1.0.3.jar
 END
-ognl-3.0.1.jar
-K 25
-svn:wc:ra_dav:version-url
-V 51
-/svn/!svn/ver/4/trunk/j2seServer/lib/ognl-3.0.1.jar
-END
 commons-lang-2.6.jar
 K 25
 svn:wc:ra_dav:version-url
 V 57
 /svn/!svn/ver/4/trunk/j2seServer/lib/commons-lang-2.6.jar
 END
-mina-transport-apr-2.0.4.jar
+slf4j-jdk14-1.6.4.jar
 K 25
 svn:wc:ra_dav:version-url
-V 66
-/svn/!svn/ver/85/trunk/j2seServer/lib/mina-transport-apr-2.0.4.jar
-END
-tomcat-apr-5.5.23.jar
-K 25
-svn:wc:ra_dav:version-url
-V 58
-/svn/!svn/ver/4/trunk/j2seServer/lib/tomcat-apr-5.5.23.jar
-END
-mina-integration-xbean-2.0.4.jar
-K 25
-svn:wc:ra_dav:version-url
-V 70
-/svn/!svn/ver/85/trunk/j2seServer/lib/mina-integration-xbean-2.0.4.jar
-END
-mina-integration-jmx-2.0.4.jar
-K 25
-svn:wc:ra_dav:version-url
-V 68
-/svn/!svn/ver/85/trunk/j2seServer/lib/mina-integration-jmx-2.0.4.jar
-END
-mina-integration-ognl-2.0.4.jar
-K 25
-svn:wc:ra_dav:version-url
-V 69
-/svn/!svn/ver/85/trunk/j2seServer/lib/mina-integration-ognl-2.0.4.jar
-END
-xbean-spring-3.7.jar
-K 25
-svn:wc:ra_dav:version-url
-V 57
-/svn/!svn/ver/4/trunk/j2seServer/lib/xbean-spring-3.7.jar
-END
-jcl-over-slf4j-1.6.1.jar
-K 25
-svn:wc:ra_dav:version-url
-V 61
-/svn/!svn/ver/4/trunk/j2seServer/lib/jcl-over-slf4j-1.6.1.jar
-END
-javassist-3.7.ga.jar
-K 25
-svn:wc:ra_dav:version-url
-V 57
-/svn/!svn/ver/4/trunk/j2seServer/lib/javassist-3.7.ga.jar
-END
-mysql-connector-java-5.1.20-bin.jar
-K 25
-svn:wc:ra_dav:version-url
-V 73
-/svn/!svn/ver/15/trunk/j2seServer/lib/mysql-connector-java-5.1.20-bin.jar
+V 59
+/svn/!svn/ver/93/trunk/j2seServer/lib/slf4j-jdk14-1.6.4.jar
 END

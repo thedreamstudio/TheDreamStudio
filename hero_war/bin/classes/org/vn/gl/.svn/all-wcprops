@@ -1,0 +1,275 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/80/trunk/hero_war/src/org/vn/gl
+END
+ObjectRegistry.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/80/trunk/hero_war/src/org/vn/gl/ObjectRegistry.java
+END
+StandardSorter.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/StandardSorter.java
+END
+ObjectPool.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/ObjectPool.java
+END
+Utils.java
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/Utils.java
+END
+Texture.java
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/Texture.java
+END
+GameThread.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/80/trunk/hero_war/src/org/vn/gl/GameThread.java
+END
+BaseObject.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/BaseObject.java
+END
+Lerp.java
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/Lerp.java
+END
+InputTouchScreen.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/InputTouchScreen.java
+END
+InputSystem.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/InputSystem.java
+END
+GLSurfaceView.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/GLSurfaceView.java
+END
+Game.java
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/80/trunk/hero_war/src/org/vn/gl/Game.java
+END
+DrawableBitmap.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/78/trunk/hero_war/src/org/vn/gl/DrawableBitmap.java
+END
+InputXY.java
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/InputXY.java
+END
+Priority.java
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/80/trunk/hero_war/src/org/vn/gl/Priority.java
+END
+TObjectPool.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/TObjectPool.java
+END
+SingerTouchDetector.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/SingerTouchDetector.java
+END
+RenderSystem.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/RenderSystem.java
+END
+Grid.java
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/Grid.java
+END
+MultiTouchFilter2.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/MultiTouchFilter2.java
+END
+SoundSystem.java
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/SoundSystem.java
+END
+DrawableMesh.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/78/trunk/hero_war/src/org/vn/gl/DrawableMesh.java
+END
+GameRenderer.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/80/trunk/hero_war/src/org/vn/gl/GameRenderer.java
+END
+ObjectManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/ObjectManager.java
+END
+TimeSystem.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/TimeSystem.java
+END
+MultiTouchFilter.java
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/MultiTouchFilter.java
+END
+AllocationGuard.java
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/AllocationGuard.java
+END
+DrawableObject.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/DrawableObject.java
+END
+ContextParameters.java
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/ContextParameters.java
+END
+DeviceInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/DeviceInfo.java
+END
+Sorter.java
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/Sorter.java
+END
+MainLoop.java
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/MainLoop.java
+END
+Touch.java
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/Touch.java
+END
+GLUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/GLUtils.java
+END
+Vector2.java
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/57/trunk/hero_war/src/org/vn/gl/Vector2.java
+END
+TextureLibrary.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/TextureLibrary.java
+END
+WorldMap.java
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/WorldMap.java
+END
+GameInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/79/trunk/hero_war/src/org/vn/gl/GameInfo.java
+END
+PhasedObjectManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/PhasedObjectManager.java
+END
+DebugLog.java
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/DebugLog.java
+END
+OpenGLSystem.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/OpenGLSystem.java
+END
+FixedSizeArray.java
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/FixedSizeArray.java
+END
+BitmapInImageCache.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/BitmapInImageCache.java
+END
+PhasedObject.java
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/11/trunk/hero_war/src/org/vn/gl/PhasedObject.java
+END
+Mesh.java
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/78/trunk/hero_war/src/org/vn/gl/Mesh.java
+END

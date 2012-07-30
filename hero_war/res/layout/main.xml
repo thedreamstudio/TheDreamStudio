@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+   
+    <view
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/glsurfaceview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        class="org.vn.gl.GLSurfaceView" />
+
+    <LinearLayout
+        android:id="@+id/layout_chat"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#70000000"
+        android:visibility="gone" >
+
+        <EditText
+            android:id="@+id/editText_chat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/input_chat_ingame"
+            android:ems="10"
+            android:maxLength="55"
+            android:textColor="#ffffffff"
+            android:paddingLeft="12dip" >
+        </EditText>
+
+        <Button
+            android:id="@+id/button_chat"
+            android:layout_width="50dip"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|top"
+            android:background="@drawable/bt_chat"
+            android:text="" />
+    </LinearLayout>
+</LinearLayout>

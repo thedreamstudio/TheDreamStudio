@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal" >
+
+        <ListView
+            android:id="@+id/listViewEnemyInWaiting"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.15" >
+        </ListView>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.6"
+                android:orientation="vertical" >
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.1"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:text="TextView" />
+
+                    <TextView
+                        android:id="@+id/textInforGoldWaiting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:text="TextView" />
+                </FrameLayout>
+
+                <ListView
+                    android:id="@+id/listViewEnemyChossen"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="0.9" >
+                </ListView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.4"
+                android:orientation="horizontal" >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.75"
+                    android:orientation="vertical" >
+
+                    <ListView
+                        android:id="@+id/listViewChatInWaiting"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.7" >
+                    </ListView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.3"
+                        android:orientation="horizontal" >
+
+                        <EditText
+                            android:id="@+id/editTextChatWaiting"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.8" >
+                        </EditText>
+
+                        <Button
+                            android:id="@+id/btChatWaiting"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center"
+                            android:layout_weight="0.2" >
+                        </Button>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/listViewPlayerInBoard"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.25" >
+                </ListView>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.25"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|left"
+        android:text="Button" /> -->
+
+    <Button
+        android:id="@+id/btReadyEnemyWaiting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:text="Button" />
+</FrameLayout>

@@ -1,0 +1,24 @@
+package org.vn.unit;
+
+import org.vn.gl.DrawableBitmap;
+import org.vn.gl.Priority;
+import org.vn.gl.RenderSystem;
+import org.vn.gl.TextureLibrary;
+import org.vn.gl.Vector2;
+import org.vn.herowar.R;
+
+public class InfoCharacter {
+	private DrawableBitmap drawableBitmapObj;
+	private Vector2 posObj = new Vector2(20, 10);
+
+	public InfoCharacter(TextureLibrary textureLibrary) {
+		drawableBitmapObj = new DrawableBitmap(textureLibrary.allocateTexture(
+				R.drawable.image_1863, ""), 30, 50);
+	}
+
+	public void draw(RenderSystem renderSystem,
+			UnitCharacterSwordmen characterSwordmen) {
+		renderSystem.scheduleForDraw(drawableBitmapObj, posObj,
+				Priority.InfoCharacter, false);
+	}
+}

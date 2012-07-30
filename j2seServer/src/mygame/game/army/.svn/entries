@@ -1,14 +1,14 @@
 10
 
 dir
-85
+90
 https://zzzzzzzzzzz.googlecode.com/svn/trunk/j2seServer/src/mygame/game/army
 https://zzzzzzzzzzz.googlecode.com/svn
 
 
 
-2012-07-18T16:45:24.065196Z
-75
+2012-07-29T17:50:06.498761Z
+90
 truonguit2010@gmail.com
 
 
@@ -28,7 +28,7 @@ truonguit2010@gmail.com
 
 Cavalry.java
 file
-90
+
 
 
 
@@ -62,7 +62,7 @@ truonguit2010@gmail.com
 
 Soldier.java
 file
-90
+
 
 
 
@@ -96,7 +96,7 @@ truonguit2010@gmail.com
 
 Geezer.java
 file
-90
+
 
 
 
@@ -130,7 +130,7 @@ truonguit2010@gmail.com
 
 ArmyShop.java
 file
-90
+
 
 
 
@@ -164,7 +164,7 @@ truonguit2010@gmail.com
 
 Cowboy.java
 file
-90
+
 
 
 
@@ -198,7 +198,7 @@ truonguit2010@gmail.com
 
 Indian.java
 file
-90
+
 
 
 
@@ -232,7 +232,7 @@ truonguit2010@gmail.com
 
 Archer.java
 file
-90
+
 
 
 
@@ -266,7 +266,7 @@ truonguit2010@gmail.com
 
 Mexico.java
 file
-90
+
 
 
 
@@ -300,7 +300,7 @@ truonguit2010@gmail.com
 
 Artillery.java
 file
-90
+
 
 
 
@@ -334,7 +334,7 @@ truonguit2010@gmail.com
 
 Infantry.java
 file
-90
+
 
 
 
@@ -402,7 +402,7 @@ truonguit2010@gmail.com
 
 Scout.java
 file
-90
+
 
 
 

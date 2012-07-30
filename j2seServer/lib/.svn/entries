@@ -1,7 +1,7 @@
 10
 
 dir
-85
+90
 https://zzzzzzzzzzz.googlecode.com/svn/trunk/j2seServer/lib
 https://zzzzzzzzzzz.googlecode.com/svn
 
@@ -28,16 +28,7 @@ truonguit2010@gmail.com
 
 mina-filter-compression-2.0.4.jar
 file
-
-
-
-
-2012-06-09T15:04:16.000000Z
-7b0c90c80250432d2a65b32ace5b0a68
-2012-07-28T04:42:38.292949Z
-85
-truonguit2010@gmail.com
-has-props
+93
 
 
 
@@ -57,21 +48,11 @@ has-props
 
 
 
-
-12683
+deleted
 
 spring-2.5.6.jar
 file
-
-
-
-
-2012-06-09T15:06:46.000000Z
-1f0bb28a7a5e32493a747467f9c426d9
-2012-06-09T14:55:50.605493Z
-4
-tintin1812@gmail.com
-has-props
+93
 
 
 
@@ -91,8 +72,7 @@ has-props
 
 
 
-
-2949500
+deleted
 
 mina-core-2.0.4.jar
 file
@@ -130,16 +110,7 @@ has-props
 
 javassist-3.11.0.GA.jar
 file
-
-
-
-
-2012-06-09T15:06:46.000000Z
-cb8f91e65864b85c8c6f87164e3252a5
-2012-06-09T14:55:50.605493Z
-4
-tintin1812@gmail.com
-has-props
+93
 
 
 
@@ -159,21 +130,11 @@ has-props
 
 
 
-
-614203
+deleted
 
 jzlib-1.0.7.jar
 file
-
-
-
-
-2012-06-09T15:06:46.000000Z
-fc7ea9de0e1e03867334ebcb335469b7
-2012-06-09T14:55:50.605493Z
-4
-tintin1812@gmail.com
-has-props
+93
 
 
 
@@ -193,21 +154,11 @@ has-props
 
 
 
-
-48521
+deleted
 
 mina-example-2.0.4.jar
 file
-
-
-
-
-2012-06-09T15:04:16.000000Z
-29d0649164bf9bf0429a302d65727f2f
-2012-07-28T04:42:38.292949Z
-85
-truonguit2010@gmail.com
-has-props
+93
 
 
 
@@ -227,8 +178,7 @@ has-props
 
 
 
-
-134751
+deleted
 
 ServerCore.jar
 file
@@ -334,16 +284,7 @@ has-props
 
 mina-statemachine-2.0.4.jar
 file
-
-
-
-
-2012-06-09T15:04:16.000000Z
-114c46081eb4c9a35d51f55c592e2a13
-2012-07-28T04:42:38.292949Z
-85
-truonguit2010@gmail.com
-has-props
+93
 
 
 
@@ -363,8 +304,7 @@ has-props
 
 
 
-
-55813
+deleted
 
 slf4j-api-1.6.1.jar
 file
@@ -402,16 +342,7 @@ has-props
 
 mina-integration-beans-2.0.4.jar
 file
-
-
-
-
-2012-06-09T15:04:16.000000Z
-c39518241bbd5621f40d4af67f616a93
-2012-07-28T04:42:38.292949Z
-85
-truonguit2010@gmail.com
-has-props
+93
 
 
 
@@ -431,8 +362,7 @@ has-props
 
 
 
-
-40205
+deleted
 
 commons-logging-1.0.3.jar
 file
@@ -470,16 +400,7 @@ has-props
 
 ognl-3.0.1.jar
 file
-
-
-
-
-2012-06-09T15:06:46.000000Z
-5c1ce1b97dff3b7890c0db029393bd77
-2012-06-09T14:55:50.605493Z
-4
-tintin1812@gmail.com
-has-props
+93
 
 
 
@@ -499,42 +420,7 @@ has-props
 
 
 
-
-229386
-
-mina-transport-apr-2.0.4.jar
-file
-
-
-
-
-2012-06-09T15:04:16.000000Z
-b8fde4dd563141e7872c523d873430fe
-2012-07-28T04:42:38.292949Z
-85
-truonguit2010@gmail.com
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-31206
+deleted
 
 commons-lang-2.6.jar
 file
@@ -570,18 +456,33 @@ has-props
 
 284220
 
+mina-transport-apr-2.0.4.jar
+file
+93
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+deleted
+
 mina-integration-xbean-2.0.4.jar
 file
-
-
-
-
-2012-06-09T15:04:16.000000Z
-2c66df162b9ce60ae705922f35fe60d2
-2012-07-28T04:42:38.292949Z
-85
-truonguit2010@gmail.com
-has-props
+93
 
 
 
@@ -601,21 +502,11 @@ has-props
 
 
 
-
-39688
+deleted
 
 tomcat-apr-5.5.23.jar
 file
-
-
-
-
-2012-06-09T15:06:46.000000Z
-728435e9881a6ae662f10ef96079d11e
-2012-06-09T14:55:50.605493Z
-4
-tintin1812@gmail.com
-has-props
+93
 
 
 
@@ -635,19 +526,66 @@ has-props
 
 
 
+deleted
+
+remain
+dir
 
-25160
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+deleted
 
 mina-integration-jmx-2.0.4.jar
 file
+93
 
 
 
 
-2012-06-09T15:04:18.000000Z
-35795562a75d7419fe10af8eac3f4466
-2012-07-28T04:42:38.292949Z
-85
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+deleted
+
+slf4j-jdk14-1.6.4.jar
+file
+93
+
+
+
+2012-06-09T15:03:50.000000Z
+026d95000c7b7ae9c3b2cbf55d013478
+2012-07-30T14:51:06.097819Z
+93
 truonguit2010@gmail.com
 has-props
 
@@ -670,20 +608,15 @@ has-props
 
 
 
-28169
+8887
 
 mina-integration-ognl-2.0.4.jar
 file
+93
 
 
 
 
-2012-06-09T15:04:18.000000Z
-57d3911694957455611195f0afe3cfec
-2012-07-28T04:42:38.292949Z
-85
-truonguit2010@gmail.com
-has-props
 
 
 
@@ -699,93 +632,11 @@ has-props
 
 
 
-
-
-
-
-
-15633
-
-jcl-over-slf4j-1.6.1.jar
-file
-
-
-
-
-2012-06-09T15:06:46.000000Z
-f5b5bb0235536b37ea60b1f5c790f6d5
-2012-06-09T14:55:50.605493Z
-4
-tintin1812@gmail.com
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-17308
-
-xbean-spring-3.7.jar
-file
-
-
-
-
-2012-06-09T15:06:46.000000Z
-3f58d4cb640b139a81bebefe47edca95
-2012-06-09T14:55:50.605493Z
-4
-tintin1812@gmail.com
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-130942
+deleted
 
 javassist-3.7.ga.jar
 file
-
-
-
-
-2012-06-09T15:06:46.000000Z
-24d9ad9626431557ae96963e4ca2e229
-2012-06-09T14:55:50.605493Z
-4
-tintin1812@gmail.com
-has-props
+93
 
 
 
@@ -805,21 +656,59 @@ has-props
 
 
 
+deleted
+
+jcl-over-slf4j-1.6.1.jar
+file
+93
 
-544021
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+deleted
+
+xbean-spring-3.7.jar
+file
+93
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+deleted
 
 mysql-connector-java-5.1.20-bin.jar
 file
-
-
-
-
-2012-05-01T13:53:38.000000Z
-a910cc2459211c6649316a969920df5d
-2012-06-10T18:48:01.485091Z
-15
-truonguit2010@gmail.com
-has-props
+93
 
 
 
@@ -839,6 +728,5 @@ has-props
 
 
 
-
-802721
+deleted
 

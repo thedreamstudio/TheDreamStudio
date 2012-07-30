@@ -1,14 +1,14 @@
 10
 
 dir
-85
+90
 https://zzzzzzzzzzz.googlecode.com/svn/trunk/j2seServer
 https://zzzzzzzzzzz.googlecode.com/svn
 
 
 
-2012-07-28T04:42:38.292949Z
-85
+2012-07-29T17:50:06.498761Z
+90
 truonguit2010@gmail.com
 has-props
 
@@ -60,12 +60,6 @@ tintin1812@gmail.com
 
 1749
 
-slf4j
-dir
-
-dist
-dir
-
 .project
 file
 
@@ -100,87 +94,10 @@ tintin1812@gmail.com
 
 386
 
-lib
-dir
-
-nbproject
-dir
-
-employee.ser
-file
-
-
-
-
-2012-06-09T15:09:10.000000Z
-2573ce7b2a21129b52b0804ac4469fb8
-2012-06-09T14:55:50.605493Z
-4
-tintin1812@gmail.com
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-918
-
-src
+.settings
 dir
 
 bin
-dir
-
-temp.out
-file
-
-
-
-
-2012-06-09T15:09:10.000000Z
-e64294282d20349ed825abe551740e82
-2012-06-09T14:55:50.605493Z
-4
-tintin1812@gmail.com
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-830
-
-.settings
 dir
 
 build.xml
@@ -216,4 +133,91 @@ truonguit2010@gmail.com
 
 
 3725
+
+dist
+dir
+
+
+
+delete
+
+employee.ser
+file
+
+
+
+
+2012-06-09T15:09:10.000000Z
+2573ce7b2a21129b52b0804ac4469fb8
+2012-06-09T14:55:50.605493Z
+4
+tintin1812@gmail.com
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+918
+
+lib
+dir
+
+nbproject
+dir
+
+slf4j
+dir
+
+src
+dir
+
+temp.out
+file
+
+
+
+
+2012-06-09T15:09:10.000000Z
+e64294282d20349ed825abe551740e82
+2012-06-09T14:55:50.605493Z
+4
+tintin1812@gmail.com
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+830
 

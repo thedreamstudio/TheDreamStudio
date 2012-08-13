@@ -1,11 +1,7 @@
-K 26
-svn:wc:ra_dav:activity-url
-V 14
-/svn/!svn/act/
 K 25
 svn:wc:ra_dav:version-url
-V 33
-/svn/!svn/ver/90/trunk/j2seServer
+V 34
+/svn/!svn/ver/120/trunk/j2seServer
 END
 .classpath
 K 25

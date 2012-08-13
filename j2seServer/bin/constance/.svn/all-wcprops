@@ -1,11 +1,17 @@
 K 25
 svn:wc:ra_dav:version-url
-V 47
-/svn/!svn/ver/81/trunk/j2seServer/src/constance
+V 46
+/svn/!svn/ver/4/trunk/j2seServer/bin/constance
 END
-CProtocol.java
+AttributeSession.class
 K 25
 svn:wc:ra_dav:version-url
-V 62
-/svn/!svn/ver/81/trunk/j2seServer/src/constance/CProtocol.java
+V 69
+/svn/!svn/ver/4/trunk/j2seServer/bin/constance/AttributeSession.class
+END
+GameCommand.class
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/4/trunk/j2seServer/bin/constance/GameCommand.class
 END

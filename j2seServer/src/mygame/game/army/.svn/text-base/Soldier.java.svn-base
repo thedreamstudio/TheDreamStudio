@@ -49,6 +49,10 @@ public class Soldier {
      */
     public static final int TYPE_SCOUT = 5;
     /**
+     * Con tuong.
+     */
+    public static final int TYPE_GENERAL = -1;
+    /**
      * Player là chủ cua doi quan nay.
      */
     public Player owner;
@@ -63,7 +67,7 @@ public class Soldier {
     public int id;
     /**Id cua binh chủng.*/
     public int typeID;
-    public String name;
+    public String name = "";
     public int cost;
     public int hp;
     public int damageMax;

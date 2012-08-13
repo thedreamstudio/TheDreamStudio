@@ -6,6 +6,9 @@ package common;
 
 import core.common.Player;
 import java.util.Hashtable;
+import java.util.Vector;
+import network.GlobalMessageHandler;
+import network.GlobalServices;
 
 /**
  *
@@ -37,6 +40,14 @@ public class PlayerManager {
                 p.isLogin = true;
                 players.put(key, p);
                 return true;
+            } else {
+                if (mp.session != null) {
+                    GlobalServices.sendServerMessage(mp, 1, "Bạn bị kick vì tài khoản đăng nhập từ máy khác.");
+                    mp.session.close(true);
+                }
+                p.isLogin = true;
+                players.put(key, p);
+                return true;
             }
         }
         return false;
@@ -46,4 +57,6 @@ public class PlayerManager {
         players.remove(p.userName);
         return true;
     }
+    
+    
 }

@@ -16,6 +16,7 @@ import org.vn.model.MapType;
 import org.vn.model.MoveMessage;
 import org.vn.model.NextTurnMessage;
 import org.vn.model.PlayerModel;
+import org.vn.model.Result;
 import org.vn.unit.UnitCharacterSwordmen;
 
 import vn.thedreamstudio.socket.IMessageListener;
@@ -68,6 +69,19 @@ public class GlobalMessageHandler implements IMessageListener {
 				}
 			}
 				break;
+			case CommandClientToServer.SYS_REGISTER: {
+				byte result = msg.reader().readByte();
+				if (result == 1) {
+					// login thanh cong
+					lightweightMsg.arg1 = 1;
+					lightweightMsg.obj = msg.reader().readUTF();
+				} else {
+					// login loi
+					lightweightMsg.arg1 = 0;
+					lightweightMsg.obj = msg.reader().readUTF();
+				}
+			}
+				break;
 			case CommandClientToServer.SYS_BOARD_LIST: {
 				int countBoard = msg.reader().readInt();
 				Board[] boards = new Board[countBoard];
@@ -103,7 +117,9 @@ public class GlobalMessageHandler implements IMessageListener {
 						PlayerModel playerModel = new PlayerModel();
 						playerModel.ID = msg.reader().readInt();
 						playerModel.name = msg.reader().readUTF();
-						currentGameInfo.mListPlayerInGame.add(playerModel);
+						if (playerModel.ID != -1) {
+							currentGameInfo.mListPlayerInGame.add(playerModel);
+						}
 					}
 				}
 			}
@@ -146,7 +162,9 @@ public class GlobalMessageHandler implements IMessageListener {
 					PlayerModel playerModel = new PlayerModel();
 					playerModel.ID = msg.reader().readInt();
 					playerModel.name = msg.reader().readUTF();
-					currentGameInfo.mListPlayerInGame.add(playerModel);
+					if (playerModel.ID != -1) {
+						currentGameInfo.mListPlayerInGame.add(playerModel);
+					}
 				}
 			}
 				break;
@@ -226,11 +244,20 @@ public class GlobalMessageHandler implements IMessageListener {
 					// - row: int (vi tri tuong)
 					// - col: int (vi tri tuong)
 					// - range: int
-					mCurrentGameInfo.xTileKing = msg.reader().readInt();
-					mCurrentGameInfo.yTileKing = msg.reader().readInt();
-					mCurrentGameInfo.rangerSetupEnemy = msg.reader().readInt();
 					mCurrentGameInfo.mMapSelected = new Map();
 					mCurrentGameInfo.mMapSelected.mapId = mapId;
+					while (msg.reader().available() > 0) {
+						int idUser = msg.reader().readInt();
+						int xTileKing = msg.reader().readInt();
+						int yTileKing = msg.reader().readInt();
+						int rangerSetupEnemy = msg.reader().readInt();
+						if (idUser == CurrentUserInfo.mPlayerInfo.ID) {
+							mCurrentGameInfo.xTileKing = xTileKing;
+							mCurrentGameInfo.yTileKing = yTileKing;
+							mCurrentGameInfo.rangerSetupEnemy = rangerSetupEnemy;
+						}
+					}
+
 				}
 			}
 				break;
@@ -302,6 +329,25 @@ public class GlobalMessageHandler implements IMessageListener {
 				nextTurnMessage.rivalTurnTime = msg.reader().readLong();
 				lightweightMsg.obj = nextTurnMessage;
 			}
+				break;
+			case CommandClientToServer.SERVER_MESSAGE: {
+				int type = msg.reader().readByte();
+				String content = msg.reader().readUTF();
+				lightweightMsg.obj = content;
+			}
+				break;
+			case CommandClientToServer.END_GAME:
+				mCurrentGameInfo.reset();
+				Result result = new Result();
+				result.winnerID = msg.reader().readInt();
+				result.winnerName = msg.reader().readUTF();
+				result.winnerMoney = msg.reader().readLong();
+				result.winnerLevel = msg.reader().readInt();
+				result.loserID = msg.reader().readInt();
+				result.loserName = msg.reader().readUTF();
+				result.loserMoney = msg.reader().readLong();
+				result.loserLevel = msg.reader().readInt();
+				lightweightMsg.obj = result;
 				break;
 			}
 			try {

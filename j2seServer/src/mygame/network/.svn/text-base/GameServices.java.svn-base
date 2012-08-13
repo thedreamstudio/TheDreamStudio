@@ -10,7 +10,10 @@ import mygame.common.Board;
 import mygame.common.MGameController;
 import core.network.Message;
 import java.util.Vector;
+import mygame.common.MatchResult;
 import mygame.game.army.Soldier;
+import mygame.game.map.Map;
+import network.GlobalServices;
 
 /**
  *
@@ -82,7 +85,7 @@ public class GameServices {
             if (pp.session != null) {
                 Message m = new Message(CProtocol.SOMEONE_LEAVE_BOARD);
                 m.putInt(p.playerID);
-                m.putString(p.playerName);
+                m.putInt(b.ownerID);
                 pp.session.write(m);
                 m.cleanup();
             }
@@ -111,8 +114,7 @@ public class GameServices {
         p.session.write(m);
         m.cleanup();
     }
-    
-    
+
     public synchronized static void processSelectArmyMessage(Player p, int[] ids) {
         Message m = new Message(CProtocol.SELECT_ARMY);
         if (MGameController.getInstance().checkUserSelectArmy(ids)) {
@@ -132,7 +134,7 @@ public class GameServices {
         p.session.write(m);
         m.cleanup();
     }
-    
+
     public static void processGetMapMessage(Player p) {
         Message m = new Message(CProtocol.GET_MAP);
         int row = 50;
@@ -146,7 +148,7 @@ public class GameServices {
         p.session.write(m);
         m.cleanup();
     }
-    
+
     public static void processLayoutArmyMessage(Player p, int armyID, int xPos, int yPos) {
         byte status = 1;//cai nay ve sau se tinh lai.
         Message m = new Message(CProtocol.LAYOUT_ARMY);
@@ -157,7 +159,7 @@ public class GameServices {
         p.session.write(m);
         m.cleanup();
     }
-    
+
     public static void processSomeOneReadyMessage(Player p, Player pReady) {
         if (p == null || p.playerID == -1) {
             return;
@@ -168,27 +170,68 @@ public class GameServices {
         m.putByte(pReady.isReady ? 1 : 0);
         p.session.write(m);
     }
+
+    public static void processStartGame(Player p, Vector soldier) {
+        Message m = new Message(CProtocol.START_GAME);
+        int size = soldier.size();
+        for (int i = size; --i >= 0;) {
+            Soldier s = (Soldier) soldier.elementAt(i);
+            m.putInt(s.id);
+            m.putInt(s.typeID);
+            m.putInt(s.owner.playerID);
+            m.putInt(s.x);
+            m.putInt(s.y);
+        }
+        p.session.write(m);
+    }
+
+    public static void processMoveArmyMessage(Player p, Soldier s) {
+        Message m = new Message(CProtocol.MOVE_ARMY);
+        m.putInt(s.id);
+        m.putInt(s.x);
+        m.putInt(s.y);
+        p.session.write(m);
+        m.cleanup();
+    }
+
+    public static void sendMessageSetMap(Player p, Board b, Map map) {
+        if (map == null) {
+            GlobalServices.sendServerMessage(p, 1, "Trên server chua co map.");
+            return;
+        }
+        Message m = new Message(CProtocol.SET_MAP);
+        m.putByte(map.mapID);
+        m.putByte(1);
+        int size = b.players.size();
+        for (int i = size; --i >= 0;) {
+            m.putInt( b.players.elementAt(i).playerID );
+            if (b.players.elementAt(i).playerID == b.ownerID) {
+                m.putInt(map.ownerGeneral.xPos);
+                m.putInt(map.ownerGeneral.yPos);
+            } else {
+                m.putInt(map.visitGeneral.xPos);
+                m.putInt(map.visitGeneral.yPos);
+            }
+            m.putInt(map.initRange);
+        }
+        p.session.write(m);
+        m.cleanup();
+    }
     
-   public static void processStartGame(Player p, Vector soldier) {
-       Message m = new Message(CProtocol.START_GAME);
-       int size = soldier.size();
-       for (int i = size; --i >= 0; ) {
-           Soldier s = (Soldier) soldier.elementAt(i);
-           m.putInt(s.id);
-           m.putInt(s.typeID);
-           m.putInt(s.owner.playerID);
-           m.putInt(s.x);
-           m.putInt(s.y);
-       }
-       p.session.write(m);
-   }
-   
-   public static void processMoveArmyMessage(Player p, Soldier s) {
-       Message m = new Message(CProtocol.MOVE_ARMY);
-       m.putInt(s.id);
-       m.putInt(s.x);
-       m.putInt(s.y);
-       p.session.write(m);
-       m.cleanup();
-   }
+    public static void sendMatchResult(Player p, MatchResult ma) {
+        if (p.session == null || ma == null) {
+            return;
+        }
+        Message m = new Message(CProtocol.END_GAME);
+        m.putInt(ma.pWin.playerID);
+        m.putString(ma.pWin.playerName);
+        m.putLong(ma.pWin.money);
+        m.putInt(ma.pWin.level);
+        m.putInt(ma.pLose.playerID);
+        m.putString(ma.pLose.playerName);
+        m.putLong(ma.pLose.money);
+        m.putInt(ma.pLose.level);
+        p.session.write(m);
+        m.cleanup();
+    }
 }

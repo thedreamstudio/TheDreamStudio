@@ -27,6 +27,15 @@ public class DrawableBitmap extends DrawableObject {
 	private float blue;
 	private float alpha;
 	private boolean ONE_MINUS_SRC_ALPHA = false;
+	private boolean IsEnableGlBlend = false;
+	private int glBlend1 = GL10.GL_ONE;
+	private int glBlend2 = GL10.GL_ONE_MINUS_SRC_ALPHA;
+
+	public void setGlBlendFun(int scrColour, int destColour) {
+		glBlend1 = scrColour;
+		glBlend2 = destColour;
+		IsEnableGlBlend = true;
+	}
 
 	public DrawableBitmap(Texture texture, float width, float height) {
 		super();
@@ -90,7 +99,7 @@ public class DrawableBitmap extends DrawableObject {
 		gl.glPushMatrix();
 		gl.glLoadIdentity();
 		// TODO: nho xoa
-		// gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
+		gl.glClear(GL10.GL_COLOR_BUFFER_BIT);
 		gl.glEnable(GL10.GL_TEXTURE_2D);
 	}
 
@@ -164,12 +173,24 @@ public class DrawableBitmap extends DrawableObject {
 							gl.glColor4f(red, green, blue, alpha);
 						}
 					}
+					if (IsEnableGlBlend) {
+						gl.glBlendFunc(glBlend1, glBlend2);
+						// gl.glEnable(GL10.GL_STENCIL_TEST);
+						// gl.glStencilFunc(GL10.GL_ALWAYS, 0x1, 0x1);
+						// gl.glStencilFunc(GL10.GL_EQUAL, 0x0, 0x1);
+						// IntBuffer intBuffer = IntBuffer.allocate(1);
+
+					}
 
 					((GL11Ext) gl).glDrawTexfOES(snappedX * scaleX, snappedY
 							* scaleY, getPriority(), width * scaleX, height
 							* scaleY);
 					if (isSetColorExpress) {
 						gl.glColor4f(1.0f, 1.0f, 1.0f, 1.0f);
+					}
+					if (IsEnableGlBlend) {
+						gl.glBlendFunc(GL10.GL_ONE, GL10.GL_ONE_MINUS_SRC_ALPHA);
+						// gl.glDisable(GL10.GL_STENCIL_TEST);
 					}
 				}
 			}
@@ -272,8 +293,11 @@ public class DrawableBitmap extends DrawableObject {
 		int[] mTextureNameWorkspace = new int[1];
 		mTextureNameWorkspace[0] = mTexture.name;
 		gl.glDeleteTextures(1, mTextureNameWorkspace, 0);
-		Bitmap mBitmapChange = mBitmapInImageCacheeBitmapChange
-				.getBitMapResourcesItem();
+		Bitmap mBitmapChange = null;
+		if (mBitmapInImageCacheeBitmapChange != null) {
+			mBitmapChange = mBitmapInImageCacheeBitmapChange
+					.getBitMapResourcesItem();
+		}
 		if (mBitmapChange != null) {
 			gl.glBindTexture(GL10.GL_TEXTURE_2D, mTexture.name);
 

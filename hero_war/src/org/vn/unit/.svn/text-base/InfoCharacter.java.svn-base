@@ -16,8 +16,9 @@ public class InfoCharacter {
 	private float WIDTH_DRAW_HEALTH = 200;
 	private DrawableMesh mDrawableBitmapHpCurrent;
 	private DrawableMesh mDrawableBitmapManaCurrent;
+	private DrawableMesh mDrawableBitmapStrengForShoot;
 	private UnitCharacterSwordmen characterSwordmenTaget;
-
+	
 	public InfoCharacter(TextureLibrary textureLibrary) {
 		drawableObj = new DrawableMesh(null, 60, 60);
 		mDrawableBitmapHpCurrent = new DrawableMesh(
@@ -27,6 +28,10 @@ public class InfoCharacter {
 				textureLibrary.allocateTexture(R.drawable.hp_bar, "hp_bar"),
 				WIDTH_DRAW_HEALTH, 10);
 		mDrawableBitmapManaCurrent.setColorExpress(0.3f, 0.3f, 0.7f, 1);
+		mDrawableBitmapStrengForShoot = new DrawableMesh(
+				textureLibrary.allocateTexture(R.drawable.hp_bar, "hp_bar"),
+				WIDTH_DRAW_HEALTH, 10);
+		mDrawableBitmapStrengForShoot.setColorExpress(1f, 0f, 0f, 1);
 	}
 
 	public void draw(RenderSystem renderSystem) {
@@ -37,6 +42,9 @@ public class InfoCharacter {
 					characterSwordmenTaget.mCurrentHp);
 			drawMana(renderSystem, characterSwordmenTaget.mMaxMana,
 					characterSwordmenTaget.mCurrentMana);
+			drawManaForShoot(renderSystem, characterSwordmenTaget.mMaxMana,
+					characterSwordmenTaget.mCurrentMana,
+					characterSwordmenTaget.mEnemyType.attackcost);
 		}
 	}
 
@@ -85,4 +93,22 @@ public class InfoCharacter {
 		renderSystem.scheduleForDraw(mDrawableBitmapManaCurrent, posMana,
 				Priority.InfoCharacter, false);
 	}
+
+	private void drawManaForShoot(RenderSystem renderSystem, float mMaxMana,
+			float mCurrentMana, float mManaCostForShoot) {
+		// renderSystem
+		// .scheduleForDraw(mDrawableBitmapHpFull, posHp,
+		// Priority.Character, false);
+		if (mCurrentMana >= mManaCostForShoot) {
+			float fanTramSoMauConLai = mManaCostForShoot
+					/ (mMaxMana == 0 ? 1 : mMaxMana);
+			mDrawableBitmapStrengForShoot.setWidth(WIDTH_DRAW_HEALTH
+					* fanTramSoMauConLai);
+			mDrawableBitmapStrengForShoot.setCoordinates(0, fanTramSoMauConLai,
+					0, 1);
+			renderSystem.scheduleForDraw(mDrawableBitmapStrengForShoot,
+					posMana, Priority.InfoCharacter2, false);
+		}
+	}
+
 }

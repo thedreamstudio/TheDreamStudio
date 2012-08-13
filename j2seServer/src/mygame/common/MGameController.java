@@ -4,6 +4,7 @@
  */
 package mygame.common;
 
+import common.PlayerManager;
 import core.common.Player;
 import java.util.Vector;
 import mygame.game.army.ArmyShop;
@@ -21,7 +22,6 @@ public class MGameController {
     public synchronized static MGameController getInstance() {
         return instance;
     }
-    
     public static final int MAXBOARD = 10;
     /**
      * Total money that a user can have to select army.
@@ -29,6 +29,11 @@ public class MGameController {
      */
     public static final int TOTAL_MONEY = 100;
     public Board[] boards;
+    /**
+     * Vector này chứa các player đang trong game.
+     */
+    public Vector players = new Vector();
+    public static final int MAX_ITEM_IN_A_PAGE = 20;
 
     private MGameController() {
         boards = new Board[MAXBOARD];
@@ -36,7 +41,7 @@ public class MGameController {
             boards[i] = new Board(i, "Board " + i);
         }
     }
-    
+
     public boolean checkUserSelectArmy(final int[] values) {
         int total = 0;
         for (int i = values.length; --i >= 0;) {
@@ -96,7 +101,7 @@ public class MGameController {
         }
         return null;
     }
-    
+
     /**
      * Khoi tao map trong 1 ban choi.
      * Chi co chu ban moi tao duoc map.
@@ -109,6 +114,25 @@ public class MGameController {
         Board b = getBoard(p.boardID);
         if (b != null) {
             return b.createMap(p.playerID, mapID);
+        }
+        return null;
+    }
+
+    public void addPlayerIntoGame(Player p) {
+        players.addElement(p);
+    }
+
+    public void removePlayerInGame(Player p) {
+        boolean r = players.removeElement(p);
+        System.out.println("Da remove" + (r ? " Thanh cong " : " That bai ") + p.playerName);
+    }
+
+    public Board getBoardSuggested() {
+        for (int i = 0; i < boards.length; i++) {
+            if (!boards[i].isSuggested && boards[i].countPlayer() != 2) {
+                boards[i].isSuggested = true;
+                return boards[i];
+            }
         }
         return null;
     }

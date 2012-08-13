@@ -1,5 +1,7 @@
 package org.vn.unit;
 
+import org.vn.gl.Priority;
+
 public class EffectSoBayLen extends Effect {
 	private float mX, mY;
 	private float mAlpha;
@@ -8,6 +10,7 @@ public class EffectSoBayLen extends Effect {
 	public boolean cameraRelative = true;
 	public float speed = 1;
 	public boolean isDraw = true;
+	public int priority = Priority.CharacterTakeDamage;
 
 	public EffectSoBayLen(NumberDrawable numberDrawable, int num, float x,
 			float y) {
@@ -28,10 +31,10 @@ public class EffectSoBayLen extends Effect {
 			if (isDraw) {
 				if (mAlpha > 1) {
 					mNumberDrawable.drawNumberWithAlpha(mX, mY, mNum, 1,
-							cameraRelative, true);
+							cameraRelative, true, priority);
 				} else {
 					mNumberDrawable.drawNumberWithAlpha(mX, mY, mNum, mAlpha,
-							cameraRelative, true);
+							cameraRelative, true, priority);
 				}
 			}
 			mY += 0.5f / speed;

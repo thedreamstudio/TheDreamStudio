@@ -1,5 +1,71 @@
 K 25
 svn:wc:ra_dav:version-url
-V 37
-/svn/!svn/ver/90/trunk/j2seServer/src
+V 36
+/svn/!svn/ver/4/trunk/j2seServer/bin
+END
+spring-2.5.6.jar
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/4/trunk/j2seServer/bin/spring-2.5.6.jar
+END
+slf4j-api-1.6.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/4/trunk/j2seServer/bin/slf4j-api-1.6.1.jar
+END
+javassist-3.11.0.GA.jar
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/4/trunk/j2seServer/bin/javassist-3.11.0.GA.jar
+END
+jzlib-1.0.7.jar
+K 25
+svn:wc:ra_dav:version-url
+V 52
+/svn/!svn/ver/4/trunk/j2seServer/bin/jzlib-1.0.7.jar
+END
+commons-logging-1.0.3.jar
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/4/trunk/j2seServer/bin/commons-logging-1.0.3.jar
+END
+ognl-3.0.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svn/!svn/ver/4/trunk/j2seServer/bin/ognl-3.0.1.jar
+END
+commons-lang-2.6.jar
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/4/trunk/j2seServer/bin/commons-lang-2.6.jar
+END
+tomcat-apr-5.5.23.jar
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/4/trunk/j2seServer/bin/tomcat-apr-5.5.23.jar
+END
+javassist-3.7.ga.jar
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/4/trunk/j2seServer/bin/javassist-3.7.ga.jar
+END
+jcl-over-slf4j-1.6.1.jar
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/4/trunk/j2seServer/bin/jcl-over-slf4j-1.6.1.jar
+END
+xbean-spring-3.7.jar
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/4/trunk/j2seServer/bin/xbean-spring-3.7.jar
 END

@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 49
-/svn/!svn/ver/95/trunk/hero_war/res/drawable-hdpi
+V 50
+/svn/!svn/ver/121/trunk/hero_war/res/drawable-hdpi
 END
 player_mexican_shot.png
 K 25
@@ -27,11 +27,29 @@ svn:wc:ra_dav:version-url
 V 64
 /svn/!svn/ver/80/trunk/hero_war/res/drawable-hdpi/image_1574.png
 END
+dark1.png
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/121/trunk/hero_war/res/drawable-hdpi/dark1.png
+END
+dark2.png
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/118/trunk/hero_war/res/drawable-hdpi/dark2.png
+END
+dark3.png
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/118/trunk/hero_war/res/drawable-hdpi/dark3.png
+END
 bt_chat.png
 K 25
 svn:wc:ra_dav:version-url
-V 61
-/svn/!svn/ver/47/trunk/hero_war/res/drawable-hdpi/bt_chat.png
+V 62
+/svn/!svn/ver/118/trunk/hero_war/res/drawable-hdpi/bt_chat.png
 END
 image_1576.png
 K 25
@@ -60,14 +78,26 @@ END
 bt_start_down.png
 K 25
 svn:wc:ra_dav:version-url
-V 67
-/svn/!svn/ver/95/trunk/hero_war/res/drawable-hdpi/bt_start_down.png
+V 68
+/svn/!svn/ver/118/trunk/hero_war/res/drawable-hdpi/bt_start_down.png
 END
 input_chat_ingame.png
 K 25
 svn:wc:ra_dav:version-url
 V 71
 /svn/!svn/ver/47/trunk/hero_war/res/drawable-hdpi/input_chat_ingame.png
+END
+back_ground_board.png
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/!svn/ver/108/trunk/hero_war/res/drawable-hdpi/back_ground_board.png
+END
+coin.png
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/118/trunk/hero_war/res/drawable-hdpi/coin.png
 END
 image_1701.png
 K 25
@@ -81,6 +111,12 @@ svn:wc:ra_dav:version-url
 V 60
 /svn/!svn/ver/74/trunk/hero_war/res/drawable-hdpi/hp_bar.png
 END
+bt_1.9.png
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/108/trunk/hero_war/res/drawable-hdpi/bt_1.9.png
+END
 image_1703.png
 K 25
 svn:wc:ra_dav:version-url
@@ -92,6 +128,12 @@ K 25
 svn:wc:ra_dav:version-url
 V 67
 /svn/!svn/ver/74/trunk/hero_war/res/drawable-hdpi/player_geezer.png
+END
+bt_3.9.png
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/108/trunk/hero_war/res/drawable-hdpi/bt_3.9.png
 END
 image_1705.png
 K 25
@@ -105,6 +147,12 @@ svn:wc:ra_dav:version-url
 V 64
 /svn/!svn/ver/80/trunk/hero_war/res/drawable-hdpi/image_1707.png
 END
+bt_5.9.png
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/108/trunk/hero_war/res/drawable-hdpi/bt_5.9.png
+END
 image_1861.png
 K 25
 svn:wc:ra_dav:version-url
@@ -117,17 +165,41 @@ svn:wc:ra_dav:version-url
 V 72
 /svn/!svn/ver/95/trunk/hero_war/res/drawable-hdpi/player_scout_sleep.png
 END
+tile_seleted.png
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/121/trunk/hero_war/res/drawable-hdpi/tile_seleted.png
+END
 image_1709.png
 K 25
 svn:wc:ra_dav:version-url
 V 64
 /svn/!svn/ver/80/trunk/hero_war/res/drawable-hdpi/image_1709.png
 END
+bt_start_1.png
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/108/trunk/hero_war/res/drawable-hdpi/bt_start_1.png
+END
 image_1863.png
 K 25
 svn:wc:ra_dav:version-url
 V 64
 /svn/!svn/ver/80/trunk/hero_war/res/drawable-hdpi/image_1863.png
+END
+bt_start_2.png
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/108/trunk/hero_war/res/drawable-hdpi/bt_start_2.png
+END
+bt_start_3.png
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/108/trunk/hero_war/res/drawable-hdpi/bt_start_3.png
 END
 image_1865.png
 K 25
@@ -141,11 +213,23 @@ svn:wc:ra_dav:version-url
 V 73
 /svn/!svn/ver/95/trunk/hero_war/res/drawable-hdpi/player_indian_sleep.png
 END
+skip.png
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/121/trunk/hero_war/res/drawable-hdpi/skip.png
+END
 image_1867.png
 K 25
 svn:wc:ra_dav:version-url
 V 64
 /svn/!svn/ver/80/trunk/hero_war/res/drawable-hdpi/image_1867.png
+END
+face_book.png
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/108/trunk/hero_war/res/drawable-hdpi/face_book.png
 END
 image_6359.png
 K 25
@@ -168,8 +252,8 @@ END
 ic_launcher.png
 K 25
 svn:wc:ra_dav:version-url
-V 65
-/svn/!svn/ver/11/trunk/hero_war/res/drawable-hdpi/ic_launcher.png
+V 66
+/svn/!svn/ver/102/trunk/hero_war/res/drawable-hdpi/ic_launcher.png
 END
 player_indian.png
 K 25
@@ -192,20 +276,20 @@ END
 bt_start_up.png
 K 25
 svn:wc:ra_dav:version-url
-V 65
-/svn/!svn/ver/95/trunk/hero_war/res/drawable-hdpi/bt_start_up.png
-END
-player_mexican_sleep.png
-K 25
-svn:wc:ra_dav:version-url
-V 74
-/svn/!svn/ver/95/trunk/hero_war/res/drawable-hdpi/player_mexican_sleep.png
+V 66
+/svn/!svn/ver/118/trunk/hero_war/res/drawable-hdpi/bt_start_up.png
 END
 player_cannon.png
 K 25
 svn:wc:ra_dav:version-url
 V 67
 /svn/!svn/ver/95/trunk/hero_war/res/drawable-hdpi/player_cannon.png
+END
+player_mexican_sleep.png
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/95/trunk/hero_war/res/drawable-hdpi/player_mexican_sleep.png
 END
 image_1711.png
 K 25
@@ -219,11 +303,17 @@ svn:wc:ra_dav:version-url
 V 64
 /svn/!svn/ver/80/trunk/hero_war/res/drawable-hdpi/image_1713.png
 END
-sword.png
+per_icon.png
 K 25
 svn:wc:ra_dav:version-url
-V 59
-/svn/!svn/ver/78/trunk/hero_war/res/drawable-hdpi/sword.png
+V 63
+/svn/!svn/ver/108/trunk/hero_war/res/drawable-hdpi/per_icon.png
+END
+icon_board.png
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svn/!svn/ver/108/trunk/hero_war/res/drawable-hdpi/icon_board.png
 END
 image_1715.png
 K 25
@@ -260,6 +350,18 @@ K 25
 svn:wc:ra_dav:version-url
 V 64
 /svn/!svn/ver/80/trunk/hero_war/res/drawable-hdpi/image_6363.png
+END
+shadown.png
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/!svn/ver/121/trunk/hero_war/res/drawable-hdpi/shadown.png
+END
+tile_seleted_atack.png
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/121/trunk/hero_war/res/drawable-hdpi/tile_seleted_atack.png
 END
 player_scout_shot.png
 K 25
@@ -333,17 +435,17 @@ svn:wc:ra_dav:version-url
 V 59
 /svn/!svn/ver/50/trunk/hero_war/res/drawable-hdpi/num_6.png
 END
-player_geezer_sleep.png
-K 25
-svn:wc:ra_dav:version-url
-V 73
-/svn/!svn/ver/95/trunk/hero_war/res/drawable-hdpi/player_geezer_sleep.png
-END
 num_7.png
 K 25
 svn:wc:ra_dav:version-url
 V 59
 /svn/!svn/ver/50/trunk/hero_war/res/drawable-hdpi/num_7.png
+END
+player_geezer_sleep.png
+K 25
+svn:wc:ra_dav:version-url
+V 73
+/svn/!svn/ver/95/trunk/hero_war/res/drawable-hdpi/player_geezer_sleep.png
 END
 player_gunslinger_shot.png
 K 25
@@ -372,14 +474,32 @@ END
 tile.png
 K 25
 svn:wc:ra_dav:version-url
-V 58
-/svn/!svn/ver/78/trunk/hero_war/res/drawable-hdpi/tile.png
+V 59
+/svn/!svn/ver/121/trunk/hero_war/res/drawable-hdpi/tile.png
+END
+bt_ready_up.png
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/!svn/ver/118/trunk/hero_war/res/drawable-hdpi/bt_ready_up.png
+END
+bt_2.9.png
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/108/trunk/hero_war/res/drawable-hdpi/bt_2.9.png
 END
 image_1562.png
 K 25
 svn:wc:ra_dav:version-url
 V 64
 /svn/!svn/ver/80/trunk/hero_war/res/drawable-hdpi/image_1562.png
+END
+bt_4.9.png
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/108/trunk/hero_war/res/drawable-hdpi/bt_4.9.png
 END
 image_1564.png
 K 25
@@ -429,6 +549,18 @@ svn:wc:ra_dav:version-url
 V 65
 /svn/!svn/ver/95/trunk/hero_war/res/drawable-hdpi/dialog_back.png
 END
+bt_ready_down.png
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/118/trunk/hero_war/res/drawable-hdpi/bt_ready_down.png
+END
+call_icon.png
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/!svn/ver/108/trunk/hero_war/res/drawable-hdpi/call_icon.png
+END
 back_ground_alpha.png
 K 25
 svn:wc:ra_dav:version-url
@@ -440,6 +572,12 @@ K 25
 svn:wc:ra_dav:version-url
 V 72
 /svn/!svn/ver/95/trunk/hero_war/res/drawable-hdpi/player_cannon_shot.png
+END
+tile_seleted_orther.png
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/!svn/ver/121/trunk/hero_war/res/drawable-hdpi/tile_seleted_orther.png
 END
 bt_buy_up.png
 K 25

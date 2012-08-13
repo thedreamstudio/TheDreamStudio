@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 45
+/svn/!svn/ver/4/trunk/j2seServer/bin/MinaCore
+END
+User.class
+K 25
+svn:wc:ra_dav:version-url
+V 56
+/svn/!svn/ver/4/trunk/j2seServer/bin/MinaCore/User.class
+END
+GameDecoder.class
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/4/trunk/j2seServer/bin/MinaCore/GameDecoder.class
+END
+MinaInput.class
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/4/trunk/j2seServer/bin/MinaCore/MinaInput.class
+END
+ClientCodecFactory.class
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/!svn/ver/4/trunk/j2seServer/bin/MinaCore/ClientCodecFactory.class
+END
+ConnectODBC_DSN.class
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/!svn/ver/4/trunk/j2seServer/bin/MinaCore/ConnectODBC_DSN.class
+END
+GameEncoder.class
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/4/trunk/j2seServer/bin/MinaCore/GameEncoder.class
+END
+UserManager.class
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svn/!svn/ver/4/trunk/j2seServer/bin/MinaCore/UserManager.class
+END

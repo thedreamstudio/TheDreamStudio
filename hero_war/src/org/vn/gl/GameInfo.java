@@ -15,4 +15,6 @@ public class GameInfo {
 	public static float offset = 60;
 	public static float offsetMap = 100;
 	public static boolean isOnline = true;
+	public static int idTypeKing = -1;
+
 }

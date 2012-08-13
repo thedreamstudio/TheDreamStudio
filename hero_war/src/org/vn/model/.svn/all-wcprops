@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 48
-/svn/!svn/ver/91/trunk/hero_war/src/org/vn/model
+V 49
+/svn/!svn/ver/118/trunk/hero_war/src/org/vn/model
 END
 MapType.java
 K 25
@@ -74,4 +74,10 @@ K 25
 svn:wc:ra_dav:version-url
 V 65
 /svn/!svn/ver/68/trunk/hero_war/src/org/vn/model/PlayerModel.java
+END
+Result.java
+K 25
+svn:wc:ra_dav:version-url
+V 61
+/svn/!svn/ver/118/trunk/hero_war/src/org/vn/model/Result.java
 END

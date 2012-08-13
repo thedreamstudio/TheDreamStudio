@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 51
-/svn/!svn/ver/90/trunk/j2seServer/src/mygame/common
+V 52
+/svn/!svn/ver/117/trunk/j2seServer/src/mygame/common
 END
 GamePlayer.java
 K 25
@@ -18,8 +18,8 @@ END
 Board.java
 K 25
 svn:wc:ra_dav:version-url
-V 62
-/svn/!svn/ver/90/trunk/j2seServer/src/mygame/common/Board.java
+V 63
+/svn/!svn/ver/117/trunk/j2seServer/src/mygame/common/Board.java
 END
 Turn.java
 K 25
@@ -30,6 +30,12 @@ END
 MGameController.java
 K 25
 svn:wc:ra_dav:version-url
-V 72
-/svn/!svn/ver/60/trunk/j2seServer/src/mygame/common/MGameController.java
+V 73
+/svn/!svn/ver/106/trunk/j2seServer/src/mygame/common/MGameController.java
+END
+MatchResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/111/trunk/j2seServer/src/mygame/common/MatchResult.java
 END

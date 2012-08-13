@@ -78,12 +78,13 @@ public class GameThread implements Runnable {
 							// mGameRoot.sSystemRegistry.hudSystem
 							// .setFPS(1000 / (int) averageFrameTime);
 						}
-						if (BaseObject.sSystemRegistry.numberDrawableTime != null) {
-							BaseObject.sSystemRegistry.numberDrawableTime
-									.drawNumberWithAlpha(30, 20,
-											(int) GameRenderer.averageWaitTime,
-											1, false, false, Priority.Help);
-						}
+						// if (BaseObject.sSystemRegistry.numberDrawableTime !=
+						// null) {
+						// BaseObject.sSystemRegistry.numberDrawableTime
+						// .drawNumberWithAlpha(30, 20,
+						// (int) GameRenderer.averageWaitTime,
+						// 1, false, false, Priority.Help);
+						// }
 					} else {
 						// If the game logic completed in less than 16ms, that
 						// means

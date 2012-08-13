@@ -1,14 +1,14 @@
 10
 
 dir
-100
+122
 https://zzzzzzzzzzz.googlecode.com/svn/trunk/hero_war/res
 https://zzzzzzzzzzz.googlecode.com/svn
 
 
 
-2012-07-30T14:57:25.397119Z
-95
+2012-08-12T10:42:31.988703Z
+121
 tintin1812@gmail.com
 
 
@@ -27,6 +27,9 @@ tintin1812@gmail.com
 3f1aae3a-c92a-a784-4fed-bb3a2ef7912f
 
 values
+dir
+
+drawable
 dir
 
 drawable-hdpi

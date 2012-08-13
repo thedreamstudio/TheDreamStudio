@@ -27,7 +27,7 @@ public class ImageAdapter extends BaseAdapter {
 		if (convertView == null) {
 			gridView = new View(context);
 			// get layout from mobile.xml
-			gridView = inflater.inflate(R.layout.item_board, null);
+			gridView = inflater.inflate(R.layout.image_and_text, null);
 
 			// set value into textview
 			TextView textView = (TextView) gridView

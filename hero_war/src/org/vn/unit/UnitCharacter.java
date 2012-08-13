@@ -74,7 +74,9 @@ public abstract class UnitCharacter extends BaseObject {
 	/**
 	 * 
 	 * @param tileForcus
-	 * @return 0:notthing;1:move;2:attack
+	 * @return 0:ko control dc<br>
+	 *         1:move<br>
+	 *         2:attack<br>
 	 */
 	public int onClick(Tile tileForcus) {
 		if (!isControl()) {
@@ -141,6 +143,9 @@ public abstract class UnitCharacter extends BaseObject {
 		for (UnitCharacter character : sSystemRegistry.characterManager.arrayCharactersMyTeam) {
 			character.isMapChange = true;
 		}
+		for (UnitCharacter character : sSystemRegistry.characterManager.arrayCharactersOtherTeam) {
+			character.isMapChange = true;
+		}
 	}
 
 	protected void doneProcessMove() {
@@ -181,7 +186,11 @@ public abstract class UnitCharacter extends BaseObject {
 
 	public void updateListCharacterCanAttack() {
 		mListCharCanAttack.clear();
-		for (UnitCharacter character : sSystemRegistry.characterManager.arrayCharactersOtherTeam) {
+		ArrayList<UnitCharacterSwordmen> arrayCharacters = sSystemRegistry.characterManager.arrayCharactersOtherTeam;
+		if (!isMyTeam) {
+			arrayCharacters = sSystemRegistry.characterManager.arrayCharactersMyTeam;
+		}
+		for (UnitCharacter character : arrayCharacters) {
 			Tile tile_forcus = character.getTileTaget();
 			int xTileOffSet = tile_forcus.xTile - mTileTaget.xTile;
 			int yTileOffset = tile_forcus.yTile - mTileTaget.yTile;
@@ -240,11 +249,20 @@ public abstract class UnitCharacter extends BaseObject {
 	abstract protected void drawTileSeleted(Tile tile, byte total);
 
 	/**
+	 * Check co nam trong view taget khong
+	 * 
+	 * @return
+	 */
+	abstract protected boolean isCanTaget();
+
+	/**
 	 * Check xu ly move va fire
 	 * 
 	 * @return
 	 */
 	abstract protected boolean isControl();
+
+	abstract protected boolean isDeath();
 
 	abstract protected boolean isCanAttack();
 

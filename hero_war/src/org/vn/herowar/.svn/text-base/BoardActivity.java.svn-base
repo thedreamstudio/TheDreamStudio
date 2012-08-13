@@ -1,7 +1,7 @@
 package org.vn.herowar;
 
 import org.vn.constant.CommandClientToServer;
-import org.vn.custom.ImageAdapter;
+import org.vn.custom.BoardAdapter;
 import org.vn.model.Board;
 import org.vn.network.GlobalMessageHandler.LightWeightMessage;
 
@@ -65,15 +65,11 @@ public class BoardActivity extends CoreActiity {
 	}
 
 	public void updateBoard(final Board[] boards) {
-		final String[] ListBoard = new String[boards.length];
-		for (int i = 0; i < ListBoard.length; i++) {
-			ListBoard[i] = "board" + boards[i].id;
-		}
 		runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				gridViewBoard.setAdapter(new ImageAdapter(BoardActivity.this,
-						ListBoard));
+				gridViewBoard.setAdapter(new BoardAdapter(BoardActivity.this,
+						boards));
 				gridViewBoard.setOnItemClickListener(new OnItemClickListener() {
 					public void onItemClick(AdapterView<?> parent, View v,
 							int position, long id) {

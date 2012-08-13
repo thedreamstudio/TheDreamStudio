@@ -33,7 +33,7 @@ public class NumberDrawable {
 			mDrawableNumber[i] = new DrawableBitmap(
 					textureLibrary.allocateTexture(idDrawableNumber[i],
 							"DrawableNumber"), _width, _height);
-			mDrawableNumber[i].setPriority(Priority.CharacterBarAngle);
+			mDrawableNumber[i].setPriority(Priority.Help);
 			if (r != 255 || g != 255 || b != 255 || a != 255) {
 				mDrawableNumber[i].setColorExpress(r, g, b, a);
 			}
@@ -66,11 +66,6 @@ public class NumberDrawable {
 	// }
 	// }
 
-	public void drawNumberWithAlpha(float x, float y, int number, float alpha,
-			boolean cameraRelative, boolean theHienDau) {
-		drawNumberWithAlpha(x, y, number, alpha, cameraRelative, theHienDau,
-				Priority.CharacterBarAngle);
-	}
 
 	public void drawNumberWithAlpha(float x, float y, int number, float alpha,
 			boolean cameraRelative, boolean theHienDau, int priority) {

@@ -19,7 +19,7 @@ public class DialogChatInGameCameraRelative {
 
 	public DialogChatInGameCameraRelative(TextureLibrary textureLibrary) {
 		mChatOfChar = new DrawableBitmap(textureLibrary.allocateTextureNotHash(
-				R.drawable.khungchat, "khungchat"), 72, 36);
+				R.drawable.dialog_back, "khungchat"), 72, 36);
 	}
 
 	public void inputChat(final String content, int time) {
@@ -29,7 +29,7 @@ public class DialogChatInGameCameraRelative {
 			public Bitmap getBitMapResourcesItem() {
 				Bitmap bitmapKhungChat = Utils.decodeRawResource(
 						BaseObject.sSystemRegistry.contextParameters.context
-								.getResources(), R.drawable.khungchat);
+								.getResources(), R.drawable.dialog_back);
 				Utils.setText(bitmapKhungChat, content, 22,
 						Color.argb(255, 100, 50, 50), 10);
 				return bitmapKhungChat;

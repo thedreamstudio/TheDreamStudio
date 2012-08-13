@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 32
-/svn/!svn/ver/100/trunk/hero_war
+/svn/!svn/ver/121/trunk/hero_war
 END
 default.properties
 K 25
@@ -36,6 +36,6 @@ END
 AndroidManifest.xml
 K 25
 svn:wc:ra_dav:version-url
-V 51
-/svn/!svn/ver/91/trunk/hero_war/AndroidManifest.xml
+V 52
+/svn/!svn/ver/108/trunk/hero_war/AndroidManifest.xml
 END

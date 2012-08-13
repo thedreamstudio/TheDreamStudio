@@ -2,7 +2,6 @@ package org.vn.cache;
 
 import java.util.ArrayList;
 
-import org.vn.model.Enemy;
 import org.vn.model.EnemyType;
 import org.vn.model.Map;
 import org.vn.model.PlayerModel;
@@ -33,10 +32,10 @@ public class CurrentGameInfo {
 	 */
 	public ArrayList<PlayerModel> mListPlayerInGame = new ArrayList<PlayerModel>();
 
-//	/**
-//	 * Update trong startGame
-//	 */
-//	public ArrayList<Enemy> listIdEnemyInMap = new ArrayList<Enemy>();
+	// /**
+	// * Update trong startGame
+	// */
+	// public ArrayList<Enemy> listIdEnemyInMap = new ArrayList<Enemy>();
 
 	public Map mMapSelected = null;
 	public int xTileKing;
@@ -47,7 +46,7 @@ public class CurrentGameInfo {
 	public void reset() {
 		mListPlayerInGame.clear();
 		mMapSelected = null;
-//		listIdEnemyInMap.clear();
+		// listIdEnemyInMap.clear();
 		isInGame = false;
 	}
 
@@ -62,6 +61,15 @@ public class CurrentGameInfo {
 			}
 		}
 		return true;
+	}
+
+	public boolean isIReady() {
+		for (PlayerModel playerModel : mListPlayerInGame) {
+			if (playerModel.ID != CurrentUserInfo.mPlayerInfo.ID) {
+				return playerModel.isReady;
+			}
+		}
+		return false;
 	}
 
 	public boolean isHost() {

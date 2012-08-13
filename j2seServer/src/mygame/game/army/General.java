@@ -11,7 +11,8 @@ package mygame.game.army;
 public class General extends Soldier {
 
     public General() {
+        typeID = TYPE_GENERAL;
         hp = 100;
+        rangeView = 6;
     }
-    
 }

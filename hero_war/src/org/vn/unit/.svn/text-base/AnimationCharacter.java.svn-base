@@ -16,8 +16,12 @@ import org.vn.model.Move.TypeMove;
  * 
  */
 public class AnimationCharacter {
+	private EnemyType mEnemyType;
+	private Texture mTKing;
+
 	public AnimationCharacter(TextureLibrary textureLibrary,
 			EnemyType pEnemyType) {
+		mEnemyType = pEnemyType;
 		int[] id = { R.drawable.player_cannon, R.drawable.player_geezer,
 				R.drawable.player_gunslinger, R.drawable.player_indian,
 				R.drawable.player_mexican, R.drawable.player_scout };
@@ -28,13 +32,15 @@ public class AnimationCharacter {
 				R.drawable.player_scout_shot };
 
 		mTextures = new Texture[2];
-		mTextures[0] = textureLibrary.allocateTexture(id[pEnemyType.armyType
-				% id.length], "player_geezer");
+		mTextures[0] = textureLibrary.allocateTexture(
+				id[Math.abs(pEnemyType.armyType) % id.length], "player_geezer");
 		mTextures[1] = textureLibrary.allocateTexture(
-				idShoot[pEnemyType.armyType % idShoot.length],
+				idShoot[Math.abs(pEnemyType.armyType) % idShoot.length],
 				"player_geezer_shot");
 		mBitmapAnimation = new DrawableMesh(mTextures[0], GameInfo.offset,
 				GameInfo.offset);
+		mTKing = textureLibrary.allocateTexture(R.drawable.image_1857,
+				"image_1857");
 	}
 
 	public enum DirectionType {
@@ -186,7 +192,12 @@ public class AnimationCharacter {
 	}
 
 	public void setIcon(DrawableMesh drawableMesh) {
-		drawableMesh.setTexture(mTextures[0]);
-		drawableMesh.setCoordinates(1f / 3, 0, 0, 1f / 5);
+		if (mEnemyType.armyType == GameInfo.idTypeKing) {
+			drawableMesh.setTexture(mTKing);
+			drawableMesh.setCoordinates(0, 1, 0, 1);
+		} else {
+			drawableMesh.setTexture(mTextures[0]);
+			drawableMesh.setCoordinates(1f / 3, 0, 0, 1f / 5);
+		}
 	}
 }

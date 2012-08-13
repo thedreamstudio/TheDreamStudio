@@ -17,7 +17,7 @@ public class UnitEffects extends BaseObject {
 		mListEffect = new ArrayList<Effect>();
 
 		createCoiXayGio(textureLibrary);
-		createCotCo(textureLibrary);
+		// createCotCo(textureLibrary);
 		createCuu(textureLibrary, 2061, 900);
 		createCuu(textureLibrary, 2051, 839);
 		createCuu(textureLibrary, 2089, 930);
@@ -47,7 +47,7 @@ public class UnitEffects extends BaseObject {
 		mListEffect.add(effectAnimation);
 	}
 
-	public void createCotCo(TextureLibrary textureLibrary) {
+	public void createCotCo(TextureLibrary textureLibrary, float x, float y) {
 		// Create coi Co`
 		int[] r = { R.drawable.image_1857, R.drawable.image_1859,
 				R.drawable.image_1861, R.drawable.image_1863,
@@ -59,7 +59,7 @@ public class UnitEffects extends BaseObject {
 					"Cot co" + i);
 		}
 		EffectAnimation effectAnimation = new EffectAnimation(
-				texturesCoiXayGio, 0.16f, Priority.ItemAffterMap, 1917, 285,
+				texturesCoiXayGio, 0.16f, Priority.CharacterKing, x - 32, y,
 				64, 136, 0) {
 			@Override
 			public void beginLoop() {
@@ -116,9 +116,11 @@ public class UnitEffects extends BaseObject {
 	}
 
 	public void addEffectSoBayLen(NumberDrawable numberDrawable, int num,
-			float x, float y) {
+			float x, float y, boolean isCameraRelative, int priority) {
 		EffectSoBayLen effectSoBayLen = new EffectSoBayLen(numberDrawable, num,
 				x, y);
+		effectSoBayLen.cameraRelative = isCameraRelative;
+		effectSoBayLen.priority = priority;
 		mListEffect.add(effectSoBayLen);
 	}
 

@@ -5,6 +5,7 @@
 package mygame.network;
 
 import common.L;
+import common.PlayerManager;
 import core.network.IMessageHandler;
 import core.common.Player;
 import constance.CProtocol;
@@ -12,6 +13,7 @@ import java.io.IOException;
 import mygame.common.Board;
 import mygame.common.MGameController;
 import core.network.Message;
+import java.security.spec.MGF1ParameterSpec;
 import java.util.Vector;
 import mygame.common.AttackResult;
 import mygame.game.army.Soldier;
@@ -28,9 +30,14 @@ public class GameMessageHandler implements IMessageHandler {
     @Override
     public void processMessage(Player player, Message msg) throws IOException {
         switch (msg.id) {
-            case CProtocol.GET_BOARD_LIST:
+            case CProtocol.GET_BOARD_LIST: {
                 GameServices.processGetBoardListMessage(player);
-                break;
+//                Board b = MGameController.getInstance().getBoardSuggested();
+//                if (b != null) {
+//                    GlobalServices.sendBoardSuggestion(player, b);
+//                }
+            }
+            break;
 
 //            case CProtocol.EXIT_BOARD:
 //                MGameController.getInstance().exitBoard(msg.reader().readInt(), player);
@@ -112,28 +119,14 @@ public class GameMessageHandler implements IMessageHandler {
                 int boardID = msg.reader().readInt();
                 Board b = MGameController.getInstance().getBoard(boardID);
                 if (b == null) {//Kiem tra board nay co ton tai trong he thong hay khong.
-                    GlobalServices.sendServerMessage(player, 1, L.gl(1));
+                    GlobalServices.sendServerMessage(player, 1, L.gl(player.languageType, 1));
                     return;
                 }
                 if (b.someoneJoinBoard(player)) {//join board success.
                     GameServices.processJoinBoardMessage(player, true, boardID);
                     Map map = b.getMap();
                     if (map != null) {
-                        Message m = new Message(CProtocol.SET_MAP);
-                        m.putByte(map.mapID);
-                        m.putByte(1);
-                        if (player.playerID == b.ownerID) {
-                            m.putInt(map.ownerGeneral.xPos);
-                            m.putInt(map.ownerGeneral.yPos);
-                        } else {
-                            m.putInt(map.visitGeneral.xPos);
-                            m.putInt(map.visitGeneral.yPos);
-                        }
-                        m.putInt(map.initRange);
-                        if (player.session != null) {
-                            player.session.write(m);
-                        }
-                        m.cleanup();
+                        GameServices.sendMessageSetMap(player, b, map);
                     }
                 } else {
                     GameServices.processJoinBoardMessage(player, false, boardID);
@@ -144,34 +137,39 @@ public class GameMessageHandler implements IMessageHandler {
                 byte mapID = msg.reader().readByte();
                 Board b = MGameController.getInstance().getBoard(player.boardID);
                 if (b.ownerID != player.playerID) {//Kiem tra neu khong phai la chu ban thi se k cho set map.
-                    GlobalServices.sendServerMessage(player, 1, L.gl(0));
+                    GlobalServices.sendServerMessage(player, 1, L.gl(player.languageType, 0));
                     return;
                 }
                 Map map = b.createMap(player.playerID, mapID);
-//                Map map = MGameController.getInstance().setMapOnBoard(player, mapID);
+                GameServices.sendMessageSetMap(player, b, map);
                 for (int i = 0; i < b.maxPlayer; i++) {
                     Player p = ((Player) b.players.elementAt(i));
-                    if (p.playerID == -1) {
-                        return;
+                    if (p.playerID != -1) {
+                        GameServices.sendMessageSetMap(p, b, map);
                     }
-                    Message m = new Message(CProtocol.SET_MAP);
-                    m.putByte(mapID);
-                    if (map != null) {
-                        m.putByte(1);
-                        if (p.playerID == b.ownerID) {
-                            m.putInt(map.ownerGeneral.xPos);
-                            m.putInt(map.ownerGeneral.yPos);
-                        } else {
-                            m.putInt(map.visitGeneral.xPos);
-                            m.putInt(map.visitGeneral.yPos);
-                        }
-                        m.putInt(map.initRange);
-                    } else {
-                        m.putByte(0);
-                    }
-                    p.session.write(m);
-                    m.cleanup();
                 }
+//                Map map = MGameController.getInstance().setMapOnBoard(player, mapID);
+//                for (int i = 0; i < b.maxPlayer; i++) {
+//                    Player p = ((Player) b.players.elementAt(i));
+//                    Message m = new Message(CProtocol.SET_MAP);
+//                    m.putByte(mapID);
+//                    if (map != null) {
+//                        m.putByte(1);
+//                        m.putInt(p.playerID);
+//                        if (p.playerID == b.ownerID) {
+//                            m.putInt(map.ownerGeneral.xPos);
+//                            m.putInt(map.ownerGeneral.yPos);
+//                        } else {
+//                            m.putInt(map.visitGeneral.xPos);
+//                            m.putInt(map.visitGeneral.yPos);
+//                        }
+//                        m.putInt(map.initRange);
+//                    } else {
+//                        m.putByte(0);
+//                    }
+//                    p.session.write(m);
+//                    m.cleanup();
+//                }
             }
             break;
             case CProtocol.READY: //ready - goi ve cho tat ca moi user trong ban.
@@ -248,27 +246,90 @@ public class GameMessageHandler implements IMessageHandler {
                             m.cleanup();
                         }
                     }
-                }
-            }
-            break;
-            case CProtocol.NEXT_TURN: {
-                Board b = MGameController.getInstance().getBoard(player.boardID);
-                if (b.isStartGame) {
-                    b.changeTurn();
-                    int size = b.players.size();
-                    for (int i = size; --i >= 0;) {
-                        if (((Player) b.players.elementAt(i)).playerID != -1 && ((Player) b.players.elementAt(i)).session != null) {
-                            ((Player) b.players.elementAt(i)).session.write(b.getMessageNextTurn());
-                        }
+                    Player loser = b.isEndGame();
+                    if (loser != null) {
+                        b.endGame(b.players.elementAt(0).playerID == loser.playerID
+                                ? b.players.elementAt(1) : b.players.elementAt(0), loser);
                     }
                 }
             }
             break;
+
+
+            case CProtocol.NEXT_TURN: {
+                Board b = MGameController.getInstance().getBoard(player.boardID);
+                if (b.isStartGame) {
+                    b.changeTurn(player);
+                }
+            }
+            break;
+            case CProtocol.GET_WAITTING_LIST://
+            {
+                Vector v = MGameController.getInstance().players;
+                Message m = new Message(CProtocol.GET_WAITTING_LIST);
+                m.putByte(0);
+                int size = v.size();
+                size = size > MGameController.MAX_ITEM_IN_A_PAGE ? MGameController.MAX_ITEM_IN_A_PAGE : size;
+                for (int i = size; --i >= 0;) {
+                    Player p = (Player) v.elementAt(i);
+                    m.putInt(p.playerID);
+                    m.putString(p.playerName);
+                    m.putLong(p.money);
+                }
+                player.session.write(m);
+                m.cleanup();
+            }
+            break;
+            case CProtocol.INVITE://
+            {
+                int subCommand = msg.reader().readByte();
+                int boardID = -1;
+                int playerID = -1;
+                if (subCommand == 1) {
+                    boardID = msg.reader().readByte();
+                } else if (subCommand == 0) {
+                    playerID = msg.reader().readInt();
+                    boardID = player.boardID;
+                }
+                Board b = MGameController.getInstance().getBoard(boardID);
+                if (b == null) {
+                    if (subCommand == 1) {
+                        //cai nay cua thang tra loi.
+                    } else if (subCommand == 0) {
+                        GlobalServices.sendServerMessage(player, 1, "Ban khong duoc phep moi.");
+                    }
+                }
+
+                if (subCommand == 0 && b.ownerID == player.playerID) {//chu phong
+                } else if (subCommand == 1) {
+                    b.someoneJoinBoard(player);
+                }
+            }
+            break;
+            case CProtocol.KICK://
+            {
+                int pID = msg.reader().readInt();
+                Board b = MGameController.getInstance().getBoard(player.boardID);
+                if (b == null) {
+                    return;
+                }
+                if (b.ownerID == player.playerID) {//neu la chu ban thi moi dc phep duoi.
+                    Player p = b.getPlayerFromId(pID);
+                    b.someoneExitBoard(p);
+                    GameServices.processSomeOneLeaveBoardMessage(p.boardID, p);
+                    Message m = new Message(CProtocol.KICK);
+                    p.session.write(m);
+                    m.cleanup();
+                }
+            }
+            break;
+
         }
     }
 
     @Override
     public void onDisconnected(Player user) {
         MGameController.getInstance().exitBoard(user.boardID, user);
+        GameServices.processSomeOneLeaveBoardMessage(user.boardID, user);
     }
 }

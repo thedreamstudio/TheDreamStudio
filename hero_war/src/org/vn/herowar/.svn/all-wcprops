@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 50
-/svn/!svn/ver/91/trunk/hero_war/src/org/vn/herowar
+V 51
+/svn/!svn/ver/118/trunk/hero_war/src/org/vn/herowar
 END
 CoreActiity.java
 K 25
@@ -12,24 +12,24 @@ END
 WaitingActivity.java
 K 25
 svn:wc:ra_dav:version-url
-V 71
-/svn/!svn/ver/91/trunk/hero_war/src/org/vn/herowar/WaitingActivity.java
+V 72
+/svn/!svn/ver/118/trunk/hero_war/src/org/vn/herowar/WaitingActivity.java
 END
 HeroWarActivity.java
 K 25
 svn:wc:ra_dav:version-url
-V 71
-/svn/!svn/ver/91/trunk/hero_war/src/org/vn/herowar/HeroWarActivity.java
+V 72
+/svn/!svn/ver/118/trunk/hero_war/src/org/vn/herowar/HeroWarActivity.java
 END
 BoardActivity.java
 K 25
 svn:wc:ra_dav:version-url
-V 69
-/svn/!svn/ver/69/trunk/hero_war/src/org/vn/herowar/BoardActivity.java
+V 70
+/svn/!svn/ver/118/trunk/hero_war/src/org/vn/herowar/BoardActivity.java
 END
 LoginActivity.java
 K 25
 svn:wc:ra_dav:version-url
-V 69
-/svn/!svn/ver/91/trunk/hero_war/src/org/vn/herowar/LoginActivity.java
+V 70
+/svn/!svn/ver/118/trunk/hero_war/src/org/vn/herowar/LoginActivity.java
 END

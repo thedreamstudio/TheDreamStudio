@@ -4,9 +4,11 @@
  */
 package network;
 
+import common.L;
 import core.common.Player;
 import constance.CProtocol;
 import core.network.Message;
+import mygame.common.Board;
 
 /**
  *
@@ -41,6 +43,16 @@ public class GlobalServices {
        Message m = new Message(CProtocol.SERVER_MESSAGE);
        m.putByte(type);
        m.putString(info);
+       p.session.write(m);
+       m.cleanup();
+   }
+   
+   public static void sendBoardSuggestion(Player p, Board b) {
+       Message m = new Message(CProtocol.BOARD_SUGGESTION);
+       m.putByte(b.boardID);
+       String s = L.type == L.VIET ? b.boardName + " còn 1 chỗ trống. Bạn muốn tham gia không?" 
+               : b.boardName + " is avalable. Do you want to join this board?";
+       m.putString(s);
        p.session.write(m);
        m.cleanup();
    }

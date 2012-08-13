@@ -20,7 +20,7 @@ public class DialogChatInGame {
 	public DialogChatInGame(TextureLibrary textureLibrary, float width,
 			float height) {
 		mChatOfChar = new DrawableBitmap(textureLibrary.allocateTextureNotHash(
-				R.drawable.khungchat, "khungchat"), width, height);
+				R.drawable.dialog_back, "khungchat"), width, height);
 	}
 
 	public void inputChat(final String content, int time, float x, float y) {
@@ -30,15 +30,16 @@ public class DialogChatInGame {
 			public Bitmap getBitMapResourcesItem() {
 				Bitmap bitmapKhungChat = Utils.decodeRawResource(
 						BaseObject.sSystemRegistry.contextParameters.context
-								.getResources(), R.drawable.khungchat);
-				Utils.setText(bitmapKhungChat, content, 22,
-						Color.argb(255, 100, 50, 50), 10);
+								.getResources(), R.drawable.dialog_back);
+				Utils.setText(bitmapKhungChat, content, 30,
+						Color.argb(255, 255, 255, 255), 10);
 				return bitmapKhungChat;
 			}
 		};
 
 		mChatOfChar.changeBitmap(bitmapInImageCache, true);
 		mTimeShowChat = time;
+		drawChat.set(x, y);
 	}
 
 	public void drawChat(float timeDelta, RenderSystem render, int priority) {

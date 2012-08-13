@@ -1,14 +1,14 @@
 10
 
 dir
-90
+122
 https://zzzzzzzzzzz.googlecode.com/svn/trunk/j2seServer/src
 https://zzzzzzzzzzz.googlecode.com/svn
 
 
 
-2012-07-29T17:50:06.498761Z
-90
+2012-08-12T05:21:36.358102Z
+120
 truonguit2010@gmail.com
 
 
@@ -25,28 +25,31 @@ truonguit2010@gmail.com
 
 
 3f1aae3a-c92a-a784-4fed-bb3a2ef7912f
-
-
-
-
-
-
-
-
-()
 
 mygame
+dir
+
+log
+dir
+
+loginAPI
 dir
 
 common
 dir
 
-game
-dir
-
 network
 dir
 
+game
+dir
+
 constance
+dir
+
+util
+dir
+
+registerAPI
 dir
 

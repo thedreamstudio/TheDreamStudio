@@ -64,7 +64,7 @@ public class InputGameInterface extends BaseObject {
 
 	private ActionList mActionList;
 	private ActionServerToClient mActionServerToClientCurrent = null;
-	private float mTimeTickInTurn = 0;
+	public float mTimeTickInTurn = 0;
 	private int mIdPlayerTurn = -1;
 	private CurrentGameInfo mCurrentGameInfo = CurrentGameInfo.getIntance();
 
@@ -147,16 +147,18 @@ public class InputGameInterface extends BaseObject {
 					- mDrawableBitmapChat.getWidth() - 17,
 					GameInfo.DEFAULT_HEIGHT - mDrawableBitmapChat.getHeight()
 							- 27);
+			// mDrawableBitmapChat.setGlBlendFun(GL10.GL_ONE, GL10.GL_ONE);
 		}
 		mDrawableBitmapTouch = new DrawableBitmap(
 				textureLibrary.allocateTexture(R.drawable.bt_chat, ""), 10, 10);
 
 		// Trick
-		if (CurrentUserInfo.mPlayerInfo.ID == CurrentGameInfo.getIntance().ownerId) {
-			if (GameInfo.isOnline) {
-				sSystemRegistry.mGS.NEXT_TURN();
-			}
-		}
+		// if (CurrentUserInfo.mPlayerInfo.ID ==
+		// CurrentGameInfo.getIntance().ownerId) {
+		// if (GameInfo.isOnline) {
+		// sSystemRegistry.mGS.NEXT_TURN();
+		// }
+		// }
 	}
 
 	@Override
@@ -179,7 +181,7 @@ public class InputGameInterface extends BaseObject {
 				if (mTimeTickInTurn < 0) {
 					mTimeTickInTurn = 0;
 					if (GameInfo.isOnline) {
-						sSystemRegistry.mGS.NEXT_TURN();
+						// sSystemRegistry.mGS.NEXT_TURN();
 					}
 				}
 				sSystemRegistry.numberDrawableTime.drawNumberWithAlpha(30,
@@ -425,7 +427,7 @@ public class InputGameInterface extends BaseObject {
 			Object obj = mActionServerToClientCurrent.Obj;
 			switch (mActionServerToClientCurrent.mCurrentType) {
 			case start_game:
-				ArrayList<Enemy> listEnemies =  (ArrayList<Enemy>) obj;
+				ArrayList<Enemy> listEnemies = (ArrayList<Enemy>) obj;
 				for (Enemy enemy : listEnemies) {
 					if (enemy.playerId != CurrentUserInfo.mPlayerInfo.ID) {
 						EnemyType enemyType = null;
@@ -473,13 +475,18 @@ public class InputGameInterface extends BaseObject {
 						nextTurnMessage.turntime);
 				mActionServerToClientCurrent.done();
 				break;
+			case end_game:
+				endGameOutput();
+				mActionServerToClientCurrent.done();
+				break;
 			}
 		}
 	}
 
 	public void daXuLyTouch() {
-		mTouchTouch.isTouch = false;
-		mTouchTouch.isTouchUp = false;
+		// mTouchTouch.isTouch = false;
+		// mTouchTouch.isTouchUp = false;
+		endLoop();
 	}
 
 	public void daXuLyTouchTrongVongLap() {

@@ -7,7 +7,7 @@ import org.vn.model.Move.TypeMove;
 public abstract class UnitCharacterMove extends UnitCharacter {
 	protected float xDraw, yDraw;
 	protected float mTimeTickMove, mDurationMove;
-	protected Tile tileCurrentDraw;
+	private Tile tileCurrentDraw;
 	private Tile tileNextDraw;
 	/**
 	 * Huong cua nhan vat luc nay

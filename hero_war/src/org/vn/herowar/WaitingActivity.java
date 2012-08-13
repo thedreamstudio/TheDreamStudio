@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import org.vn.cache.CurrentGameInfo;
 import org.vn.cache.CurrentUserInfo;
 import org.vn.constant.CommandClientToServer;
-import org.vn.custom.EnemyShopAdapter;
 import org.vn.custom.ImageAdapter;
 import org.vn.model.EnemyType;
 import org.vn.model.PlayerModel;
@@ -25,14 +24,10 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 public class WaitingActivity extends CoreActiity {
 	private static final int DLG_EXIT = 1;
@@ -49,10 +44,10 @@ public class WaitingActivity extends CoreActiity {
 		mBtChat = (Button) findViewById(R.id.btChatWaiting);
 		mEdChat = (EditText) findViewById(R.id.editTextChatWaiting);
 		mListviewChatInWaiting = (ListView) findViewById(R.id.listViewChatInWaiting);
-		mEnemyShop = (ListView) findViewById(R.id.listViewEnemyInWaiting);
+		// mEnemyShop = (ListView) findViewById(R.id.listViewEnemyInWaiting);
 		mBtReady = (Button) findViewById(R.id.btReadyEnemyWaiting);
-		mTextViewGold = (TextView) findViewById(R.id.textInforGoldWaiting);
-		mEnemyChosse = (ListView) findViewById(R.id.listViewEnemyChossen);
+		// mTextViewGold = (TextView) findViewById(R.id.textInforGoldWaiting);
+		// mEnemyChosse = (ListView) findViewById(R.id.listViewEnemyChossen);
 		updatePerson();
 
 		mBtChat.setOnClickListener(new View.OnClickListener() {
@@ -100,6 +95,10 @@ public class WaitingActivity extends CoreActiity {
 				mBtReady.setEnabled(false);
 			}
 		});
+		if (CurrentUserInfo.mPlayerInfo.ID != mCurrentGameInfo.ownerId) {
+			mBtReady.setVisibility(View.INVISIBLE);
+		}
+
 		{
 			ArrayList<String> mList_content_chat = new ArrayList<String>();
 			mAdapterChat = new ArrayAdapter<String>(this,
@@ -107,42 +106,42 @@ public class WaitingActivity extends CoreActiity {
 			mListviewChatInWaiting.setAdapter(mAdapterChat);
 			mAdapterChat.setNotifyOnChange(true);
 		}
-		{
-			final ArrayList<EnemyType> mList_enemy = new ArrayList<EnemyType>();
-			mEnemyShopAdapter = new EnemyShopAdapter(this,
-					android.R.layout.simple_list_item_1, mList_enemy);
-			mEnemyShop.setAdapter(mEnemyShopAdapter);
-			mEnemyShopAdapter.setNotifyOnChange(true);
-			mEnemyShop.setOnItemClickListener(new OnItemClickListener() {
-				public void onItemClick(AdapterView<?> parent, View v,
-						int position, long id) {
-					EnemyType enemyType = mEnemyShopAdapter.getItem(position);
-					updateGold();
-					if (mCurrenGold - enemyType.cost >= 0) {
-						addEnemyChossen(enemyType);
-					} else {
-						Toast.makeText(getApplicationContext(),
-								getString(R.string.Dont_enought_money),
-								Toast.LENGTH_SHORT).show();
-					}
-				}
-			});
-		}
-		{
-			mEnemyChosseAdapter = new EnemyShopAdapter(this,
-					android.R.layout.simple_list_item_1, listEnemyChossen);
-			mEnemyChosse.setAdapter(mEnemyChosseAdapter);
-			mEnemyChosseAdapter.setNotifyOnChange(true);
-			mEnemyChosse.setOnItemClickListener(new OnItemClickListener() {
-				public void onItemClick(AdapterView<?> parent, View v,
-						int position, long id) {
-					Toast.makeText(getApplicationContext(),
-							mEnemyChosseAdapter.getItem(position).armyName,
-							Toast.LENGTH_SHORT).show();
-					removeEnemyChossen(mEnemyChosseAdapter.getItem(position));
-				}
-			});
-		}
+		// {
+		// final ArrayList<EnemyType> mList_enemy = new ArrayList<EnemyType>();
+		// mEnemyShopAdapter = new EnemyShopAdapter(this,
+		// android.R.layout.simple_list_item_1, mList_enemy);
+		// mEnemyShop.setAdapter(mEnemyShopAdapter);
+		// mEnemyShopAdapter.setNotifyOnChange(true);
+		// mEnemyShop.setOnItemClickListener(new OnItemClickListener() {
+		// public void onItemClick(AdapterView<?> parent, View v,
+		// int position, long id) {
+		// EnemyType enemyType = mEnemyShopAdapter.getItem(position);
+		// updateGold();
+		// if (mCurrenGold - enemyType.cost >= 0) {
+		// addEnemyChossen(enemyType);
+		// } else {
+		// Toast.makeText(getApplicationContext(),
+		// getString(R.string.Dont_enought_money),
+		// Toast.LENGTH_SHORT).show();
+		// }
+		// }
+		// });
+		// }
+		// {
+		// mEnemyChosseAdapter = new EnemyShopAdapter(this,
+		// android.R.layout.simple_list_item_1, listEnemyChossen);
+		// mEnemyChosse.setAdapter(mEnemyChosseAdapter);
+		// mEnemyChosseAdapter.setNotifyOnChange(true);
+		// mEnemyChosse.setOnItemClickListener(new OnItemClickListener() {
+		// public void onItemClick(AdapterView<?> parent, View v,
+		// int position, long id) {
+		// Toast.makeText(getApplicationContext(),
+		// mEnemyChosseAdapter.getItem(position).armyName,
+		// Toast.LENGTH_SHORT).show();
+		// removeEnemyChossen(mEnemyChosseAdapter.getItem(position));
+		// }
+		// });
+		// }
 
 		processMs();
 
@@ -193,12 +192,12 @@ public class WaitingActivity extends CoreActiity {
 	private EditText mEdChat;
 	private ListView mListviewChatInWaiting;
 	private ArrayAdapter<String> mAdapterChat;
-	private ListView mEnemyShop;
-	private ListView mEnemyChosse;
+	// private ListView mEnemyShop;
+	// private ListView mEnemyChosse;
 	private Button mBtReady;
-	private TextView mTextViewGold;
-	private EnemyShopAdapter mEnemyShopAdapter;
-	private EnemyShopAdapter mEnemyChosseAdapter;
+	// private TextView mTextViewGold;
+	// private EnemyShopAdapter mEnemyShopAdapter;
+	// private EnemyShopAdapter mEnemyChosseAdapter;
 	public ArrayList<EnemyType> listEnemyChossen = new ArrayList<EnemyType>();
 	private int mCurrenGold;
 
@@ -305,6 +304,11 @@ public class WaitingActivity extends CoreActiity {
 			public void run() {
 				mListViewPlayerInBoard.setAdapter(new ImageAdapter(
 						WaitingActivity.this, ListPlayers));
+				if (CurrentUserInfo.mPlayerInfo.ID == mCurrentGameInfo.ownerId) {
+					mBtReady.setVisibility(View.VISIBLE);
+				} else {
+					mBtReady.setVisibility(View.INVISIBLE);
+				}
 			}
 		});
 	}
@@ -313,10 +317,11 @@ public class WaitingActivity extends CoreActiity {
 		runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				mEnemyShopAdapter.clear();
-				for (EnemyType enemy : CurrentGameInfo.getIntance().listEnemytype) {
-					mEnemyShopAdapter.add(enemy);
-				}
+				// mEnemyShopAdapter.clear();
+				// for (EnemyType enemy :
+				// CurrentGameInfo.getIntance().listEnemytype) {
+				// mEnemyShopAdapter.add(enemy);
+				// }
 			}
 		});
 	}
@@ -332,7 +337,7 @@ public class WaitingActivity extends CoreActiity {
 		runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				mTextViewGold.setText("" + mCurrenGold);
+				// mTextViewGold.setText("" + mCurrenGold);
 			}
 		});
 	}
@@ -341,10 +346,10 @@ public class WaitingActivity extends CoreActiity {
 		runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				mEnemyChosseAdapter.clear();
-				for (EnemyType enemy : listEnemyChossen) {
-					mEnemyChosseAdapter.add(enemy);
-				}
+				// mEnemyChosseAdapter.clear();
+				// for (EnemyType enemy : listEnemyChossen) {
+				// mEnemyChosseAdapter.add(enemy);
+				// }
 			}
 		});
 	}
@@ -353,7 +358,7 @@ public class WaitingActivity extends CoreActiity {
 		runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				mEnemyChosseAdapter.add(enemy);
+				// mEnemyChosseAdapter.add(enemy);
 				updateGold();
 				updateGoldUi();
 			}
@@ -364,7 +369,7 @@ public class WaitingActivity extends CoreActiity {
 		runOnUiThread(new Runnable() {
 			@Override
 			public void run() {
-				mEnemyChosseAdapter.remove(enemy);
+				// mEnemyChosseAdapter.remove(enemy);
 				updateGold();
 				updateGoldUi();
 			}

@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
-V 48
-/svn/!svn/ver/91/trunk/hero_war/src/org/vn/cache
+V 49
+/svn/!svn/ver/118/trunk/hero_war/src/org/vn/cache
 END
 CurrentItemShopInfo.java
 K 25
@@ -12,8 +12,8 @@ END
 CurrentGameInfo.java
 K 25
 svn:wc:ra_dav:version-url
-V 69
-/svn/!svn/ver/91/trunk/hero_war/src/org/vn/cache/CurrentGameInfo.java
+V 70
+/svn/!svn/ver/118/trunk/hero_war/src/org/vn/cache/CurrentGameInfo.java
 END
 CurrentUserInfo.java
 K 25

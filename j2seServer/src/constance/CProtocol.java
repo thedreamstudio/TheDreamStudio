@@ -6,9 +6,9 @@ public class CProtocol {
     public final static byte REGISTER = 2;
     public final static byte GET_BOARD_LIST = 3;
     public final static byte JOIN_BOARD = 4;
-    public final static byte GET_CLIENT_INFO = 5;
+    public final static byte SET_CLIENT_INFO = 5;
     public final static byte SOMEONE_JOIN_BOARD = 6;
-    public final static byte EXIT_BOARD = 7;
+    public final static byte GET_WAITTING_LIST = 7;
     public final static byte SET_GAME_TYPE = 8;
     public final static byte CHAT_BOARD = 9;
     public final static byte GET_USER_INFO = 10;
@@ -26,6 +26,11 @@ public class CProtocol {
     public final static byte SET_MAP = 22;
     public final static byte ATTACH = 23;
     public final static byte NEXT_TURN = 24;
+    public final static byte END_GAME = 25;
     public final static byte LOGIN_TRYAL = 26;
     public final static byte SERVER_MESSAGE = 27;
+    public final static byte INVITE = 28;
+    public final static byte KICK = 30;
+    public final static byte BOARD_SUGGESTION = 31;
+    public final static byte LANGUAGE = 32;
 }

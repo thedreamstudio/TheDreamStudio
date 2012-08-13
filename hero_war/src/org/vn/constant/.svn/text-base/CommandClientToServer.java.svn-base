@@ -16,14 +16,16 @@ public class CommandClientToServer {
 	public static final byte ARMY_SELECTION = 12;
 	public static final byte SOMEONE_LEAVE_BOARD = 13;
 	public static final byte LEAVE_BOARD = 14;
-	public static final byte GET_ALL_MAP = 21;
 	public static final byte GET_MAP = 16;
-	public static final byte SET_MAP = 22;
 	public static final byte LAYOUT_ARMY = 17;
-	public static final byte READY = 19;
-	public static final byte START_GAME = 20;
 	public static final byte MOVE_ARMY = 18;
+	public static final byte READY = 19;
+	public static final byte GET_ALL_MAP = 21;
+	public static final byte SET_MAP = 22;
+	public static final byte START_GAME = 20;
 	public static final byte ATTACH = 23;
 	public static final byte NEXT_TURN = 24;
 	public static final byte LOGIN_TRIAL = 26;
+	public static final byte SERVER_MESSAGE = 27;
+	public static final byte END_GAME = 25;
 }

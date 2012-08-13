@@ -35,6 +35,7 @@ public class ObjectRegistry extends BaseObject {
 	public SoundSystem soundSystem;
 	public MultiTouchFilter2 multiTouchFilter2;
 	public NumberDrawable numberDrawableTime;
+	public NumberDrawable numberDrawableCostInDialogAddEnemy;
 	public NumberDrawable numberDrawableTakeDame;
 	public UnitEffects unitEffects;
 	public MapTiles mapTiles;

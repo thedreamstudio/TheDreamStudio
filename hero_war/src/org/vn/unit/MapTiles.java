@@ -1,8 +1,13 @@
 package org.vn.unit;
 
+import javax.microedition.khronos.opengles.GL10;
+
+import org.vn.cache.CurrentGameInfo;
 import org.vn.gl.BaseObject;
 import org.vn.gl.DrawableBitmap;
+import org.vn.gl.GameInfo;
 import org.vn.gl.Priority;
+import org.vn.gl.Texture;
 import org.vn.gl.TextureLibrary;
 import org.vn.gl.Vector2;
 import org.vn.herowar.R;
@@ -21,6 +26,10 @@ public class MapTiles extends BaseObject {
 	private Tile mTileForcusLast = null;
 	private Tile mTileForcus = null;
 	private DrawableBitmap mDrawableBitmapBackGround;
+	public DrawableBitmap mDrawableTile;
+	float size_contro = GameInfo.offset - 10;
+	Texture selectMyTeam;
+	Texture selectOtherTeam;
 
 	public MapTiles(TextureLibrary textureLibrary, final int pRow, int pColumn,
 			float pOffset, float pX, float pY) {
@@ -55,6 +64,17 @@ public class MapTiles extends BaseObject {
 						"back_ground"),
 				sSystemRegistry.cameraSystem.worldMap.mWidthWord,
 				sSystemRegistry.cameraSystem.worldMap.mHeightWord);
+		mDrawableBitmapBackGround.setColorExpressF(1, 1, 1, 0.8f);
+		mDrawableBitmapBackGround.setGlBlendFun(GL10.GL_ONE,
+				GL10.GL_ONE_MINUS_SRC_ALPHA);
+
+		// Con tro?
+		selectMyTeam = textureLibrary.allocateTexture(R.drawable.tile_seleted,
+				"tile_seleted");
+		selectOtherTeam = textureLibrary.allocateTexture(
+				R.drawable.tile_seleted_orther, "tile_seleted");
+		mDrawableTile = new DrawableBitmap(selectMyTeam, size_contro,
+				size_contro);
 	}
 
 	private Tile getTile(float x, float y) {
@@ -82,15 +102,37 @@ public class MapTiles extends BaseObject {
 		// Ve map
 		sSystemRegistry.renderSystem.scheduleForDraw(mDrawableBitmapBackGround,
 				Vector2.TAMP.set(0, 0), Priority.BackGround, true);
-		for (int y = 0; y < row; y++) {
-			for (int x = 0; x < column; x++) {
-				// if (x == 0 || y == 0 || x == column - 1 || y == row - 1) {
-				// arrayMap[y][x].update(timeDelta, parent);
-				// }
-				// if (sSystemRegistry.logicMap.mArrayMap[y][x] == true) {
-				// arrayMap[y][x].update(timeDelta, parent);
-				// }
+		// for (int y = 0; y < row; y++) {
+		// for (int x = 0; x < column; x++) {
+		// if (x == 0 || y == 0 || x == column - 1 || y == row - 1) {
+		// arrayMap[y][x].update(timeDelta, parent);
+		// }
+		// if (sSystemRegistry.logicMap.mArrayMap[y][x] == true) {
+		// arrayMap[y][x].update(timeDelta, parent);
+		// }
+		// }
+		// }
+		if (mTileForcus != null
+				&& ((CurrentGameInfo.getIntance().isInGame && mTileForcus
+						.getCharacterTaget() != null) || (!CurrentGameInfo
+						.getIntance().isInGame && (mTileForcus
+						.getCharacterTaget() != null || !mTileForcus
+						.isColition())))) {
+			size_contro -= timeDelta * 30;
+			if (size_contro < GameInfo.offset - 20) {
+				size_contro = GameInfo.offset - 10;
 			}
+			float scale = Math.min(1, sSystemRegistry.cameraSystem.mScale);
+			mDrawableTile.setWidth(size_contro / scale);
+			mDrawableTile.setHeight(size_contro / scale);
+			sSystemRegistry.renderSystem
+					.scheduleForDraw(
+							mDrawableTile,
+							Vector2.TAMP.set(
+									mTileForcus.x - mDrawableTile.getWidth()
+											/ 2,
+									mTileForcus.y - mDrawableTile.getHeight()
+											/ 2), Priority.tile_setected, true);
 		}
 	}
 
@@ -111,17 +153,11 @@ public class MapTiles extends BaseObject {
 				BaseObject.sSystemRegistry.dialogAddEnemy.setTileSeleted(null);
 				break;
 			case 0:// Notthing
-				mTileForcus = tileForcus;
-				changeCharacterInfo(tileForcus);
-				BaseObject.sSystemRegistry.dialogAddEnemy
-						.setTileSeleted(tileForcus);
+				clickInTile(tileForcus);
 				break;
 			}
 		} else {
-			mTileForcus = tileForcus;
-			changeCharacterInfo(tileForcus);
-			BaseObject.sSystemRegistry.dialogAddEnemy
-					.setTileSeleted(tileForcus);
+			clickInTile(tileForcus);
 		}
 		if (mTileForcusLast == mTileForcus) {
 			return;
@@ -133,10 +169,24 @@ public class MapTiles extends BaseObject {
 			mTileForcus.enableForcus();
 		}
 		mTileForcusLast = tileForcus;
+		if (mTileForcus != null && mTileForcus.getCharacterTaget() != null) {
+			if (mTileForcus.getCharacterTaget().isMyTeam) {
+				mDrawableTile.setTexture(selectMyTeam);
+			} else {
+				mDrawableTile.setTexture(selectOtherTeam);
+			}
+		}
+	}
+
+	private void clickInTile(Tile tileForcus) {
+		mTileForcus = tileForcus;
+		changeCharacterInfo(tileForcus);
+		BaseObject.sSystemRegistry.dialogAddEnemy.setTileSeleted(tileForcus);
 	}
 
 	public void changeCharacterInfo(Tile mTileForcus) {
-		if (mTileForcus != null) {
+		if (mTileForcus != null && mTileForcus.getCharacterTaget() != null
+				&& mTileForcus.getCharacterTaget().isCanTaget()) {
 			sSystemRegistry.unitSreen.setCharacterFocus(mTileForcus
 					.getCharacterTaget());
 		} else {

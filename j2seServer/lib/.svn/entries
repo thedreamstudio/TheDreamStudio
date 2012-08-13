@@ -1,14 +1,14 @@
 10
 
 dir
-90
+122
 https://zzzzzzzzzzz.googlecode.com/svn/trunk/j2seServer/lib
 https://zzzzzzzzzzz.googlecode.com/svn
 
 
 
-2012-07-28T04:42:38.292949Z
-85
+2012-08-12T01:45:10.156254Z
+119
 truonguit2010@gmail.com
 
 
@@ -26,235 +26,13 @@ truonguit2010@gmail.com
 
 3f1aae3a-c92a-a784-4fed-bb3a2ef7912f
 
-mina-filter-compression-2.0.4.jar
-file
-93
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-deleted
-
-spring-2.5.6.jar
-file
-93
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-deleted
-
-mina-core-2.0.4.jar
-file
-
-
-
-
-2012-06-09T15:04:16.000000Z
-d6aee634db584323a10b2f233e8303c7
-2012-07-28T04:42:38.292949Z
-85
-truonguit2010@gmail.com
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-644933
-
-javassist-3.11.0.GA.jar
-file
-93
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-deleted
-
-jzlib-1.0.7.jar
-file
-93
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-deleted
-
-mina-example-2.0.4.jar
-file
-93
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-deleted
-
-ServerCore.jar
-file
-
-
-
-
-2012-07-28T04:38:22.000000Z
-815db5727d42376e1f5bf1bef638ab6f
-2012-07-28T04:42:38.292949Z
-85
-truonguit2010@gmail.com
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-7924
-
-commons-dbcp-1.4.jar
-file
-
-
-
-
-2010-02-07T05:52:38.000000Z
-b004158fab904f37f5831860898b3cd9
-2012-07-06T17:07:34.365053Z
-54
-truonguit2010@gmail.com
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-160519
-
 commons-pool-1.6.jar
 file
 
 
 
 
-2012-01-04T03:35:44.000000Z
+2012-08-13T17:01:16.000000Z
 5ca02245c829422176d23fa530e919cc
 2012-07-06T17:07:34.365053Z
 54
@@ -282,9 +60,18 @@ has-props
 
 111119
 
-mina-statemachine-2.0.4.jar
+mina-core-2.0.4.jar
 file
-93
+
+
+
+
+2012-08-13T17:01:16.000000Z
+d6aee634db584323a10b2f233e8303c7
+2012-07-28T04:42:38.292949Z
+85
+truonguit2010@gmail.com
+has-props
 
 
 
@@ -304,7 +91,8 @@ file
 
 
 
-deleted
+
+644933
 
 slf4j-api-1.6.1.jar
 file
@@ -312,7 +100,7 @@ file
 
 
 
-2012-06-09T15:06:46.000000Z
+2012-08-13T17:01:16.000000Z
 bff6016da57e19fb736d0f5742ce60ac
 2012-06-09T14:55:50.605493Z
 4
@@ -340,37 +128,13 @@ has-props
 
 25496
 
-mina-integration-beans-2.0.4.jar
-file
-93
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-deleted
-
 commons-logging-1.0.3.jar
 file
 
 
 
 
-2012-06-09T15:06:46.000000Z
+2012-08-13T17:01:16.000000Z
 5bc8bdd15b18018e84fd862993aaca42
 2012-06-09T14:55:50.605493Z
 4
@@ -398,37 +162,13 @@ has-props
 
 31605
 
-ognl-3.0.1.jar
-file
-93
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-deleted
-
 commons-lang-2.6.jar
 file
 
 
 
 
-2012-06-09T15:06:46.000000Z
+2012-08-13T17:01:16.000000Z
 4d5c1693079575b362edf41500630bbd
 2012-06-09T14:55:50.605493Z
 4
@@ -456,13 +196,18 @@ has-props
 
 284220
 
-mina-transport-apr-2.0.4.jar
+ServerCore.jar
 file
-93
 
 
 
 
+2012-08-13T17:01:16.000000Z
+0b9d57f268a7580de620f6d552ed5b3c
+2012-08-12T01:45:10.156254Z
+119
+truonguit2010@gmail.com
+has-props
 
 
 
@@ -478,111 +223,20 @@ file
 
 
 
-deleted
-
-mina-integration-xbean-2.0.4.jar
-file
-93
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-deleted
-
-tomcat-apr-5.5.23.jar
-file
-93
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-deleted
-
-remain
-dir
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-deleted
-
-mina-integration-jmx-2.0.4.jar
-file
-93
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-deleted
+7980
 
 slf4j-jdk14-1.6.4.jar
 file
-93
 
 
 
-2012-06-09T15:03:50.000000Z
+
+2012-08-13T17:01:16.000000Z
 026d95000c7b7ae9c3b2cbf55d013478
 2012-07-30T14:51:06.097819Z
 93
@@ -610,13 +264,18 @@ has-props
 
 8887
 
-mina-integration-ognl-2.0.4.jar
+commons-dbcp-1.4.jar
 file
-93
 
 
 
 
+2012-08-13T17:01:16.000000Z
+b004158fab904f37f5831860898b3cd9
+2012-07-06T17:07:34.365053Z
+54
+truonguit2010@gmail.com
+has-props
 
 
 
@@ -632,101 +291,10 @@ file
 
 
 
-deleted
-
-javassist-3.7.ga.jar
-file
-93
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-deleted
-
-jcl-over-slf4j-1.6.1.jar
-file
-93
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-deleted
-
-xbean-spring-3.7.jar
-file
-93
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-deleted
-
-mysql-connector-java-5.1.20-bin.jar
-file
-93
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-deleted
+160519
 

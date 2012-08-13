@@ -1,6 +1,7 @@
 package org.vn.herowar;
 
 import org.vn.cache.CurrentGameInfo;
+import org.vn.cache.CurrentUserInfo;
 import org.vn.constant.CommandClientToServer;
 import org.vn.gl.BaseObject;
 import org.vn.gl.DebugLog;
@@ -43,9 +44,9 @@ public class HeroWarActivity extends CoreActiity {
 	// public static final int QUIT_GAME_DIALOG = 0;
 	// public static final int VERSION = 14;
 	// public static final int MAGESRIKEACTIVITY = 0;
-	public static final int FINISH = 1;
+	public static final int DISCONECT = 1;
 	public static final int BOARDLISTACTIVITY = 2;
-	// public static final int HANDLELOSTCONNECT = 3;
+	public static final int RESULT = 3;
 	private GLSurfaceView mGLSurfaceView;
 	private Game mGame;
 	private long mLastTouchTime = 0L;
@@ -175,14 +176,24 @@ public class HeroWarActivity extends CoreActiity {
 		onEndgameListener = new OnEndgameListener() {
 			@Override
 			public void onEndgameListener() {
-				endGame(FINISH);
+				endGame(RESULT);
 			}
 
 			// Return back the waiting screen
 			@Override
 			public void onGLDeletedListener() {
 				switch (mFlagActivityGoto) {
-				case FINISH:
+				case DISCONECT:
+					break;
+				case RESULT:
+					// mGS.LEAVE_BOARD();
+					runOnUiThread(new Runnable() {
+						public void run() {
+							Intent intent = new Intent(HeroWarActivity.this,
+									WaitingActivity.class);
+							startActivity(intent);
+						}
+					});
 					break;
 				case BOARDLISTACTIVITY:
 					// mGS.EXIT_BOARD(CurrentGameInfo.getIntance().boardId);
@@ -426,9 +437,7 @@ public class HeroWarActivity extends CoreActiity {
 		case CommandClientToServer.READY:
 		case CommandClientToServer.SOMEONE_JOIN_BOARD:
 		case CommandClientToServer.SOMEONE_LEAVE_BOARD:
-			if (mCurrentGameInfo.isHost() && mCurrentGameInfo.isReadyAll()) {
-				BaseObject.sSystemRegistry.dialogAddEnemy.isEnableReady = true;
-			}
+			updateStatusBoard();
 			break;
 		case CommandClientToServer.MOVE_ARMY:
 			// MoveMessage moveMessage = (MoveMessage) msg.obj;
@@ -445,6 +454,51 @@ public class HeroWarActivity extends CoreActiity {
 		case CommandClientToServer.NEXT_TURN:
 			mActionList.push(ActionType.next_turn, msg.obj);
 			break;
+		case CommandClientToServer.CHAT_BOARD:
+			if (mGame.isBootstrapComplete() && !mGame.isPaused()) {
+				if (CurrentUserInfo.mPlayerInfo.ID == msg.arg1) {
+					BaseObject.sSystemRegistry.unitSreen
+							.inputChatRight_Bot((String) msg.obj);
+				} else {
+					BaseObject.sSystemRegistry.unitSreen
+							.inputChatLeft_Bot((String) msg.obj);
+				}
+			}
+			break;
+		case CommandClientToServer.END_GAME:
+			mActionList.push(ActionType.end_game, msg.obj);
+			break;
+		}
+	}
+
+	private void updateStatusBoard() {
+		if (mCurrentGameInfo.isInGame) {
+			return;
+		}
+		if (mCurrentGameInfo.isHost()) {
+			if (mCurrentGameInfo.isReadyAll()) {
+				if (BaseObject.sSystemRegistry != null) {
+					BaseObject.sSystemRegistry.dialogAddEnemy
+							.setIsEnableReady(true);
+				}
+			} else {
+				if (BaseObject.sSystemRegistry != null) {
+					BaseObject.sSystemRegistry.dialogAddEnemy
+							.setIsEnableReady(false);
+				}
+			}
+		} else {
+			if (mCurrentGameInfo.isIReady()) {
+				if (BaseObject.sSystemRegistry != null) {
+					BaseObject.sSystemRegistry.dialogAddEnemy
+							.setIsEnableReady(true);
+				}
+			} else {
+				if (BaseObject.sSystemRegistry != null) {
+					BaseObject.sSystemRegistry.dialogAddEnemy
+							.setIsEnableReady(false);
+				}
+			}
 		}
 	}
 
@@ -461,7 +515,7 @@ public class HeroWarActivity extends CoreActiity {
 									@Override
 									public void onClick(DialogInterface arg0,
 											int arg1) {
-										endGame(FINISH);
+										endGame(DISCONECT);
 									}
 								}).show();
 			}

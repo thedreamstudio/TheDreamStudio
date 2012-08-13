@@ -67,11 +67,12 @@ public class GlobalService {
 	 * @param username
 	 * @param password
 	 */
-	public void SYS_REGISTER(String username, String password) {
+	public void SYS_REGISTER(String username, String password, String phone_num) {
 		Message m = new Message(CommandClientToServer.SYS_REGISTER);
 		try {
 			m.writer().writeUTF(username);
 			m.writer().writeUTF(password);
+			m.writer().writeUTF(phone_num);
 		} catch (IOException e) {
 		}
 		mSession.sendMessage(m);

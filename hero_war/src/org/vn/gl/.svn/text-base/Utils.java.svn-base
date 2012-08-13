@@ -38,6 +38,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.ConfigurationInfo;
@@ -52,6 +53,8 @@ import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Rect;
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Environment;
 import android.os.Vibrator;
 import android.telephony.TelephonyManager;
@@ -177,7 +180,6 @@ public class Utils {
 		}
 		return null;
 	}
-
 
 	public static String getMd5Digest(String input) {
 		try {
@@ -319,8 +321,8 @@ public class Utils {
 		ConnectivityManager cm = (ConnectivityManager) context
 				.getSystemService(Context.CONNECTIVITY_SERVICE);
 		// Check for connection
-		if (cm.getActiveNetworkInfo() != null
-				&& cm.getActiveNetworkInfo().isAvailable()
+		NetworkInfo networkInfo = cm.getActiveNetworkInfo();
+		if (networkInfo != null && cm.getActiveNetworkInfo().isAvailable()
 				&& cm.getActiveNetworkInfo().isConnected()) {
 			return true;
 		} else {
@@ -410,7 +412,6 @@ public class Utils {
 		return f;
 	}
 
-
 	public static String getDataFromNetwork(String urlLink) {
 		try {
 			String str = "";
@@ -469,8 +470,6 @@ public class Utils {
 		File file = new File(path);
 		return file.exists();
 	}
-
-
 
 	public static void setText(Bitmap bitmap, String string, int size,
 			int color, int maxTextInLine) {
@@ -626,8 +625,6 @@ public class Utils {
 		CANVAS.setBitmap(bitmap);
 		CANVAS.drawBitmap(bitmapAdd, rectAdd, rect, PAINT);
 	}
-
-
 
 	public static void vibrate(Context context, long[] pattern) {
 		if (GameInfo.ENABLE_VIBRATE) {
@@ -966,5 +963,20 @@ public class Utils {
 			}
 			ArrayListResult.add(item);
 		}
+	}
+
+	/**
+	 * Call to other device. Only support VietNam network.
+	 */
+	public static boolean callSupport(Context context, String phoneNumber) {
+		try {
+			Intent intent = new Intent(Intent.ACTION_CALL);
+			intent.setData(Uri.parse("tel:" + phoneNumber));
+			context.startActivity(intent);
+			return true;
+		} catch (Exception e) {
+			//
+		}
+		return false;
 	}
 }

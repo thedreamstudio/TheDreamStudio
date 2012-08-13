@@ -5,6 +5,8 @@
 package mygame.common;
 
 import constance.CProtocol;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import network.GlobalServices;
 import core.common.Player;
 import core.network.Message;
@@ -15,6 +17,7 @@ import mygame.game.army.Artillery;
 import mygame.game.army.Cavalry;
 import mygame.game.army.Cowboy;
 import mygame.game.army.Geezer;
+import mygame.game.army.General;
 import mygame.game.army.Indian;
 import mygame.game.army.Infantry;
 import mygame.game.army.Mexico;
@@ -46,7 +49,7 @@ public class Board {
      * Map cua ban choi.
      */
     private Map map;
-    private Vector mapSoldiers = new Vector();
+    private Vector<Soldier> mapSoldiers = new Vector<Soldier>();
     private int soldierID = 0;
     Turn turn1, turn2, currentTurn;
     public boolean isStartGame = false;
@@ -58,14 +61,20 @@ public class Board {
      * Thoi gian bat dau cua 1 turn nao do.
      */
     private long timeStart;
-    
-    private void resetBoard() {
-        ownerID = -1;
-        players = new Vector<Player>();
-        for (int i = maxPlayer; --i >= 0;) {
-            players.addElement(pNull);
+    private final Object timer = new Object();
+    public boolean isSuggested = false;
+
+    private void resetBoard(boolean isExitAll) {
+        if (isExitAll) {
+            ownerID = -1;
+            players = new Vector<Player>();
+            for (int i = maxPlayer; --i >= 0;) {
+                players.addElement(pNull);
+            }
         }
-        map = null;
+        if (isStartGame) {
+            map = null;
+        }
         mapSoldiers = new Vector();
         isStartGame = false;
     }
@@ -107,22 +116,35 @@ public class Board {
      * @return true - if success; otherwise.
      */
     public boolean someoneExitBoard(Player p) {
+        return someoneExitBoard(p.playerID);
+    }
+
+    private int findNewOwnerID() {
+        Player p = findNewBoardOwner();
+        if (p != null) {
+            return p.playerID;
+        } else {
+            return -1;
+        }
+    }
+
+    public boolean someoneExitBoard(int pID) {
         int size = players.size();
         for (int i = 0; i < size; i++) {
-            if (((Player) players.elementAt(i)).playerID == p.playerID) {
-                ownerID = (((Player) players.elementAt(i)).playerID == ownerID ? -1 : ownerID);
+            if (((Player) players.elementAt(i)).playerID == pID) {
+
+//                ownerID = (((Player) players.elementAt(i)).playerID == ownerID ? findNewOwnerID() : ownerID);
                 players.removeElementAt(i);
                 players.addElement(pNull);
-                if (countPlayer() == 0) {
-                    resetBoard();
+                ownerID = findNewOwnerID();
+                if (isStartGame) {
+                    endGame(players.elementAt((i == 0 ? 1 : 0)), players.elementAt(i));
                 }
                 return true;
             }
         }
         return false;
     }
-    
-    
 
     /**
      * Look for a new board owner. Because a old owner already exit this board.
@@ -216,6 +238,20 @@ public class Board {
                 return false;
             }
         }
+//        for (int i = 0; i < players.size(); i++) {
+//            Soldier mGe = createSodier(Soldier.TYPE_GENERAL);
+//            mGe.owner = players.elementAt(i);
+//            mGe.id = soldierID;
+//            if (players.elementAt(i).playerID == ownerID) {
+//                mGe.x = map.ownerGeneral.xPos;
+//                mGe.y = map.ownerGeneral.yPos;
+//            } else {
+//                mGe.x = map.visitGeneral.xPos;
+//                mGe.y = map.visitGeneral.yPos;
+//            }
+//            mapSoldiers.addElement(mGe);
+//            soldierID++;
+//        }
         for (int i = size; --i >= 0;) {
             Player pp = ((Player) players.elementAt(i));
             GameServices.processStartGame(pp, mapSoldiers);
@@ -238,13 +274,31 @@ public class Board {
             @Override
             public void run() {
                 while (isStartGame) {
-                    if (updateTime) {
+                    try {
                         long cTime = System.currentTimeMillis();
-                        if (cTime - timeStart >= Turn.TURN_TIME) {
-                            endGame(currentTurn);
+                        if (cTime - timeStart >= Turn.MATCH_TIME) {
+                            if (currentTurn.playerID == players.elementAt(0).playerID) {
+                                endGame(players.elementAt(0), players.elementAt(1));
+                            } else {
+                                endGame(players.elementAt(1), players.elementAt(0));
+                            }
                         }
+                        synchronized (timer) {
+                            long st = System.currentTimeMillis();
+//                            System.out.println("Thoi gian bat dau turn: " + st);
+                            timer.wait(Turn.TURN_TIME);
+                            long ft = System.currentTimeMillis();
+//                            System.out.println("Thoi gian ket thuc turn: " + ft);
+//                            System.out.println("Time mat: " + (ft - st));
+                            if (ft - st >= Turn.TURN_TIME) {
+                                changeTurn(null);
+                            }
+                        }
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Board.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
+
             }
         }.start();
         return true;
@@ -306,6 +360,8 @@ public class Board {
                 return (new Mexico());
             case Soldier.TYPE_SCOUT:
                 return (new Scout());
+            case Soldier.TYPE_GENERAL:
+                return (new General());
         }
         return null;
     }
@@ -375,11 +431,14 @@ public class Board {
         AttackResult a = new AttackResult();
         a.myArmyID = myArmyID;
         a.rivalArmyID = rivalArmyID;
+
         Random r = new Random();
         Soldier s = getArmyFromId(rivalArmyID);
         a.myArmyHP = s.hp;
+
         s = getArmyFromId(myArmyID);
-        a.rivalArmyHP -= s.damageMin + r.nextInt(s.damageMax - s.damageMin);
+        a.rivalArmyHP -= (s.damageMin + r.nextInt(s.damageMax - s.damageMin));
+        getArmyFromId(rivalArmyID).hp = a.rivalArmyHP;
         return a;
     }
 
@@ -396,11 +455,24 @@ public class Board {
     /**
      * Doi luot di
      */
-    public synchronized void changeTurn() {
+    public synchronized void changeTurn(Player p) {
+        if (p != null && p.playerID != currentTurn.playerID) {
+            //turn hien tai k phai cua thang do, ma no muon chuyen luot=> no hack => k cho no chuyen luot.
+            return;
+        }
+        synchronized (timer) {
+            timer.notifyAll();
+        }
         if (currentTurn == turn1) {
             currentTurn = turn2;
         } else {
             currentTurn = turn1;
+        }
+        int size = players.size();
+        for (int i = size; --i >= 0;) {
+            if (((Player) players.elementAt(i)).playerID != -1 && ((Player) players.elementAt(i)).session != null) {
+                ((Player) players.elementAt(i)).session.write(getMessageNextTurn());
+            }
         }
     }
 
@@ -422,14 +494,38 @@ public class Board {
     }
 
     /**
-     * Nguoi thua vi het gio.
      * @param t 
      */
-    public synchronized void endGame(Turn t) {
+    public synchronized void endGame(Player winner, Player loser) {
+        MatchResult result = new MatchResult(winner, loser);
+        int size = players.size();
+        for (int i = size; --i >= 0;) {
+            if (players.elementAt(i).session != null) {
+                GameServices.sendMatchResult(players.elementAt(i), result);
+            }
+        }
+        if (countPlayer() == 0) {
+            resetBoard(true);
+        } else {
+            resetBoard(false);
+        }
     }
-    
-    
+
     public synchronized Map getMap() {
         return map;
+    }
+
+    /**
+     * Kiem tra xem ben nao thua.
+     * @return nguoi thua neu co, neu khong co tra ve null.
+     */
+    public Player isEndGame() {
+        int size = mapSoldiers.size();
+        for (int i = size; --i >= 0;) {
+            if (mapSoldiers.elementAt(i).typeID == Soldier.TYPE_GENERAL && mapSoldiers.elementAt(i).hp <= 0) {
+                return mapSoldiers.elementAt(i).owner;
+            }
+        }
+        return null;
     }
 }

@@ -22,4 +22,13 @@ public class GameController {
 
     public GameController() {
     }
+    
+    public synchronized static boolean isSupportGame(byte gameID) {
+        switch(gameID) {
+            case GAMEID_COMMON:
+            case GAMEID_HERO_WAR:
+                return true;
+        }
+        return false;
+    }
 }

@@ -23,9 +23,9 @@ public class MapFactory {
         MAP_ONE = new byte[24][24];
         for (int i = 0; i < 24; i++) {
             for (int j = 0; j < 24; j++) {
-                if (i == 0 && j == 0) {
+                if (i == 20 && j == 3) {
                     MAP_ONE[i][j] = Cell.ALLOW_GENERAL;
-                } else if (i == 15 && j == 15) {
+                } else if (i == 4 && j == 20) {
                     MAP_ONE[i][j] = Cell.ALLOW_GENERAL;
                 } else {
                     MAP_ONE[i][j] = Cell.ALLOW_VEHICLES_INFANTRY;

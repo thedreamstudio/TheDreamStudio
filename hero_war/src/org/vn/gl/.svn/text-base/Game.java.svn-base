@@ -147,6 +147,11 @@ public class Game extends AllocationGuard {
 							BaseObject.sSystemRegistry.unitSreen
 									.setCharacterFocus(character);
 							mMoney -= enemyType.cost;
+							BaseObject.sSystemRegistry.unitEffects
+									.addEffectSoBayLen(
+											BaseObject.sSystemRegistry.numberDrawableTakeDame,
+											-enemyType.cost, 150, 465, false,
+											Priority.InfoCharacter2);
 						} else {
 							DebugLog.e("DUC",
 									"Khoi tao character tai 1 vi tri ko di  chuyen dc");
@@ -165,7 +170,8 @@ public class Game extends AllocationGuard {
 			};
 			BaseObject.sSystemRegistry.dialogAddEnemy = dialogAddEnemy;
 			dialogAddEnemy.isVisible = true;
-			dialogAddEnemy.isEnableReady = mCurrentGameInfo.ownerId != CurrentUserInfo.mPlayerInfo.ID;
+			dialogAddEnemy
+					.setIsEnableReady(mCurrentGameInfo.ownerId != CurrentUserInfo.mPlayerInfo.ID);
 			gameRoot.add(dialogAddEnemy);
 		}
 		// Map
@@ -188,6 +194,12 @@ public class Game extends AllocationGuard {
 						R.drawable.back_ground_alpha);
 			}
 		}
+		// Effect
+		{
+			UnitEffects unitEffects = new UnitEffects(longTermTextureLibrary);
+			BaseObject.sSystemRegistry.unitEffects = unitEffects;
+			gameRoot.add(unitEffects);
+		}
 		// Character
 		BaseObject.sSystemRegistry.characterManager = new CharacterManager();
 		gameRoot.add(BaseObject.sSystemRegistry.characterManager);
@@ -207,6 +219,14 @@ public class Game extends AllocationGuard {
 			// "Khoi tao character tai 1 vi tri ko di  chuyen dc");
 			// }
 			// }
+			// Add King
+			for (EnemyType enemyType : mCurrentGameInfo.listEnemytype) {
+				if (enemyType.armyType == GameInfo.idTypeKing) {
+					addKing(longTermTextureLibrary, mCurrentGameInfo.xTileKing,
+							mCurrentGameInfo.yTileKing, enemyType);
+					break;
+				}
+			}
 		} else {
 			// For test
 			for (int i = 0; i < 14; i++) {
@@ -238,12 +258,9 @@ public class Game extends AllocationGuard {
 			BaseObject.sSystemRegistry.numberDrawableTakeDame = new NumberDrawable(
 					longTermTextureLibrary, 256, 256, 256, 256, 24, 24,
 					NumberDrawable.idDrawableNumber2);
-		}
-		// Effect
-		{
-			UnitEffects unitEffects = new UnitEffects(longTermTextureLibrary);
-			BaseObject.sSystemRegistry.unitEffects = unitEffects;
-			gameRoot.add(unitEffects);
+			BaseObject.sSystemRegistry.numberDrawableCostInDialogAddEnemy = new NumberDrawable(
+					longTermTextureLibrary, 256, 256, 256, 256, 20, 20,
+					NumberDrawable.idDrawableNumber2);
 		}
 		// Sreen
 		{
@@ -406,5 +423,17 @@ public class Game extends AllocationGuard {
 
 	public boolean isBootstrapComplete() {
 		return mBootstrapComplete;
+	}
+
+	private void addKing(TextureLibrary textureLibrary, int xTile, int yTile,
+			EnemyType enemyType) {
+		if (!BaseObject.sSystemRegistry.logicMap.mArrayMap[yTile][xTile]) {
+			UnitCharacter character = new UnitCharacterSwordmen(textureLibrary,
+					BaseObject.sSystemRegistry.mapTiles.arrayMap[yTile][xTile],
+					true, enemyType, -1);
+		} else {
+			DebugLog.e("DUC",
+					"Khoi tao character tai 1 vi tri ko di  chuyen dc");
+		}
 	}
 }

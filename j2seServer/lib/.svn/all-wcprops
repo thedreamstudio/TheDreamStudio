@@ -1,31 +1,19 @@
 K 25
 svn:wc:ra_dav:version-url
-V 37
-/svn/!svn/ver/85/trunk/j2seServer/lib
-END
-mina-core-2.0.4.jar
-K 25
-svn:wc:ra_dav:version-url
-V 57
-/svn/!svn/ver/85/trunk/j2seServer/lib/mina-core-2.0.4.jar
-END
-ServerCore.jar
-K 25
-svn:wc:ra_dav:version-url
-V 52
-/svn/!svn/ver/85/trunk/j2seServer/lib/ServerCore.jar
-END
-commons-dbcp-1.4.jar
-K 25
-svn:wc:ra_dav:version-url
-V 58
-/svn/!svn/ver/54/trunk/j2seServer/lib/commons-dbcp-1.4.jar
+V 38
+/svn/!svn/ver/119/trunk/j2seServer/lib
 END
 commons-pool-1.6.jar
 K 25
 svn:wc:ra_dav:version-url
 V 58
 /svn/!svn/ver/54/trunk/j2seServer/lib/commons-pool-1.6.jar
+END
+mina-core-2.0.4.jar
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/85/trunk/j2seServer/lib/mina-core-2.0.4.jar
 END
 slf4j-api-1.6.1.jar
 K 25
@@ -45,9 +33,21 @@ svn:wc:ra_dav:version-url
 V 57
 /svn/!svn/ver/4/trunk/j2seServer/lib/commons-lang-2.6.jar
 END
+ServerCore.jar
+K 25
+svn:wc:ra_dav:version-url
+V 53
+/svn/!svn/ver/119/trunk/j2seServer/lib/ServerCore.jar
+END
 slf4j-jdk14-1.6.4.jar
 K 25
 svn:wc:ra_dav:version-url
 V 59
 /svn/!svn/ver/93/trunk/j2seServer/lib/slf4j-jdk14-1.6.4.jar
+END
+commons-dbcp-1.4.jar
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/54/trunk/j2seServer/lib/commons-dbcp-1.4.jar
 END

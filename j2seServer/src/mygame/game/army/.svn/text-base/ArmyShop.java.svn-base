@@ -20,7 +20,7 @@ public class ArmyShop {
     private ArmyShop() {
         shopContents = new Soldier[] {
             /*new Archer(), new Infantry(), new Cavalry()*/
-            new Artillery(), new Geezer(), new Cowboy(), new Indian(), new Mexico(), new Scout()
+            new Artillery(), new Geezer(), new Cowboy(), new Indian(), new Mexico(), new Scout(), new General()
         };
     }
     

@@ -1,5 +1,6 @@
 package org.vn.unit;
 
+import org.vn.cache.CurrentGameInfo;
 import org.vn.gl.BaseObject;
 import org.vn.gl.DrawableBitmap;
 import org.vn.gl.DrawableMesh;
@@ -16,15 +17,16 @@ import org.vn.model.MoveMessage;
 import org.vn.unit.AnimationCharacter.iProcessShoot;
 
 public class UnitCharacterSwordmen extends UnitCharacterMove {
-	private static int WIDTH_DRAW_HEALTH = 20;
+	private static int WIDTH_DRAW_HEALTH = 30;
 	private DrawableMesh mDrawableBitmapChar;
-	private DrawableBitmap mDrawableBitmapAttack;
 	private DrawableBitmap mDrawableBitmapRangerAttack;
 	private DrawableMesh mDrawableBitmapHpFull;
 	private DrawableMesh mDrawableBitmapHpCurrent;
 	private DrawableBitmap mDrawableBitmapMove;
 	private DrawableBitmap mDrawableBitmapTouchToControl;
-	private DrawableBitmap mDrawableBitmapTouchToAttack;
+	// private DrawableBitmap mDrawableBitmapTouchToAttack;
+	private DrawableBitmap mDark2;
+	private DrawableBitmap mDark2Red;
 	private Vector2 posDraw = new Vector2();
 	/**
 	 * Thong so
@@ -36,6 +38,10 @@ public class UnitCharacterSwordmen extends UnitCharacterMove {
 	private boolean isProcessFire = false;
 	public int mMaxMana;
 	public int mCurrentMana;
+	public DrawableBitmap mDrawableTileAtack;
+	float size_contro = 10;
+	float opacityForDrawTileSeleted = 0;
+	float vO = 1;
 
 	public UnitCharacterSwordmen(TextureLibrary textureLibrary, Tile tileStart,
 			boolean pIsMyTeam, EnemyType pEnemyType, int pIdEnemy) {
@@ -54,11 +60,7 @@ public class UnitCharacterSwordmen extends UnitCharacterMove {
 		mCurrentMana = mEnemyType.mana;
 		isMyTeam = pIsMyTeam;
 		mAnimationCharacter = new AnimationCharacter(textureLibrary, mEnemyType);
-		{
-			mDrawableBitmapAttack = new DrawableBitmap(
-					textureLibrary.allocateTexture(R.drawable.sword, "sword"),
-					26, 26);
-		}
+		// Ranger attack
 		{
 			mDrawableBitmapRangerAttack = new DrawableBitmap(
 					textureLibrary.allocateTexture(R.drawable.circle, "circle"),
@@ -70,25 +72,30 @@ public class UnitCharacterSwordmen extends UnitCharacterMove {
 		}
 		{
 			mDrawableBitmapMove = new DrawableBitmap(
-					textureLibrary.allocateTexture(R.drawable.circle_while,
-							"circle"), GameInfo.offset - 24,
-					GameInfo.offset - 24);
-			mDrawableBitmapMove.setColorExpressF(0f, 1f, 0f, 1f);
+					textureLibrary.allocateTextureNotHash(R.drawable.tile,
+							"circle"), GameInfo.offset, GameInfo.offset);
+			// mDrawableBitmapMove.setColorExpressF(0f, 1f, 0f, 1f);
 		}
 		{
 			mDrawableBitmapTouchToControl = new DrawableBitmap(
-					textureLibrary.allocateTexture(R.drawable.circle_while,
-							"circle"), GameInfo.offset - 10,
-					GameInfo.offset - 10);
-			mDrawableBitmapTouchToControl.setColorExpressF(0f, 0f, 1f, 1f);
+					textureLibrary
+							.allocateTexture(R.drawable.shadown, "circle"),
+					GameInfo.offset - 20, (GameInfo.offset - 20) / 2);
+			if (isMyTeam)
+				mDrawableBitmapTouchToControl
+						.setColorExpressF(0f, 0f, 1f, 0.5f);
+			else
+				mDrawableBitmapTouchToControl
+						.setColorExpressF(1f, 0f, 0f, 0.5f);
+
 		}
-		{
-			mDrawableBitmapTouchToAttack = new DrawableBitmap(
-					textureLibrary.allocateTexture(R.drawable.circle_while,
-							"circle"), GameInfo.offset - 10,
-					GameInfo.offset - 10);
-			mDrawableBitmapTouchToAttack.setColorExpressF(1f, 0f, 0f, 1f);
-		}
+		// {
+		// mDrawableBitmapTouchToAttack = new DrawableBitmap(
+		// textureLibrary.allocateTexture(R.drawable.circle_while,
+		// "circle"), GameInfo.offset - 10,
+		// GameInfo.offset - 10);
+		// mDrawableBitmapTouchToAttack.setColorExpressF(1f, 0f, 0f, 1f);
+		// }
 		{
 			mDrawableBitmapHpCurrent = new DrawableMesh(
 					textureLibrary.allocateTexture(R.drawable.hp_bar, "hp_bar"),
@@ -98,6 +105,29 @@ public class UnitCharacterSwordmen extends UnitCharacterMove {
 					WIDTH_DRAW_HEALTH, 2);
 			mDrawableBitmapHpFull.setColorExpress(0, 0, 0, 255);
 		}
+		// rangerview
+		{
+			mDark2 = new DrawableBitmap(textureLibrary.allocateTexture(
+					R.drawable.dark2, "dark2"), (pEnemyType.rangeview * 2)
+					* GameInfo.offset + GameInfo.offset,
+					(pEnemyType.rangeview * 2) * GameInfo.offset
+							+ GameInfo.offset);
+			// mDark2.setColorExpressF(1f, 1f, 0f, 1f);
+			// mDark2.setGlBlendFun(GL10.GL_ONE, GL10.GL_ONE);
+			mDark2Red = new DrawableBitmap(textureLibrary.allocateTexture(
+					R.drawable.dark1, "dark2"), (pEnemyType.rangeattack * 2)
+					* GameInfo.offset, (pEnemyType.rangeattack * 2)
+					* GameInfo.offset);
+			mDark2Red.setColorExpressF(1f, 0f, 0f, 1f);
+		}
+		if (mEnemyType.armyType == GameInfo.idTypeKing) {
+			BaseObject.sSystemRegistry.unitEffects.createCotCo(textureLibrary,
+					tileStart.x - 5, tileStart.y - 10);
+		}
+
+		// Con tro?
+		mDrawableTileAtack = new DrawableBitmap(textureLibrary.allocateTexture(
+				R.drawable.tile_seleted_atack, "tile_seleted"), 16, 16);
 	}
 
 	@Override
@@ -106,62 +136,109 @@ public class UnitCharacterSwordmen extends UnitCharacterMove {
 			return;
 		}
 		super.update(timeDelta, parent);
-
-		mDrawableBitmapChar = mAnimationCharacter.updateColumn(timeDelta, this);
-		posDraw.x = xDraw - mDrawableBitmapChar.getWidth() * 0.5f;
-		posDraw.y = yDraw - mDrawableBitmapChar.getHeight() * 0.5f;
-		sSystemRegistry.renderSystem.scheduleForDraw(mDrawableBitmapChar,
-				posDraw, Priority.Character, true);
-		if (!isMyTeam) {
-			sSystemRegistry.renderSystem.scheduleForDraw(
-					mDrawableBitmapAttack,
-					Vector2.TAMP.set(xDraw - mDrawableBitmapAttack.getWidth()
-							* 0.5f, yDraw + mDrawableBitmapAttack.getHeight()),
-					Priority.CharacterCicler, true);
-		} else {
-			if (sSystemRegistry.inputGameInterface.isControl()) {
-				sSystemRegistry.renderSystem.scheduleForDraw(
-						mDrawableBitmapTouchToControl,
-						Vector2.TAMP.set(
-								xDraw
-										- mDrawableBitmapTouchToControl
-												.getWidth() * 0.5f,
-								yDraw
-										- mDrawableBitmapTouchToControl
-												.getHeight() * 0.5f),
-						Priority.CharacterCicler, true);
+		if (isControl()) {
+			opacityForDrawTileSeleted += timeDelta * vO * 0.2f;
+			if (opacityForDrawTileSeleted > 0.8f) {
+				opacityForDrawTileSeleted = 0.8f;
+				vO = -1;
+			} else if (opacityForDrawTileSeleted < 0) {
+				opacityForDrawTileSeleted = 0;
+				vO = 1;
 			}
+			mDrawableBitmapMove.setOpacity(opacityForDrawTileSeleted + 0.2f);
+			mDark2Red.setOpacity(1 - opacityForDrawTileSeleted);
+		} else {
+			mDrawableBitmapMove.setOpacity(0.8f);
+			mDark2Red.setOpacity(0.8f);
+		}
+		if (isCanTaget()) {
+			drawCharacter(timeDelta);
+		}
+	}
+
+	private void drawCharacter(float timeDelta) {
+		mDrawableBitmapChar = mAnimationCharacter.updateColumn(timeDelta, this);
+		if (mEnemyType.armyType != GameInfo.idTypeKing) {
+			posDraw.x = xDraw - mDrawableBitmapChar.getWidth() * 0.5f;
+			posDraw.y = yDraw - mDrawableBitmapChar.getHeight() * 0.3f;
+			sSystemRegistry.renderSystem.scheduleForDraw(mDrawableBitmapChar,
+					posDraw, Priority.Character, true);
+		}
+		if (!isMyTeam) {
+			drawHinhTronMauDoLenNhanVat();
+		} else {
+			drawHinhTronMauXanhLenNhanVat();
 		}
 
 		if (!isProcessMove) {
-			if (mTileTaget.isForcus()) {
+			if (CurrentGameInfo.getIntance().isInGame && mTileTaget.isForcus()
+					&& isControl()) {
 				if (isCanAttack()) {
 					// Neu ko xu ly move thi hien thi vung co the taget
-					for (UnitCharacter character : mListCharCanAttack) {
-						Tile tile = character.getTileTaget();
-						sSystemRegistry.renderSystem.scheduleForDraw(
-								mDrawableBitmapTouchToAttack, Vector2.TAMP.set(
-										tile.x
-												- mDrawableBitmapTouchToAttack
-														.getWidth() * 0.5f,
-										tile.y
-												- mDrawableBitmapTouchToAttack
-														.getHeight() * 0.5f),
-								Priority.CharacterCicler, true);
+					drawAtackSight();
+					if (mListCharCanAttack.size() > 0) {
+						size_contro -= timeDelta * 30;
+						if (size_contro < 0) {
+							size_contro = 10;
+						}
+						float size = Math.min(1,
+								sSystemRegistry.cameraSystem.mScale);
+						size = GameInfo.offset / size;
+						for (UnitCharacter character : mListCharCanAttack) {
+							if (!character.isDeath()) {
+								Tile tile = character.getTileTaget();
+								mDrawableTileAtack.setWidth(size);
+								mDrawableTileAtack.setHeight(size);
+								sSystemRegistry.renderSystem.scheduleForDraw(
+										mDrawableTileAtack,
+										Vector2.TAMP.set(tile.x
+												- mDrawableTileAtack.getWidth()
+												/ 2, tile.y + size_contro),
+										Priority.tile_atack, true);
+							}
+						}
 					}
 				}
-				sSystemRegistry.renderSystem.scheduleForDraw(
-						mDrawableBitmapRangerAttack, Vector2.TAMP.set(
-								mTileTaget.x
-										- mDrawableBitmapRangerAttack
-												.getWidth() * 0.5f,
-								mTileTaget.y
-										- mDrawableBitmapRangerAttack
-												.getHeight() * 0.5f),
-						Priority.CiclerCharacterAttack, true);
 			}
 		}
+		// view sight
+		if (isMyTeam
+				&& (CurrentGameInfo.getIntance().isInGame || mEnemyType.armyType == GameInfo.idTypeKing)) {
+			drawViewSight();
+		}
 		drawHp();
+	}
+
+	private void drawViewSight() {
+		sSystemRegistry.renderSystem.scheduleForDraw(
+				mDark2,
+				Vector2.TAMP.set(xDraw - mDark2.getWidth() * 0.5f, yDraw
+						- mDark2.getHeight() * 0.5f), Priority.BackGroundDark2,
+				true);
+	}
+
+	private void drawAtackSight() {
+		sSystemRegistry.renderSystem.scheduleForDraw(
+				mDark2Red,
+				Vector2.TAMP.set(xDraw - mDark2Red.getWidth() * 0.5f, yDraw
+						- mDark2Red.getHeight() * 0.5f),
+				Priority.BackGroundAtackSight, true);
+	}
+
+	private void drawHinhTronMauXanhLenNhanVat() {
+		sSystemRegistry.renderSystem.scheduleForDraw(
+				mDrawableBitmapTouchToControl, Vector2.TAMP.set(xDraw
+						- mDrawableBitmapTouchToControl.getWidth() * 0.5f,
+						yDraw - GameInfo.offset * 0.3f),
+				Priority.CharacterCicler, true);
+	}
+
+	private void drawHinhTronMauDoLenNhanVat() {
+		sSystemRegistry.renderSystem.scheduleForDraw(
+				mDrawableBitmapTouchToControl, Vector2.TAMP.set(xDraw
+						- mDrawableBitmapTouchToControl.getWidth() * 0.5f,
+						yDraw - GameInfo.offset * 0.3f),
+				Priority.CharacterCicler, true);
 	}
 
 	@Override
@@ -266,6 +343,7 @@ public class UnitCharacterSwordmen extends UnitCharacterMove {
 		});
 	}
 
+	// Ve tile co the di chuyen dc
 	@Override
 	protected void drawTileSeleted(Tile tile, byte total) {
 		sSystemRegistry.renderSystem.scheduleForDraw(mDrawableBitmapMove,
@@ -278,7 +356,7 @@ public class UnitCharacterSwordmen extends UnitCharacterMove {
 	private void drawHp() {
 		float vi_tri_x_ve_ten_va_mau = xDraw - mDrawableBitmapHpFull.getWidth()
 				* 0.5f;
-		float vi_tri_y_ve_ten_va_mau = yDraw - 20;
+		float vi_tri_y_ve_ten_va_mau = yDraw - 25;
 		{
 			sSystemRegistry.renderSystem
 					.scheduleForDraw(mDrawableBitmapHpFull, new Vector2(
@@ -316,7 +394,7 @@ public class UnitCharacterSwordmen extends UnitCharacterMove {
 		sSystemRegistry.unitEffects.addEffectRungManHinh();
 		sSystemRegistry.unitEffects.addEffectSoBayLen(
 				sSystemRegistry.numberDrawableTakeDame, -damage, mTileTaget.x,
-				mTileTaget.y + 30);
+				mTileTaget.y + 30, true, Priority.CharacterTakeDamage);
 	}
 
 	@Override
@@ -329,6 +407,7 @@ public class UnitCharacterSwordmen extends UnitCharacterMove {
 		return false;
 	}
 
+	@Override
 	public boolean isDeath() {
 		if (mCurrentHp > 0) {
 			return false;
@@ -343,6 +422,9 @@ public class UnitCharacterSwordmen extends UnitCharacterMove {
 
 	@Override
 	protected boolean isCanMove(int so_nuoc_can_de_di_chuyen_toi) {
+		if (mEnemyType.movecost == 0) {
+			return false;
+		}
 		if (so_nuoc_can_de_di_chuyen_toi <= mCurrentMana / mEnemyType.movecost) {
 			return true;
 		}
@@ -361,5 +443,32 @@ public class UnitCharacterSwordmen extends UnitCharacterMove {
 
 	public void nextTurn() {
 		mCurrentMana = mEnemyType.mana;
+	}
+
+	@Override
+	protected boolean isCanTaget() {
+		if (isMyTeam)
+			return true;
+
+		for (UnitCharacterSwordmen character : sSystemRegistry.characterManager.arrayCharactersMyTeam) {
+			Tile tile_forcus = character.getTileTaget();
+			int xTileOffSet = tile_forcus.xTile - mTileTaget.xTile;
+			int yTileOffset = tile_forcus.yTile - mTileTaget.yTile;
+			int asbX = Math.abs(xTileOffSet);
+			int asbY = Math.abs(yTileOffset);
+			int rangerCheck = character.mEnemyType.rangeview;
+			if (asbX <= rangerCheck && asbY <= rangerCheck) {
+				if (xTileOffSet * yTileOffset >= 0) {
+					// neu cung dau
+					return true;
+				} else {
+					if (asbX + asbY <= rangerCheck) {
+						return true;
+					}
+				}
+			}
+		}
+
+		return false;
 	}
 }

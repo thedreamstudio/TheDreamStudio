@@ -9,7 +9,7 @@ package mygame.game.map;
  * @author truongps
  */
 public class Map {
-    
+
     private Cell[][] map;
     private byte[][] mapAllows;
     public int rowNum;
@@ -21,14 +21,14 @@ public class Map {
      * Khoang cách từ general de dat duoc linh.
      */
     public int initRange = 6;
+
     public Map(final int mapID, final int rowNum, final int colNum, byte[][] mapData) {
         this.mapID = mapID;
         this.rowNum = rowNum;
         this.colNum = colNum;
         map = new Cell[rowNum][colNum];
         mapAllows = mapData;
-        ownerGeneral = new Position(0, 0);
-        visitGeneral = new Position(0, 0);
+
         for (int i = 0; i < rowNum; i++) {
             for (int j = 0; j < colNum; j++) {
                 map[i][j] = new Cell(i, j, mapAllows[i][j]);
@@ -41,8 +41,14 @@ public class Map {
                 }
             }
         }
+        if (ownerGeneral == null) {
+            ownerGeneral = new Position(0, 0);
+        }
+        if (visitGeneral == null) {
+            visitGeneral = new Position(0, 0);
+        }
     }
-    
+
     public byte[][] getMapLayout() {
         return mapAllows;
     }

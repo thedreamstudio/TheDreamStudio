@@ -2,7 +2,7 @@ package org.vn.unit;
 
 public class ActionServerToClient {
 	public enum ActionType {
-		start_game, move, attack, next_turn
+		start_game, move, attack, next_turn, end_game
 	}
 
 	public enum ActionStatus {

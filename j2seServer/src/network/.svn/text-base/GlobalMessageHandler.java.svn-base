@@ -4,6 +4,7 @@
  */
 package network;
 
+import com.sun.org.apache.bcel.internal.generic.L2D;
 import common.DataBaseManager;
 import common.GameController;
 import common.L;
@@ -40,10 +41,9 @@ public class GlobalMessageHandler implements IMessageHandler {
         try {
             if (player.isLogin()) {
                 switch (msg.id) {
-                    case CProtocol.LANGUAGE:
-                    {
+                    case CProtocol.LANGUAGE: {
                         byte lang = msg.reader().readByte();
-                        switch(lang) {
+                        switch (lang) {
                             case L.VIET:
                                 player.languageType = L.VIET;
                                 break;
@@ -56,17 +56,18 @@ public class GlobalMessageHandler implements IMessageHandler {
                         player.session.write(m);
                         m.cleanup();
                     }
-                        break;
+                    break;
                     case CProtocol.SET_GAME_TYPE: {
                         byte gameID = msg.reader().readByte();
                         if (GameController.isSupportGame(gameID)) {
                             player.gameID = gameID;
                             GlobalServices.processSetGameTypeMessage(player);
+                            GlobalServices.sendServerMessage(player, 0, L.gl(player.languageType, 5));
                         } else {
                             //He thong k support game nay.
                             Message m = new Message(CProtocol.SERVER_MESSAGE);
                             m.putByte(1);
-                            String s = L.type == L.VIET ? "Hệ thống không support game này." : "This system don't support this game.";
+                            String s = player.languageType == L.VIET ? "Hệ thống không support game này." : "This system don't support this game.";
                             m.putString(s);
                             player.session.write(m);
                             m.cleanup();
@@ -112,6 +113,27 @@ public class GlobalMessageHandler implements IMessageHandler {
 //                if ("".equals(player.phoneNumber)) {
 //                    GlobalServices.sendServerMessage(player, 2, null);
 //                }
+            } else if (msg.id == CProtocol.SET_CLIENT_INFO) {
+                player.platform = msg.reader().readUTF();
+                String model = msg.reader().readUTF();
+                player.version = msg.reader().readUTF();
+                byte lang = msg.reader().readByte();
+                System.out.println("Set ngon ngu: " + lang);
+                player.languageType = lang;
+            } else if (msg.id == CProtocol.LANGUAGE) {
+                byte lang = msg.reader().readByte();
+                switch (lang) {
+                    case L.VIET:
+                        player.languageType = L.VIET;
+                        break;
+                    case L.ENG:
+                        player.languageType = L.ENG;
+                        break;
+                }
+                Message m = new Message(CProtocol.LANGUAGE);
+                m.putByte(player.languageType);
+                player.session.write(m);
+                m.cleanup();
             }
         } catch (Exception e) {
             e.printStackTrace();

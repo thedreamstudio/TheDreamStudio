@@ -28,6 +28,9 @@ public class L {
 //            case 4:
 //                return (playerLanguage == VIET ? "Số điện thoại này sẽ được dùng để xác minh tài khoản của bạn sau này." : 
 //                        "Your registration is successfully.");
+            case 5:
+                return (playerLanguage == VIET ? "Chào mừng bạn đã đến với phiên bản dùng thử của Island War." 
+                        : "Welcome to the trial version of Island War.");
             default:
                 return "Unknown ID";
         }

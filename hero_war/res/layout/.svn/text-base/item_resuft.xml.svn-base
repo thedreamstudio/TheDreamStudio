@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bt_custom2"
+    android:orientation="horizontal"
+    android:padding="20dp" >
+
+    <TableRow
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center" >
+
+        <ImageView
+            android:id="@+id/image_winner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/image_1857" >
+        </ImageView>
+
+        <TextView
+            android:id="@+id/name_player"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center"
+            android:text="name player"
+            android:textColor="#ffffff"
+            android:textSize="16dp"
+            android:typeface="monospace" >
+        </TextView>
+    </TableRow>
+
+</LinearLayout>

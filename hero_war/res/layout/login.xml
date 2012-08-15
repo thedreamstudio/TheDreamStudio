@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/frameLayout1"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
@@ -18,21 +18,29 @@
             android:layout_gravity="center_horizontal"
             android:orientation="vertical" >
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/logo"
+                android:padding="10dp" />
+
             <TableLayout
                 android:id="@+id/tableLogin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
-                android:background="@drawable/bt_1"
-                android:padding="20dp" >
+                android:background="@drawable/bt_1" >
 
                 <TableRow
+                    android:id="@+id/editIp_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:padding="2dp" >
 
                     <TextView
+                        android:id="@+id/editIp_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingRight="10dp"
@@ -56,6 +64,7 @@
                     android:padding="5dp" >
 
                     <TextView
+                        android:id="@+id/editTextUserNameTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingRight="10dp"
@@ -80,6 +89,7 @@
                     android:padding="5dp" >
 
                     <TextView
+                        android:id="@+id/editTextPassTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingRight="10dp"
@@ -113,6 +123,7 @@
                     android:padding="2dp" >
 
                     <TextView
+                        android:id="@+id/regiterUserNameTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingRight="10dp"
@@ -136,6 +147,7 @@
                     android:padding="5dp" >
 
                     <TextView
+                        android:id="@+id/regiterPassTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingRight="10dp"
@@ -160,6 +172,7 @@
                     android:padding="5dp" >
 
                     <TextView
+                        android:id="@+id/regiterPass2Tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingRight="10dp"
@@ -184,6 +197,7 @@
                     android:padding="5dp" >
 
                     <TextView
+                        android:id="@+id/regiterPhoneTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:paddingRight="10dp"
@@ -215,9 +229,9 @@
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:background="@drawable/bt_custom3"
-                    android:text="Regiter"
+                    android:text="@string/Chat"
                     android:textColor="#ffffff"
-                    android:textSize="20dp" />
+                    android:textSize="16dp" />
 
                 <Button
                     android:id="@+id/buttonLogin"
@@ -228,7 +242,7 @@
                     android:background="@drawable/bt_custom3"
                     android:text="Login"
                     android:textColor="#ffffff"
-                    android:textSize="20dp" />
+                    android:textSize="16dp" />
             </TableRow>
 
             <LinearLayout
@@ -253,6 +267,7 @@
                         android:padding="10dp" />
 
                     <TextView
+                        android:id="@+id/bt_facebook_tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Go to FaceBook"
@@ -275,6 +290,7 @@
                         android:padding="10dp" />
 
                     <TextView
+                        android:id="@+id/bt_call_Tv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Call for support"
@@ -285,4 +301,39 @@
         </LinearLayout>
     </ScrollView>
 
-</LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingTop="5dp"
+        android:text="@string/version_client"
+        android:textColor="#ffffff"
+        android:textSize="12dp" />
+
+    <LinearLayout
+        android:id="@+id/ngon_ngu_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp" >
+
+        <ImageView
+            android:id="@+id/ngon_ngu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/vn"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/ngon_nguTv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Vn"
+            android:textColor="#333333"
+            android:textSize="10dp" />
+    </LinearLayout>
+
+</FrameLayout>

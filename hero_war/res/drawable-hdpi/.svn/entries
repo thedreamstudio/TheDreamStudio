@@ -1,14 +1,14 @@
 10
 
 dir
-122
+133
 https://zzzzzzzzzzz.googlecode.com/svn/trunk/hero_war/res/drawable-hdpi
 https://zzzzzzzzzzz.googlecode.com/svn
 
 
 
-2012-08-12T10:42:31.988703Z
-121
+2012-08-15T16:26:54.414449Z
+133
 tintin1812@gmail.com
 
 
@@ -128,40 +128,6 @@ has-props
 
 649
 
-image_1574.png
-file
-
-
-
-
-2012-08-13T17:00:42.000000Z
-9c1fec7e73a38780248c7d3210749e3f
-2012-07-23T16:01:48.041789Z
-80
-tintin1812@gmail.com
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-664
-
 dark1.png
 file
 
@@ -195,6 +161,40 @@ has-props
 
 
 5521
+
+image_1574.png
+file
+
+
+
+
+2012-08-13T17:00:42.000000Z
+9c1fec7e73a38780248c7d3210749e3f
+2012-07-23T16:01:48.041789Z
+80
+tintin1812@gmail.com
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+664
 
 dark2.png
 file
@@ -230,16 +230,16 @@ has-props
 
 10302
 
-dark3.png
+image_1576.png
 file
 
 
 
 
 2012-08-13T17:00:42.000000Z
-20ec5b559fe7bd59072f74b999afa17b
-2012-08-11T12:41:47.578299Z
-118
+3de63241ba754496d5e6033e9a2880bc
+2012-07-23T16:01:48.041789Z
+80
 tintin1812@gmail.com
 has-props
 
@@ -262,7 +262,7 @@ has-props
 
 
 
-733
+651
 
 bt_chat.png
 file
@@ -298,16 +298,16 @@ has-props
 
 5429
 
-image_1576.png
+dark3.png
 file
 
 
 
 
 2012-08-13T17:00:42.000000Z
-3de63241ba754496d5e6033e9a2880bc
-2012-07-23T16:01:48.041789Z
-80
+20ec5b559fe7bd59072f74b999afa17b
+2012-08-11T12:41:47.578299Z
+118
 tintin1812@gmail.com
 has-props
 
@@ -330,7 +330,7 @@ has-props
 
 
 
-651
+733
 
 image_1857.png
 file
@@ -366,16 +366,16 @@ has-props
 
 3080
 
-ui_tru.png
+icon_refresh.png
 file
 
 
 
 
-2012-08-13T17:00:42.000000Z
-c405133e3c2d9422567cf04897166e86
-2012-07-02T19:37:01.174310Z
-50
+2012-08-15T16:30:16.000000Z
+4ab6b6f77fe55963170e04bd4b6ab603
+2012-08-15T04:15:12.664875Z
+130
 tintin1812@gmail.com
 has-props
 
@@ -398,7 +398,41 @@ has-props
 
 
 
-2933
+8097
+
+ui_tru.png
+file
+
+
+
+
+2012-08-15T16:30:16.000000Z
+b16215fd60c062d54815d3235ca95712
+2012-08-15T04:15:12.664875Z
+130
+tintin1812@gmail.com
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3438
 
 image_1859.png
 file
@@ -501,6 +535,40 @@ has-props
 
 
 18384
+
+vn.png
+file
+
+
+
+
+2012-08-15T16:30:16.000000Z
+f728125eb07b7635b17e222e58afef7a
+2012-08-15T04:15:12.664875Z
+130
+tintin1812@gmail.com
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4793
 
 back_ground_board.png
 file
@@ -1046,40 +1114,6 @@ has-props
 
 11377
 
-bt_start_2.png
-file
-
-
-
-
-2012-08-13T17:00:42.000000Z
-dd174110a0849af7173c0fbe63312ba9
-2012-08-05T17:00:02.405440Z
-108
-tintin1812@gmail.com
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-13116
-
 image_1863.png
 file
 
@@ -1113,6 +1147,40 @@ has-props
 
 
 3010
+
+bt_start_2.png
+file
+
+
+
+
+2012-08-13T17:00:42.000000Z
+dd174110a0849af7173c0fbe63312ba9
+2012-08-05T17:00:02.405440Z
+108
+tintin1812@gmail.com
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+13116
 
 bt_start_3.png
 file
@@ -1182,40 +1250,6 @@ has-props
 
 2942
 
-player_indian_sleep.png
-file
-
-
-
-
-2012-08-13T17:00:42.000000Z
-315fec16d1070d3a0d25a1fbc0c6bf8b
-2012-07-30T14:57:25.397119Z
-95
-tintin1812@gmail.com
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-5960
-
 skip.png
 file
 
@@ -1249,6 +1283,40 @@ has-props
 
 
 7273
+
+player_indian_sleep.png
+file
+
+
+
+
+2012-08-13T17:00:42.000000Z
+315fec16d1070d3a0d25a1fbc0c6bf8b
+2012-07-30T14:57:25.397119Z
+95
+tintin1812@gmail.com
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5960
 
 image_1867.png
 file
@@ -1284,40 +1352,6 @@ has-props
 
 2858
 
-face_book.png
-file
-
-
-
-
-2012-08-13T17:00:42.000000Z
-51b5677a134d0a60b757aa78f115fb42
-2012-08-05T17:00:02.405440Z
-108
-tintin1812@gmail.com
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2064
-
 image_6359.png
 file
 
@@ -1351,6 +1385,40 @@ has-props
 
 
 4644
+
+face_book.png
+file
+
+
+
+
+2012-08-13T17:00:42.000000Z
+51b5677a134d0a60b757aa78f115fb42
+2012-08-05T17:00:02.405440Z
+108
+tintin1812@gmail.com
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2064
 
 image_1869.png
 file
@@ -1426,10 +1494,10 @@ file
 
 
 
-2012-08-13T17:00:42.000000Z
-6897b38c94c05fe7a145c18e4e887134
-2012-08-02T17:21:57.490279Z
-102
+2012-08-15T16:30:16.000000Z
+5041cef3c616782885e95a18214dc333
+2012-08-15T08:14:08.315397Z
+131
 tintin1812@gmail.com
 has-props
 
@@ -1452,7 +1520,41 @@ has-props
 
 
 
-6986
+12765
+
+viettel.png
+file
+
+
+
+
+2012-08-15T16:30:16.000000Z
+844b820147a69c2b33a72caa559d5e04
+2012-08-15T04:15:12.664875Z
+130
+tintin1812@gmail.com
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+11184
 
 player_indian.png
 file
@@ -1590,6 +1692,40 @@ has-props
 
 14337
 
+player_mexican_sleep.png
+file
+
+
+
+
+2012-08-13T17:00:42.000000Z
+c777ad1764695f4128b61e79c6ac9204
+2012-07-30T14:57:25.397119Z
+95
+tintin1812@gmail.com
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6084
+
 player_cannon.png
 file
 
@@ -1624,16 +1760,16 @@ has-props
 
 56583
 
-player_mexican_sleep.png
+extra_gold.png
 file
 
 
 
 
-2012-08-13T17:00:42.000000Z
-c777ad1764695f4128b61e79c6ac9204
-2012-07-30T14:57:25.397119Z
-95
+2012-08-15T16:30:16.000000Z
+4758d44d1de3c888746e9cfe566339de
+2012-08-15T04:15:12.664875Z
+130
 tintin1812@gmail.com
 has-props
 
@@ -1656,7 +1792,7 @@ has-props
 
 
 
-6084
+6998
 
 image_1711.png
 file
@@ -1760,40 +1896,6 @@ has-props
 
 838
 
-icon_board.png
-file
-
-
-
-
-2012-08-13T17:00:42.000000Z
-09e0d0a3c903bb31754294f4d6a47cd3
-2012-08-05T17:00:02.405440Z
-108
-tintin1812@gmail.com
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-2966
-
 image_1715.png
 file
 
@@ -1827,6 +1929,40 @@ has-props
 
 
 5492
+
+icon_board.png
+file
+
+
+
+
+2012-08-13T17:00:42.000000Z
+09e0d0a3c903bb31754294f4d6a47cd3
+2012-08-05T17:00:02.405440Z
+108
+tintin1812@gmail.com
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2966
 
 player_mexican.png
 file
@@ -1862,16 +1998,16 @@ has-props
 
 46286
 
-circle.png
+logo.png
 file
 
 
 
 
-2012-08-13T17:00:42.000000Z
-7e9c0f237e2b9602c4e2c2bf9ef7f8b3
-2012-07-19T18:36:46.063500Z
-78
+2012-08-15T16:30:16.000000Z
+0b3d0c6698f3e603d7e45b77258f7cda
+2012-08-15T16:26:54.414449Z
+133
 tintin1812@gmail.com
 has-props
 
@@ -1894,7 +2030,7 @@ has-props
 
 
 
-8132
+25475
 
 image_6361.png
 file
@@ -1930,6 +2066,40 @@ has-props
 
 4731
 
+circle.png
+file
+
+
+
+
+2012-08-13T17:00:42.000000Z
+7e9c0f237e2b9602c4e2c2bf9ef7f8b3
+2012-07-19T18:36:46.063500Z
+78
+tintin1812@gmail.com
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+8132
+
 image_1871.png
 file
 
@@ -1963,40 +2133,6 @@ has-props
 
 
 2962
-
-image_6363.png
-file
-
-
-
-
-2012-08-13T17:00:42.000000Z
-6604385c50e015e05f96e7f3e41b1a99
-2012-07-23T16:01:48.041789Z
-80
-tintin1812@gmail.com
-has-props
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-4749
 
 shadown.png
 file
@@ -2032,6 +2168,40 @@ has-props
 
 366
 
+image_6363.png
+file
+
+
+
+
+2012-08-13T17:00:42.000000Z
+6604385c50e015e05f96e7f3e41b1a99
+2012-07-23T16:01:48.041789Z
+80
+tintin1812@gmail.com
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4749
+
 tile_seleted_atack.png
 file
 
@@ -2065,6 +2235,40 @@ has-props
 
 
 980
+
+icon_hero.png
+file
+
+
+
+
+2012-08-15T16:30:16.000000Z
+5d96df4835ab8ef15a391ce5b7b6c14b
+2012-08-15T04:15:12.664875Z
+130
+tintin1812@gmail.com
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3197
 
 player_scout_shot.png
 file
@@ -2140,10 +2344,10 @@ file
 
 
 
-2012-08-13T17:00:42.000000Z
-31960ca4e088c760aba427599776731f
-2012-07-02T19:37:01.174310Z
-50
+2012-08-15T16:30:16.000000Z
+a50c5f727be9eefb4f760daf0e750c5f
+2012-08-15T04:15:12.664875Z
+130
 tintin1812@gmail.com
 has-props
 
@@ -2166,7 +2370,7 @@ has-props
 
 
 
-3627
+1342
 
 button_up.png
 file
@@ -2208,10 +2412,10 @@ file
 
 
 
-2012-08-13T17:00:42.000000Z
-f1904f32260f60a0227f14057327277c
-2012-07-02T19:37:01.174310Z
-50
+2012-08-15T16:30:16.000000Z
+68941f50b1821142a2d93ea1a4d00395
+2012-08-15T04:15:12.664875Z
+130
 tintin1812@gmail.com
 has-props
 
@@ -2234,7 +2438,7 @@ has-props
 
 
 
-3171
+885
 
 num_2.png
 file
@@ -2242,10 +2446,10 @@ file
 
 
 
-2012-08-13T17:00:42.000000Z
-3203ab40773d821d70f59c17a157830c
-2012-07-02T19:37:01.174310Z
-50
+2012-08-15T16:30:16.000000Z
+2880a660c8347c700755a0eae33be074
+2012-08-15T04:15:12.664875Z
+130
 tintin1812@gmail.com
 has-props
 
@@ -2268,7 +2472,7 @@ has-props
 
 
 
-3681
+1323
 
 batdau_ingame.png
 file
@@ -2310,10 +2514,10 @@ file
 
 
 
-2012-08-13T17:00:42.000000Z
-88118d585116ea776d9811b2fedac353
-2012-07-02T19:37:01.174310Z
-50
+2012-08-15T16:30:16.000000Z
+e933c035f077a73c799ff799c5af8c2b
+2012-08-15T04:15:12.664875Z
+130
 tintin1812@gmail.com
 has-props
 
@@ -2336,7 +2540,7 @@ has-props
 
 
 
-3745
+1365
 
 num_4.png
 file
@@ -2344,10 +2548,10 @@ file
 
 
 
-2012-08-13T17:00:42.000000Z
-9f7ea74addc27ea4fe38b2f08b4d192a
-2012-07-02T19:37:01.174310Z
-50
+2012-08-15T16:30:16.000000Z
+a4d8bd1cb0cc87c895a08f697ab05f8d
+2012-08-15T04:15:12.664875Z
+130
 tintin1812@gmail.com
 has-props
 
@@ -2370,7 +2574,7 @@ has-props
 
 
 
-3487
+1322
 
 num_5.png
 file
@@ -2378,10 +2582,10 @@ file
 
 
 
-2012-08-13T17:00:42.000000Z
-63ec5b40c74f8991c28cd12f59ebfeca
-2012-07-02T19:37:01.174310Z
-50
+2012-08-15T16:30:16.000000Z
+066a86d29a0754d5eeccd55eaa88c08a
+2012-08-15T04:15:12.664875Z
+130
 tintin1812@gmail.com
 has-props
 
@@ -2404,7 +2608,7 @@ has-props
 
 
 
-3675
+1227
 
 ui_cong.png
 file
@@ -2412,10 +2616,10 @@ file
 
 
 
-2012-08-13T17:00:42.000000Z
-ede6b0d7992b7ae2e1640c96cccb1021
-2012-07-02T19:37:01.174310Z
-50
+2012-08-15T16:30:16.000000Z
+24ca93ad2690dd4086d925e1bef2af64
+2012-08-15T04:15:12.664875Z
+130
 tintin1812@gmail.com
 has-props
 
@@ -2438,7 +2642,7 @@ has-props
 
 
 
-3041
+4015
 
 num_6.png
 file
@@ -2446,10 +2650,10 @@ file
 
 
 
-2012-08-13T17:00:42.000000Z
-c1622f5bb177d9e1face39cecf9c13c0
-2012-07-02T19:37:01.174310Z
-50
+2012-08-15T16:30:16.000000Z
+6d354b76dfbf271c6f12165ff15c3dca
+2012-08-15T04:15:12.664875Z
+130
 tintin1812@gmail.com
 has-props
 
@@ -2472,7 +2676,7 @@ has-props
 
 
 
-3807
+1309
 
 num_7.png
 file
@@ -2480,10 +2684,10 @@ file
 
 
 
-2012-08-13T17:00:42.000000Z
-bcc6098c2dd9730d402cf222b18ba31c
-2012-07-02T19:37:01.174310Z
-50
+2012-08-15T16:30:16.000000Z
+7b6b79be186abd5f498b8e18daf00adf
+2012-08-15T04:15:12.664875Z
+130
 tintin1812@gmail.com
 has-props
 
@@ -2506,7 +2710,7 @@ has-props
 
 
 
-3489
+1088
 
 player_geezer_sleep.png
 file
@@ -2541,6 +2745,40 @@ has-props
 
 
 4363
+
+amazon.png
+file
+
+
+
+
+2012-08-15T16:30:16.000000Z
+4c999be89569117a7345211d44d49fd7
+2012-08-15T04:15:12.664875Z
+130
+tintin1812@gmail.com
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+35828
 
 player_gunslinger_shot.png
 file
@@ -2582,10 +2820,10 @@ file
 
 
 
-2012-08-13T17:00:42.000000Z
-8c55a094f278c4539ec199373a9b1f1f
-2012-07-02T19:37:01.174310Z
-50
+2012-08-15T16:30:16.000000Z
+0d1371e80aa3c252acf407eef73cd026
+2012-08-15T04:15:12.664875Z
+130
 tintin1812@gmail.com
 has-props
 
@@ -2608,7 +2846,7 @@ has-props
 
 
 
-3876
+1374
 
 num_9.png
 file
@@ -2616,10 +2854,10 @@ file
 
 
 
-2012-08-13T17:00:42.000000Z
-be43c7f9dc279c1e22041648fe6673f6
-2012-07-02T19:37:01.174310Z
-50
+2012-08-15T16:30:16.000000Z
+b938d9faa704904d6a23d7626cfb0898
+2012-08-15T04:15:12.664875Z
+130
 tintin1812@gmail.com
 has-props
 
@@ -2642,7 +2880,7 @@ has-props
 
 
 
-3813
+1241
 
 circle_while.png
 file
@@ -2780,6 +3018,40 @@ has-props
 
 2206
 
+mobifone.png
+file
+
+
+
+
+2012-08-15T16:30:16.000000Z
+beeb7cd95f6cdd3ffccec88248b6506a
+2012-08-15T04:15:12.664875Z
+130
+tintin1812@gmail.com
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6707
+
 image_1562.png
 file
 
@@ -2916,6 +3188,40 @@ has-props
 
 2161
 
+en.png
+file
+
+
+
+
+2012-08-15T16:30:16.000000Z
+a14b4c5f97f95cd790ffac53048a2a6e
+2012-08-15T04:15:12.664875Z
+130
+tintin1812@gmail.com
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6852
+
 image_1566.png
 file
 
@@ -3017,6 +3323,40 @@ has-props
 
 
 41807
+
+icon_winner.png
+file
+
+
+
+
+2012-08-15T16:30:16.000000Z
+05de8a5aeb383fc33580f41402db12fa
+2012-08-15T04:15:12.664875Z
+130
+tintin1812@gmail.com
+has-props
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1935
 
 khungchat.png
 file

@@ -9,7 +9,7 @@
         android:layout_width="50px"
         android:layout_height="50px"
         android:layout_marginRight="10px"
-        android:src="@drawable/bt_chat" >
+        android:src="@drawable/icon_hero" >
     </ImageView>
 
     <TextView

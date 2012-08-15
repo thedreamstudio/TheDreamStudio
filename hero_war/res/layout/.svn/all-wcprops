@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 43
-/svn/!svn/ver/118/trunk/hero_war/res/layout
+/svn/!svn/ver/130/trunk/hero_war/res/layout
 END
 waiting.xml
 K 25
@@ -21,33 +21,51 @@ svn:wc:ra_dav:version-url
 V 51
 /svn/!svn/ver/11/trunk/hero_war/res/layout/main.xml
 END
+array_string.xml
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/130/trunk/hero_war/res/layout/array_string.xml
+END
 item_board.xml
 K 25
 svn:wc:ra_dav:version-url
 V 58
-/svn/!svn/ver/118/trunk/hero_war/res/layout/item_board.xml
+/svn/!svn/ver/130/trunk/hero_war/res/layout/item_board.xml
+END
+item_resuft.xml
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/!svn/ver/130/trunk/hero_war/res/layout/item_resuft.xml
 END
 board.xml
 K 25
 svn:wc:ra_dav:version-url
 V 53
-/svn/!svn/ver/102/trunk/hero_war/res/layout/board.xml
+/svn/!svn/ver/130/trunk/hero_war/res/layout/board.xml
 END
 login.xml
 K 25
 svn:wc:ra_dav:version-url
 V 53
-/svn/!svn/ver/118/trunk/hero_war/res/layout/login.xml
+/svn/!svn/ver/130/trunk/hero_war/res/layout/login.xml
 END
 image_and_text.xml
 K 25
 svn:wc:ra_dav:version-url
 V 62
-/svn/!svn/ver/118/trunk/hero_war/res/layout/image_and_text.xml
+/svn/!svn/ver/130/trunk/hero_war/res/layout/image_and_text.xml
+END
+resuft.xml
+K 25
+svn:wc:ra_dav:version-url
+V 54
+/svn/!svn/ver/130/trunk/hero_war/res/layout/resuft.xml
 END
 enemy_waiting.xml
 K 25
 svn:wc:ra_dav:version-url
 V 61
-/svn/!svn/ver/102/trunk/hero_war/res/layout/enemy_waiting.xml
+/svn/!svn/ver/130/trunk/hero_war/res/layout/enemy_waiting.xml
 END

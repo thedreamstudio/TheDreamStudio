@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="130dp"
     android:layout_height="65dp"
+    android:background="@drawable/bt_custom2"
     android:orientation="horizontal"
-    android:padding="20dp" 
-    android:background="@drawable/bt_custom2">
+    android:padding="20dp" >
 
     <ImageView
         android:id="@+id/grid_item_image"
@@ -26,9 +26,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:text="@+id/label"
-            android:textSize="20dp" 
             android:textColor="#ffffff"
-            android:typeface="monospace">
+            android:textSize="14dp"
+            android:typeface="monospace" >
         </TextView>
 
         <LinearLayout

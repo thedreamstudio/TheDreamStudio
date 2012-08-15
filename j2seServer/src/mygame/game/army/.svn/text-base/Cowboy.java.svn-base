@@ -9,19 +9,19 @@ package mygame.game.army;
  * @author truongps
  */
 public class Cowboy extends Soldier {
-    public static final int COST = 30;
+    public static final int COST = 8;
 
     public Cowboy() {
         typeID = Soldier.TYPE_COWBOY;
-        name = "Cao bồi";
-        cost = 30;
-        hp = 60;
-        damageMax = 20;
-        damageMin = 12;
-        mana = 54;
-        costMove = 6;
-        costAttack = 24;
-        rangeAttack = 4;
-        rangeView = 5;
+        name = "Lính Tốc Độ";
+        hp = 20;
+		mana = 54;
+		damageMin = 18;
+		damageMax = 26;
+		rangeView = 2;
+		costMove = 5;
+		rangeAttack = 1;
+		costAttack = 24;
+		cost = 8;
     }
 }

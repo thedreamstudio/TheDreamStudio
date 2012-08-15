@@ -10,19 +10,19 @@ package mygame.game.army;
  */
 public class Artillery extends Soldier {
 
-    public static final int COST = 30;
+    public static final int COST = 12;
 
     public Artillery() {
         typeID = Soldier.TYPE_ARTILLERY;
         name = "Pháo binh";
-        cost = 30;
-        hp = 60;
-        damageMax = 20;
-        damageMin = 12;
-        mana = 54;
-        costMove = 6;
-        costAttack = 24;
-        rangeAttack = 4;
-        rangeView = 5;
+        hp = 40;
+		mana = 72;
+		damageMin = 41;
+		damageMax = 58;
+		rangeView = 7;
+		costMove = 15;
+		rangeAttack = 7;
+		costAttack = 38;
+		cost = 12;
     }
 }

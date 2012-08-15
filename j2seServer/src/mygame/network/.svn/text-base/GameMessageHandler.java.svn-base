@@ -45,10 +45,15 @@ public class GameMessageHandler implements IMessageHandler {
             case CProtocol.CHAT_BOARD:
                 MGameController.getInstance().chatInBoard(player, msg.reader().readUTF());
                 break;
-            case CProtocol.LEAVE_BOARD:
-                MGameController.getInstance().exitBoard(player.boardID, player);
-                GameServices.processSomeOneLeaveBoardMessage(player.boardID, player);
-                break;
+            case CProtocol.LEAVE_BOARD: {
+                Board b = MGameController.getInstance().getBoard(player.boardID);
+                if (b != null) {
+                    b.someoneExitBoard(player);
+                    GameServices.processSomeOneLeaveBoardMessage(player.boardID, player);
+                }
+            }
+//                MGameController.getInstance().exitBoard(player.boardID, player);
+            break;
             case CProtocol.GET_ARMY_SHOP:
                 GameServices.processGetArmyShopContentsMessage(player);
                 break;

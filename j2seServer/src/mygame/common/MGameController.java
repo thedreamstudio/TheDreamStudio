@@ -27,7 +27,7 @@ public class MGameController {
      * Total money that a user can have to select army.
      * It use only in a board.
      */
-    public static final int TOTAL_MONEY = 100;
+    public static final int TOTAL_MONEY = 70;
     public Board[] boards;
     /**
      * Vector này chứa các player đang trong game.

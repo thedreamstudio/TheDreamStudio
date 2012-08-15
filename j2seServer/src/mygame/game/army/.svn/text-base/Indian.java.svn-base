@@ -9,19 +9,19 @@ package mygame.game.army;
  * @author truongps
  */
 public class Indian extends Soldier {
-    public static final int COST = 30;
+    public static final int COST = 10;
 
     public Indian() {
         typeID = Soldier.TYPE_INDIAN;
-        name = "Thổ dân";
-        cost = 30;
+        name = "Cung thủ";
         hp = 60;
-        damageMax = 20;
-        damageMin = 12;
-        mana = 54;
-        costMove = 6;
-        costAttack = 24;
-        rangeAttack = 4;
-        rangeView = 5;
+		mana = 54;
+		damageMin = 18;
+		damageMax = 26;
+		rangeView = 5;
+		costMove = 8;
+		rangeAttack = 4;
+		costAttack = 32;
+		cost = 10;
     }
 }

@@ -6,22 +6,23 @@ package mygame.game.army;
 
 /**
  * Linh gia
+ * 
  * @author truongps
  */
 public class Geezer extends Soldier {
-    public static final int COST = 30;
+	public static final int COST = 12;
 
-    public Geezer() {
-        typeID = Soldier.TYPE_GEEZER;
-        name = "Lính già";
-        cost = 30;
-        hp = 60;
-        damageMax = 20;
-        damageMin = 12;
-        mana = 54;
-        costMove = 6;
-        costAttack = 24;
-        rangeAttack = 4;
-        rangeView = 5;
-    }
+	public Geezer() {
+		typeID = Soldier.TYPE_GEEZER;
+		name = "Lính già-DamageRandom";
+		hp = 50;
+		mana = 54;
+		damageMin = 1;
+		damageMax = 100;
+		rangeView = 5;
+		costMove = 8;
+		rangeAttack = 4;
+		costAttack = 43;
+		cost = 12;
+	}
 }

@@ -6,22 +6,23 @@ package mygame.game.army;
 
 /**
  * Linh ban tia.
+ * 
  * @author truongps
  */
 public class Scout extends Soldier {
-    public static final int COST = 30;
+	public static final int COST = 12;
 
-    public Scout() {
-        typeID = Soldier.TYPE_SCOUT;
-        name = "Lính bắn tỉa";
-        cost = 30;
-        hp = 60;
-        damageMax = 20;
-        damageMin = 12;
-        mana = 54;
-        costMove = 6;
-        costAttack = 24;
-        rangeAttack = 4;
-        rangeView = 5;
-    }
+	public Scout() {
+		typeID = Soldier.TYPE_SCOUT;
+		name = "Lính bắn tỉa";
+		hp = 40;
+		mana = 54;
+		damageMin = 1;
+		damageMax = 50;
+		rangeView = 8;
+		costMove = 10;
+		rangeAttack = 7;
+		costAttack = 40;
+		cost = 12;
+	}
 }

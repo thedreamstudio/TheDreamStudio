@@ -45,18 +45,19 @@ public class BoardAdapter extends BaseAdapter {
 			gridView.setTag(viewHolder);
 		}
 		ViewHolder holder = (ViewHolder) gridView.getTag();
-		holder.text.setText("Board" + mobileValues[position].id);
+		holder.text.setText(context.getString(R.string.board)
+				+ mobileValues[position].id);
 		if (mobileValues[position].nPlayer > 0) {
 			holder.per1.setColorFilter(Color.TRANSPARENT);
-		}else{
+		} else {
 			holder.per1.setColorFilter(Color.BLACK);
 		}
 		if (mobileValues[position].nPlayer > 1) {
 			holder.per2.setColorFilter(Color.TRANSPARENT);
-		}else{
+		} else {
 			holder.per2.setColorFilter(Color.BLACK);
 		}
-		
+
 		return gridView;
 	}
 

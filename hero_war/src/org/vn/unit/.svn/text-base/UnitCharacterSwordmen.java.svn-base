@@ -7,7 +7,6 @@ import org.vn.gl.DrawableMesh;
 import org.vn.gl.GameInfo;
 import org.vn.gl.Priority;
 import org.vn.gl.TextureLibrary;
-import org.vn.gl.Utils;
 import org.vn.gl.Vector2;
 import org.vn.herowar.R;
 import org.vn.model.AttackMessage;
@@ -28,10 +27,6 @@ public class UnitCharacterSwordmen extends UnitCharacterMove {
 	private DrawableBitmap mDark2;
 	private DrawableBitmap mDark2Red;
 	private Vector2 posDraw = new Vector2();
-	/**
-	 * Thong so
-	 */
-	final public EnemyType mEnemyType;
 	public float mMaxHp;
 	public int mCurrentHp;
 	private AnimationCharacter mAnimationCharacter;
@@ -46,14 +41,13 @@ public class UnitCharacterSwordmen extends UnitCharacterMove {
 	public UnitCharacterSwordmen(TextureLibrary textureLibrary, Tile tileStart,
 			boolean pIsMyTeam, EnemyType pEnemyType, int pIdEnemy) {
 		super(tileStart, pIsMyTeam, pEnemyType.rangeview,
-				pEnemyType.rangeattack, pIdEnemy);
+				pEnemyType.rangeattack, pIdEnemy, pEnemyType);
 		if (isMyTeam) {
 			sSystemRegistry.characterManager.arrayCharactersMyTeam.add(this);
 		} else {
 			sSystemRegistry.characterManager.arrayCharactersOtherTeam.add(this);
 		}
 		// sSystemRegistry.characterManager.mapEnemyInGame.put(pIdEnemy, this);
-		mEnemyType = pEnemyType;
 		mMaxHp = mEnemyType.hp;
 		mCurrentHp = mEnemyType.hp;
 		mMaxMana = mEnemyType.mana;
@@ -244,32 +238,25 @@ public class UnitCharacterSwordmen extends UnitCharacterMove {
 	@Override
 	protected void outputAttackOrtherCharacter(UnitCharacter characterBeAttack) {
 		// BaseObject.sSystemRegistry.mapTiles.setTileForcus(mTileTaget);
-		if (GameInfo.isOnline) {
-			sSystemRegistry.mGS.ATTACH(idEnemy, characterBeAttack.idEnemy);
-		} else {
-			ActionServerToClient actionServerToClient = new ActionServerToClient();
-			AttackMessage attackMessage = new AttackMessage();
-			attackMessage.idBeAttacker = characterBeAttack.idEnemy;
-			UnitCharacterSwordmen characterSwordmenBeAttack = (UnitCharacterSwordmen) characterBeAttack;
-			attackMessage.hpIdBeAttack = characterSwordmenBeAttack.mCurrentHp
-					- mEnemyType.damageMin
-					- Utils.RANDOM.nextInt(mEnemyType.damageMax
-							- mEnemyType.damageMin);
-			processAttackInputFromServer(actionServerToClient, attackMessage);
-		}
+		// Fai bat co` nay len tranh tinh trang clinet touck nhieu lan
+		isProcessFire = true;
+		sSystemRegistry.mGS.ATTACH(idEnemy, characterBeAttack.idEnemy);
 	}
 
 	@Override
 	protected void outputMoveFromTileToTile(Tile a, Tile b, int countMove) {
-		if (GameInfo.isOnline) {
-			sSystemRegistry.mGS.MOVE_ARMY(idEnemy, b.xTile, b.yTile);
-		} else {
-			ActionServerToClient actionServerToClient = new ActionServerToClient();
-			MoveMessage moveMessage = new MoveMessage();
-			moveMessage.idMove = idEnemy;
-			moveMessage.xTypeMoveNext = b.xTile;
-			moveMessage.yTypeMoveNext = b.yTile;
-			processMoveInputFromServer(actionServerToClient, moveMessage);
+		// Fai bat co` nay len tranh tinh trang clinet touck nhieu lan
+		isProcessMove = true;
+		sSystemRegistry.mGS.MOVE_ARMY(idEnemy, b.xTile, b.yTile);
+	}
+
+	private ActionServerToClient actionMove = null;
+
+	@Override
+	protected void doneProcessMove() {
+		super.doneProcessMove();
+		if (actionMove != null) {
+			actionMove.done();
 		}
 	}
 
@@ -278,7 +265,7 @@ public class UnitCharacterSwordmen extends UnitCharacterMove {
 			MoveMessage moveMessage) {
 		mCurrentMana -= controlMoveTo(moveMessage.xTypeMoveNext,
 				moveMessage.yTypeMoveNext) * mEnemyType.movecost;
-		pActionServerToClientCurrent.done();
+		actionMove = pActionServerToClientCurrent;
 	}
 
 	public void processAttackInputFromServer(
@@ -452,23 +439,50 @@ public class UnitCharacterSwordmen extends UnitCharacterMove {
 
 		for (UnitCharacterSwordmen character : sSystemRegistry.characterManager.arrayCharactersMyTeam) {
 			Tile tile_forcus = character.getTileTaget();
-			int xTileOffSet = tile_forcus.xTile - mTileTaget.xTile;
-			int yTileOffset = tile_forcus.yTile - mTileTaget.yTile;
-			int asbX = Math.abs(xTileOffSet);
-			int asbY = Math.abs(yTileOffset);
 			int rangerCheck = character.mEnemyType.rangeview;
-			if (asbX <= rangerCheck && asbY <= rangerCheck) {
-				if (xTileOffSet * yTileOffset >= 0) {
-					// neu cung dau
+			int x1 = tile_forcus.xTile;
+			int y1 = tile_forcus.yTile;
+			int x2 = mTileTaget.xTile;
+			int y2 = mTileTaget.yTile;
+
+			if (isInSight(x1, y1, x2, y2, rangerCheck)) {
+				return true;
+			}
+			// int xTileOffSet = x1 - x2;
+			// int yTileOffset = y1 - y2;
+			// int asbX = Math.abs(xTileOffSet);
+			// int asbY = Math.abs(yTileOffset);
+			// if (asbX <= rangerCheck && asbY <= rangerCheck) {
+			// if (xTileOffSet * yTileOffset >= 0) {
+			// // neu cung dau
+			// return true;
+			// } else {
+			// if (asbX + asbY <= rangerCheck) {
+			// return true;
+			// }
+			// }
+			// }
+		}
+
+		return false;
+	}
+
+	public static boolean isInSight(int x1, int y1, int x2, int y2,
+			int rangerCheck) {
+		int xTileOffSet = x1 - x2;
+		int yTileOffset = y1 - y2;
+		int asbX = Math.abs(xTileOffSet);
+		int asbY = Math.abs(yTileOffset);
+		if (asbX <= rangerCheck && asbY <= rangerCheck) {
+			if (xTileOffSet * yTileOffset >= 0) {
+				// neu cung dau
+				return true;
+			} else {
+				if (asbX + asbY <= rangerCheck) {
 					return true;
-				} else {
-					if (asbX + asbY <= rangerCheck) {
-						return true;
-					}
 				}
 			}
 		}
-
 		return false;
 	}
 }

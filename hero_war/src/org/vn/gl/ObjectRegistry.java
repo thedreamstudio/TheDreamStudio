@@ -8,6 +8,7 @@ import org.vn.unit.InputGameInterface;
 import org.vn.unit.LogicMap;
 import org.vn.unit.MapTiles;
 import org.vn.unit.NumberDrawable;
+import org.vn.unit.SoundManager;
 import org.vn.unit.UnitEffects;
 import org.vn.unit.UnitSreen;
 
@@ -35,6 +36,7 @@ public class ObjectRegistry extends BaseObject {
 	public SoundSystem soundSystem;
 	public MultiTouchFilter2 multiTouchFilter2;
 	public NumberDrawable numberDrawableTime;
+	public NumberDrawable numberDrawableTimeInTurn;
 	public NumberDrawable numberDrawableCostInDialogAddEnemy;
 	public NumberDrawable numberDrawableTakeDame;
 	public UnitEffects unitEffects;
@@ -44,6 +46,7 @@ public class ObjectRegistry extends BaseObject {
 	public GlobalService mGS = GlobalService.getInstance();
 	public UnitSreen unitSreen;
 	public DialogAddEnemy dialogAddEnemy;
+	public SoundManager soundManager;
 
 	public ObjectRegistry() {
 		super();

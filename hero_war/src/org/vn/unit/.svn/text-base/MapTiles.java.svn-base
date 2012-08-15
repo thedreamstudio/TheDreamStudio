@@ -141,15 +141,20 @@ public class MapTiles extends BaseObject {
 			return;
 		}
 		if (mTileForcus != null && mTileForcus.getCharacterTaget() != null
+				&& !mTileForcus.getCharacterTaget().isDeath()
 				&& tileForcus != null) {
 			switch (mTileForcus.getCharacterTaget().onClick(tileForcus)) {
 			case 1:// Move
+				BaseObject.sSystemRegistry.soundManager.playSeleted(mTileForcus
+						.getCharacterTaget().mEnemyType);
 				mTileForcus = tileForcus;
 				sSystemRegistry.unitEffects.addEffectClick(tileForcus.x,
 						mTileForcus.y);
 				BaseObject.sSystemRegistry.dialogAddEnemy.setTileSeleted(null);
 				break;
 			case 2:// Attack
+				BaseObject.sSystemRegistry.soundManager.playShoot(mTileForcus
+						.getCharacterTaget().mEnemyType);
 				BaseObject.sSystemRegistry.dialogAddEnemy.setTileSeleted(null);
 				break;
 			case 0:// Notthing
@@ -175,6 +180,8 @@ public class MapTiles extends BaseObject {
 			} else {
 				mDrawableTile.setTexture(selectOtherTeam);
 			}
+			BaseObject.sSystemRegistry.soundManager.playSeleted(mTileForcus
+					.getCharacterTaget().mEnemyType);
 		}
 	}
 

@@ -9,7 +9,8 @@ public class CharacterManager extends BaseObject {
 	public ArrayList<UnitCharacterSwordmen> arrayCharactersMyTeam = new ArrayList<UnitCharacterSwordmen>();
 	public ArrayList<UnitCharacterSwordmen> arrayCharactersOtherTeam = new ArrayList<UnitCharacterSwordmen>();
 	public HashMap<Integer, UnitCharacterSwordmen> mapEnemyInGame = new HashMap<Integer, UnitCharacterSwordmen>();
-	
+	public UnitCharacterSwordmen myKing;
+
 	@Override
 	public void update(float timeDelta, BaseObject parent) {
 		for (UnitCharacter character : arrayCharactersMyTeam) {

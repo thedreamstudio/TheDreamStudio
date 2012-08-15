@@ -38,7 +38,7 @@ public class NumberDrawable {
 				mDrawableNumber[i].setColorExpress(r, g, b, a);
 			}
 		}
-		width = _width;
+		width = _width * 7 / 10;
 		height = _height;
 	}
 
@@ -65,7 +65,6 @@ public class NumberDrawable {
 	// x = x + (width + offset);
 	// }
 	// }
-
 
 	public void drawNumberWithAlpha(float x, float y, int number, float alpha,
 			boolean cameraRelative, boolean theHienDau, int priority) {

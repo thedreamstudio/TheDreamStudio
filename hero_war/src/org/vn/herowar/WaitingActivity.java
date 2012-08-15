@@ -6,6 +6,7 @@ import org.vn.cache.CurrentGameInfo;
 import org.vn.cache.CurrentUserInfo;
 import org.vn.constant.CommandClientToServer;
 import org.vn.custom.ImageAdapter;
+import org.vn.gl.Utils;
 import org.vn.model.EnemyType;
 import org.vn.model.PlayerModel;
 import org.vn.network.GlobalMessageHandler.LightWeightMessage;
@@ -22,7 +23,6 @@ import android.text.TextWatcher;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
-import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -37,8 +37,6 @@ public class WaitingActivity extends CoreActiity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
-		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-				WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		setContentView(R.layout.waiting);
 		mListViewPlayerInBoard = (ListView) findViewById(R.id.listViewPlayerInBoard);
 		mBtChat = (Button) findViewById(R.id.btChatWaiting);
@@ -92,17 +90,17 @@ public class WaitingActivity extends CoreActiity {
 					mGS.SET_MAP(mCurrentGameInfo.listMaps.get(0).mapId);
 					showProgressDialog();
 				}
-				mBtReady.setEnabled(false);
+				mBtReady.setVisibility(View.GONE);
 			}
 		});
 		if (CurrentUserInfo.mPlayerInfo.ID != mCurrentGameInfo.ownerId) {
-			mBtReady.setVisibility(View.INVISIBLE);
+			mBtReady.setVisibility(View.GONE);
 		}
 
 		{
 			ArrayList<String> mList_content_chat = new ArrayList<String>();
 			mAdapterChat = new ArrayAdapter<String>(this,
-					android.R.layout.simple_list_item_1, mList_content_chat);
+					R.layout.array_string, mList_content_chat);
 			mListviewChatInWaiting.setAdapter(mAdapterChat);
 			mAdapterChat.setNotifyOnChange(true);
 		}
@@ -151,7 +149,7 @@ public class WaitingActivity extends CoreActiity {
 		// GET_ARMY_SHOP
 		if (mCurrentGameInfo.listEnemytype.size() == 0) {
 			showProgressDialog();
-			mBtReady.setEnabled(false);
+			mBtReady.setVisibility(View.GONE);
 			mGS.GET_ARMY_SHOP();
 		} else {
 			dismissProgressDialog();
@@ -167,14 +165,14 @@ public class WaitingActivity extends CoreActiity {
 					}
 				} else if (mCurrentGameInfo.listMaps.size() == 0) {
 					showProgressDialog();
-					mBtReady.setEnabled(false);
+					mBtReady.setVisibility(View.GONE);
 					showProgressDialog();
 					mGS.GET_ALL_MAP();
 				} else {
-					mBtReady.setEnabled(true);
+					mBtReady.setVisibility(View.VISIBLE);
 				}
 			} else {
-				mBtReady.setEnabled(false);
+				mBtReady.setVisibility(View.GONE);
 				if (mCurrentGameInfo.mMapSelected != null) {
 					if (mCurrentGameInfo.mMapSelected.mapType == null) {
 						showProgressDialog();
@@ -230,7 +228,7 @@ public class WaitingActivity extends CoreActiity {
 
 				@Override
 				public void run() {
-					mBtReady.setEnabled(true);
+					mBtReady.setVisibility(View.VISIBLE);
 				}
 			});
 
@@ -307,7 +305,7 @@ public class WaitingActivity extends CoreActiity {
 				if (CurrentUserInfo.mPlayerInfo.ID == mCurrentGameInfo.ownerId) {
 					mBtReady.setVisibility(View.VISIBLE);
 				} else {
-					mBtReady.setVisibility(View.INVISIBLE);
+					mBtReady.setVisibility(View.GONE);
 				}
 			}
 		});
@@ -398,5 +396,10 @@ public class WaitingActivity extends CoreActiity {
 				finish();
 			}
 		});
+	}
+
+	@Override
+	protected int getRawBackground() {
+		return R.raw.out_game1 + Utils.RANDOM.nextInt(4);
 	}
 }

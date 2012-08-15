@@ -1,6 +1,6 @@
 package org.vn.gl;
 
-import android.content.Context;
+import org.vn.herowar.CoreActiity;
 
 /**
  * Contains global (but typically constant) parameters about the current
@@ -9,7 +9,7 @@ import android.content.Context;
 public class ContextParameters extends BaseObject {
 	public int viewWidth;
 	public int viewHeight;
-	public Context context;
+	public CoreActiity context;
 	public int gameWidth;
 	public int gameHeight;
 	public float viewScaleX;

@@ -9,6 +9,9 @@ import org.vn.gl.DeviceInfo;
 import org.vn.gl.GLSurfaceView;
 import org.vn.gl.Game;
 import org.vn.gl.GameInfo;
+import org.vn.gl.Utils;
+import org.vn.model.NextTurnMessage;
+import org.vn.model.PlayerModel;
 import org.vn.network.GlobalMessageHandler.LightWeightMessage;
 import org.vn.unit.ActionList;
 import org.vn.unit.ActionServerToClient.ActionType;
@@ -47,11 +50,11 @@ public class HeroWarActivity extends CoreActiity {
 	public static final int DISCONECT = 1;
 	public static final int BOARDLISTACTIVITY = 2;
 	public static final int RESULT = 3;
+	public static final int WAITINGACTIVITY = 4;
 	private GLSurfaceView mGLSurfaceView;
 	private Game mGame;
 	private long mLastTouchTime = 0L;
 
-	private boolean mForeground;
 	private OnEndgameListener onEndgameListener;
 
 	private MediaPlayer mMediaPlayer;
@@ -190,26 +193,33 @@ public class HeroWarActivity extends CoreActiity {
 					runOnUiThread(new Runnable() {
 						public void run() {
 							Intent intent = new Intent(HeroWarActivity.this,
-									WaitingActivity.class);
+									ResuftActivity.class);
 							startActivity(intent);
 						}
 					});
 					break;
 				case BOARDLISTACTIVITY:
 					// mGS.EXIT_BOARD(CurrentGameInfo.getIntance().boardId);
-					if (GameInfo.isOnline) {
-						mGS.LEAVE_BOARD();
-						runOnUiThread(new Runnable() {
-							public void run() {
-								Intent intent = new Intent(
-										HeroWarActivity.this,
-										BoardActivity.class);
-								startActivity(intent);
-							}
-						});
-						break;
-					}
+					mGS.LEAVE_BOARD();
+					runOnUiThread(new Runnable() {
+						public void run() {
+							Intent intent = new Intent(HeroWarActivity.this,
+									BoardActivity.class);
+							startActivity(intent);
+						}
+					});
+					break;
+				case WAITINGACTIVITY:
+					runOnUiThread(new Runnable() {
+						public void run() {
+							Intent intent = new Intent(HeroWarActivity.this,
+									WaitingActivity.class);
+							startActivity(intent);
+						}
+					});
+					break;
 				}
+
 				mediaStop();
 				if (mGame != null) {
 					mGame.stop();
@@ -238,6 +248,8 @@ public class HeroWarActivity extends CoreActiity {
 
 		BaseObject.sSystemRegistry.inputGameInterface
 				.setOnSelectedItemListener(onEndgameListener);
+
+		showToast(getString(R.string.infor_before_the_game));
 	}
 
 	private void configGame() {
@@ -255,7 +267,6 @@ public class HeroWarActivity extends CoreActiity {
 			if (mGLSurfaceView != null)
 				mGLSurfaceView.onPause();
 			// hack!
-			mForeground = false;
 			if (mMediaPlayer != null) {
 				mMediaPlayer.pause();
 			}
@@ -269,7 +280,6 @@ public class HeroWarActivity extends CoreActiity {
 	protected void onResume() {
 		super.onResume();
 		try {
-			mForeground = true;
 			getWindow()
 					.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 			// Preferences may have changed while we were paused.
@@ -398,25 +408,18 @@ public class HeroWarActivity extends CoreActiity {
 			mLayoutChat.setVisibility(View.GONE);
 			BaseObject.sSystemRegistry.inputGameInterface.turnOffChat();
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
 		}
 	}
 
 	public void chatAll(String content) {
 		if (content.length() > 0) {
-			if (GameInfo.isOnline) {
-				mGS.CHAT_BOARD(content);
-			} else {
-				if (mGame.isBootstrapComplete() && !mGame.isPaused()) {
-					BaseObject.sSystemRegistry.unitSreen
-							.inputChatRight_Bot(content);
-				}
-			}
+			mGS.CHAT_BOARD(content);
 		}
 	}
 
 	@Override
-	public void onMessageReceived(LightWeightMessage msg) {
+	public void onMessageReceived(final LightWeightMessage msg) {
 		switch (msg.command) {
 		case CommandClientToServer.LOST_CONNECTION:
 			onDisconnect();
@@ -432,12 +435,24 @@ public class HeroWarActivity extends CoreActiity {
 			}
 			break;
 		case CommandClientToServer.START_GAME:
+			showToast(getString(R.string.The_game_has_start));
 			mActionList.push(ActionType.start_game, msg.obj);
 			break;
 		case CommandClientToServer.READY:
-		case CommandClientToServer.SOMEONE_JOIN_BOARD:
-		case CommandClientToServer.SOMEONE_LEAVE_BOARD:
+			showToast(getString(R.string.ready_in_game, (String) msg.obj));
 			updateStatusBoard();
+			break;
+		case CommandClientToServer.SOMEONE_JOIN_BOARD:
+			showToast(getString(R.string.join_in_game, (String) msg.obj));
+			updateStatusBoard();
+			break;
+		case CommandClientToServer.SOMEONE_LEAVE_BOARD:
+			showToast(getString(R.string.leave_in_game, (String) msg.obj));
+			updateStatusBoard();
+			if (msg.arg1 == 1) {
+				// Go to waiting
+				endGame(WAITINGACTIVITY);
+			}
 			break;
 		case CommandClientToServer.MOVE_ARMY:
 			// MoveMessage moveMessage = (MoveMessage) msg.obj;
@@ -452,6 +467,29 @@ public class HeroWarActivity extends CoreActiity {
 			}
 			break;
 		case CommandClientToServer.NEXT_TURN:
+			runOnUiThread(new Runnable() {
+
+				@Override
+				public void run() {
+					try {
+						NextTurnMessage nextTurnMessage = (NextTurnMessage) msg.obj;
+						for (PlayerModel playerModel : mCurrentGameInfo.mListPlayerInGame) {
+							if (nextTurnMessage.idPlayerInTurnNext == playerModel.ID) {
+								if (playerModel.ID == CurrentUserInfo.mPlayerInfo.ID) {
+									showToast(getString(R.string.next_you_turn));
+								} else {
+									showToast(getString(R.string.next_turn,
+											playerModel.name));
+								}
+								break;
+							}
+						}
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
+			});
+
 			mActionList.push(ActionType.next_turn, msg.obj);
 			break;
 		case CommandClientToServer.CHAT_BOARD:
@@ -520,5 +558,10 @@ public class HeroWarActivity extends CoreActiity {
 								}).show();
 			}
 		});
+	}
+
+	@Override
+	protected int getRawBackground() {
+		return R.raw.ingame1 + Utils.RANDOM.nextInt(3);
 	}
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import org.vn.model.EnemyType;
 import org.vn.model.Map;
 import org.vn.model.PlayerModel;
+import org.vn.model.Result;
 
 /** Save all information of game */
 public class CurrentGameInfo {
@@ -37,6 +38,8 @@ public class CurrentGameInfo {
 	// */
 	// public ArrayList<Enemy> listIdEnemyInMap = new ArrayList<Enemy>();
 
+	public Result result;
+	
 	public Map mMapSelected = null;
 	public int xTileKing;
 	public int yTileKing;
@@ -46,7 +49,11 @@ public class CurrentGameInfo {
 	public void reset() {
 		mListPlayerInGame.clear();
 		mMapSelected = null;
-		// listIdEnemyInMap.clear();
+		isInGame = false;
+	}
+
+	public void endGame() {
+		mMapSelected = null;
 		isInGame = false;
 	}
 

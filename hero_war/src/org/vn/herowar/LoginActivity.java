@@ -1,5 +1,6 @@
 package org.vn.herowar;
 
+import org.vn.cache.CurrentGameInfo;
 import org.vn.constant.CommandClientToServer;
 import org.vn.constant.Constants;
 import org.vn.gl.Utils;
@@ -22,7 +23,10 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TableLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginActivity extends CoreActiity {
@@ -36,14 +40,29 @@ public class LoginActivity extends CoreActiity {
 	EditText pass_re;
 	EditText pass_re2;
 	EditText btIp;
+	EditText btPhone_Number_re;
+	TextView useName_tv;
+	TextView pass_tv;
+	TextView useName_re_tv;
+	TextView pass_re_tv;
+	TextView pass_re2_tv;
+	TextView btIp_tv;
+	TextView btPhone_Number_re_tv;
+	TextView ngon_ngu_tv;
+	Button btLogin;
+	Button btRegiter;
 	SharedPreferences mCachePreferences;
 	String sUsername;
 	String sPass;
 	String sIp;
+	boolean eng;
+	ImageView ngon_ngu;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		isLoginScreen = true;
+		CurrentGameInfo.getIntance().listEnemytype.clear();
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -54,21 +73,41 @@ public class LoginActivity extends CoreActiity {
 		useName_re = (EditText) findViewById(R.id.regiterUserName);
 		pass_re = (EditText) findViewById(R.id.regiterPass);
 		pass_re2 = (EditText) findViewById(R.id.regiterPass2);
-		final EditText btPhone_Number_re = (EditText) findViewById(R.id.regiterPhone);
+		btPhone_Number_re = (EditText) findViewById(R.id.regiterPhone);
+
+		btIp_tv = (TextView) findViewById(R.id.editIp_tv);
+		useName_tv = (TextView) findViewById(R.id.editTextUserNameTv);
+		pass_tv = (TextView) findViewById(R.id.editTextPassTv);
+		useName_re_tv = (TextView) findViewById(R.id.regiterUserNameTv);
+		pass_re_tv = (TextView) findViewById(R.id.regiterPassTv);
+		pass_re2_tv = (TextView) findViewById(R.id.regiterPass2Tv);
+		ngon_ngu_tv = (TextView) findViewById(R.id.ngon_nguTv);
+		btPhone_Number_re_tv = (TextView) findViewById(R.id.regiterPhoneTv);
+
+		ngon_ngu = (ImageView) findViewById(R.id.ngon_ngu);
+		LinearLayout ngon_ngu_lay_out = (LinearLayout) findViewById(R.id.ngon_ngu_layout);
 		final View bt_facebook = (View) findViewById(R.id.bt_facebook);
 		final View bt_call = (View) findViewById(R.id.bt_call);
 		tableLayoutRegiter = (TableLayout) findViewById(R.id.tableRe);
 		tableLayoutLogin = (TableLayout) findViewById(R.id.tableLogin);
+
+		View ip_layout = (View) findViewById(R.id.editIp_layout);
+
 		tableLayoutTaget = tableLayoutLogin;
 		tableLayoutRegiter.setVisibility(View.GONE);
 
-		final Button btLogin = (Button) findViewById(R.id.buttonLogin);
-		final Button btRegiter = (Button) findViewById(R.id.buttonRegiter);
+		btLogin = (Button) findViewById(R.id.buttonLogin);
+		btRegiter = (Button) findViewById(R.id.buttonRegiter);
 		mCachePreferences = getSharedPreferences(Constants.CACHE_PREFERENCES,
 				MODE_PRIVATE);
 		sIp = mCachePreferences.getString(Constants.CACHE_IP, "localhost");
 		btIp.setText(sIp);
-
+		if (true) {
+			sIp = "112.78.1.202";
+			// sIp = "192.168.0.100";
+			btIp.setText(sIp);
+			ip_layout.setVisibility(View.GONE);
+		}
 		sUsername = mCachePreferences.getString(Constants.CACHE_USER_NAME,
 				"test1");
 		useName.setText(sUsername);
@@ -134,6 +173,19 @@ public class LoginActivity extends CoreActiity {
 			public void onClick(View arg0) {
 				showProgressDialog();
 				Utils.callSupport(LoginActivity.this, "01218816208");
+			}
+		});
+		eng = mCachePreferences.getBoolean(Constants.CACHE_Lang, true);
+		updateNgonNgu();
+		ngon_ngu_lay_out.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				eng = eng == false;
+				Editor editor = mCachePreferences.edit();
+				editor.putBoolean(Constants.CACHE_Lang, eng);
+				editor.commit();
+				updateNgonNgu();
 			}
 		});
 
@@ -204,6 +256,8 @@ public class LoginActivity extends CoreActiity {
 					}
 					if (mGS.isConnected()) {
 						// mGS.LOGIN_TRIAL(username);
+						mGS.GET_CLIENT_INFO("Android", "##", "0.1",
+								eng ? (byte) 1 : (byte) 0);
 						mGS.SYS_LOGIN(username, pass);
 					} else {
 						runOnUiThread(new Runnable() {
@@ -370,9 +424,6 @@ public class LoginActivity extends CoreActiity {
 								@Override
 								public void onClick(DialogInterface arg0,
 										int arg1) {
-									if (mGS.isConnected()) {
-										mGS.close();
-									}
 									finish();
 								}
 							}).setNegativeButton(R.string.dialog_cancel, null)
@@ -392,5 +443,53 @@ public class LoginActivity extends CoreActiity {
 	protected void onResume() {
 		super.onResume();
 		dismissProgressDialog();
+	}
+
+	private void updateNgonNgu() {
+		if (eng) {
+			ngon_ngu.setBackgroundResource(R.drawable.en);
+			Utils.setLocaleEng(this);
+			ngon_ngu_tv.setText(R.string.Eng);
+		} else {
+			ngon_ngu.setBackgroundResource(R.drawable.vn);
+			Utils.setLocaleVn(this);
+			ngon_ngu_tv.setText(R.string.Vn);
+		}
+
+		btIp.setHint(R.string.Ip);// @string/Ip
+		useName.setHint(R.string.login_userName);// @string/login_userName
+		pass.setHint(R.string.login_pass);// @string/login_pass
+		useName_re.setHint(R.string.login_userName);// @string/login_userName
+		pass_re.setHint(R.string.login_pass);// @string/login_pass
+		pass_re2.setHint(R.string.login_re_pass);// @string/login_re_pass
+		btPhone_Number_re.setHint(R.string.Phone_Number);// @string/Phone_Number
+
+		btIp_tv.setText(R.string.Ip);// @string/Ip
+		useName_tv.setText(R.string.login_userName);// @string/login_userName
+		pass_tv.setText(R.string.login_pass);// @string/login_pass
+		useName_re_tv.setText(R.string.login_userName);// @string/login_userName
+		pass_re_tv.setText(R.string.login_pass);// @string/login_pass
+		pass_re2_tv.setText(R.string.login_re_pass);// @string/login_re_pass
+		btPhone_Number_re_tv.setText(R.string.Phone_Number);// @string/Phone_Number
+		btLogin.setText(R.string.Login);
+		btRegiter.setText(R.string.Regiter);
+		if (mGS.isConnected()) {
+			mGS.GET_CLIENT_INFO("Android", "##",
+					getString(R.string.version_client), eng ? (byte) 1
+							: (byte) 0);
+		}
+	}
+
+	@Override
+	protected int getRawBackground() {
+		return R.raw.out_game1 + Utils.RANDOM.nextInt(4);
+	}
+
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		if (mGS.isConnected()) {
+			mGS.close();
+		}
 	}
 }

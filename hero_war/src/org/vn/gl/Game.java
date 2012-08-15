@@ -3,6 +3,7 @@ package org.vn.gl;
 import org.vn.cache.CurrentGameInfo;
 import org.vn.cache.CurrentUserInfo;
 import org.vn.gl.game.CameraSystem;
+import org.vn.herowar.CoreActiity;
 import org.vn.herowar.R;
 import org.vn.model.EnemyType;
 import org.vn.unit.CharacterManager;
@@ -11,6 +12,7 @@ import org.vn.unit.InputGameInterface;
 import org.vn.unit.LogicMap;
 import org.vn.unit.MapTiles;
 import org.vn.unit.NumberDrawable;
+import org.vn.unit.SoundManager;
 import org.vn.unit.Tile;
 import org.vn.unit.UnitCharacter;
 import org.vn.unit.UnitCharacterSwordmen;
@@ -59,7 +61,7 @@ public class Game extends AllocationGuard {
 	 * 
 	 * @param context
 	 */
-	public void bootstrap(Context context, int viewWidth, int viewHeight,
+	public void bootstrap(CoreActiity context, int viewWidth, int viewHeight,
 			int gameWidth, int gameHeight) throws Exception {
 		if (!mBootstrapComplete) {
 
@@ -78,6 +80,7 @@ public class Game extends AllocationGuard {
 			BaseObject.sSystemRegistry.multiTouchFilter2 = mTouchFilter2;
 
 			BaseObject.sSystemRegistry.soundSystem = new SoundSystem();
+			BaseObject.sSystemRegistry.soundManager = new SoundManager();
 
 			// Long-term textures persist between levels.
 			TextureLibrary longTermTextureLibrary = new TextureLibrary();
@@ -112,13 +115,9 @@ public class Game extends AllocationGuard {
 		final CurrentGameInfo mCurrentGameInfo = CurrentGameInfo.getIntance();
 		int widthtTileMap;
 		int heightTileMap;
-		if (GameInfo.isOnline) {
-			widthtTileMap = mCurrentGameInfo.mMapSelected.mapType.row;
-			heightTileMap = mCurrentGameInfo.mMapSelected.mapType.column;
-		} else {
-			widthtTileMap = 24;
-			heightTileMap = 24;
-		}
+		widthtTileMap = mCurrentGameInfo.mMapSelected.mapType.row;
+		heightTileMap = mCurrentGameInfo.mMapSelected.mapType.column;
+
 		float offset = GameInfo.offset;
 		float offsetMap = GameInfo.offsetMap;
 		float xMap = -MapTiles.getPosXUnit(0, heightTileMap, offset);
@@ -138,23 +137,41 @@ public class Game extends AllocationGuard {
 					longTermTextureLibrary) {
 				@Override
 				public void addEnemyAt(Tile tile, EnemyType enemyType) {
-					if (mMoney - enemyType.cost > 0) {
-						if (!BaseObject.sSystemRegistry.logicMap.mArrayMap[tile.yTile][tile.xTile]) {
-							UnitCharacter character = new UnitCharacterSwordmen(
-									longTermTextureLibrary,
-									BaseObject.sSystemRegistry.mapTiles.arrayMap[tile.yTile][tile.xTile],
-									true, enemyType, -1);
-							BaseObject.sSystemRegistry.unitSreen
-									.setCharacterFocus(character);
-							mMoney -= enemyType.cost;
-							BaseObject.sSystemRegistry.unitEffects
-									.addEffectSoBayLen(
-											BaseObject.sSystemRegistry.numberDrawableTakeDame,
-											-enemyType.cost, 150, 465, false,
-											Priority.InfoCharacter2);
+					UnitCharacterSwordmen myKing = BaseObject.sSystemRegistry.characterManager.myKing;
+					if (!UnitCharacterSwordmen
+							.isInSight(myKing.mTileTaget.xTile,
+									myKing.mTileTaget.yTile, tile.xTile,
+									tile.yTile, myKing.mEnemyType.rangeview)) {
+						BaseObject.sSystemRegistry.contextParameters.context
+								.showToast(BaseObject.sSystemRegistry.contextParameters.context
+										.getString(R.string.dat_linh_trong_vung_sang));
+					} else {
+						if (mMoney - enemyType.cost > 0) {
+							if (!BaseObject.sSystemRegistry.logicMap.mArrayMap[tile.yTile][tile.xTile]) {
+								UnitCharacter character = new UnitCharacterSwordmen(
+										longTermTextureLibrary,
+										BaseObject.sSystemRegistry.mapTiles.arrayMap[tile.yTile][tile.xTile],
+										true, enemyType, -1);
+								BaseObject.sSystemRegistry.unitSreen
+										.setCharacterFocus(character);
+								mMoney -= enemyType.cost;
+								BaseObject.sSystemRegistry.unitEffects
+										.addEffectSoBayLen(
+												BaseObject.sSystemRegistry.numberDrawableTakeDame,
+												-enemyType.cost, 150, 465,
+												false, Priority.InfoCharacter2);
+								BaseObject.sSystemRegistry.soundManager
+										.playSoundCoin();
+								BaseObject.sSystemRegistry.soundManager
+										.playSeleted(enemyType);
+							} else {
+								DebugLog.e("DUC",
+										"Khoi tao character tai 1 vi tri ko di  chuyen dc");
+							}
 						} else {
-							DebugLog.e("DUC",
-									"Khoi tao character tai 1 vi tri ko di  chuyen dc");
+							BaseObject.sSystemRegistry.contextParameters.context
+									.showToast(BaseObject.sSystemRegistry.contextParameters.context
+											.getString(R.string.Dont_enought_money));
 						}
 					}
 				}
@@ -183,16 +200,10 @@ public class Game extends AllocationGuard {
 			gameRoot.add(BaseObject.sSystemRegistry.mapTiles);
 
 			// Khoi tao viec cho phep di hay khong tren logic map
-			if (GameInfo.isOnline) {
-				BaseObject.sSystemRegistry.logicMap = new LogicMap(
-						widthtTileMap, heightTileMap,
-						mCurrentGameInfo.mMapSelected.mapType.mapType,
-						R.drawable.back_ground_alpha);
-			} else {
-				BaseObject.sSystemRegistry.logicMap = new LogicMap(
-						widthtTileMap, heightTileMap, null,
-						R.drawable.back_ground_alpha);
-			}
+			BaseObject.sSystemRegistry.logicMap = new LogicMap(widthtTileMap,
+					heightTileMap,
+					mCurrentGameInfo.mMapSelected.mapType.mapType,
+					R.drawable.back_ground_alpha);
 		}
 		// Effect
 		{
@@ -204,62 +215,40 @@ public class Game extends AllocationGuard {
 		BaseObject.sSystemRegistry.characterManager = new CharacterManager();
 		gameRoot.add(BaseObject.sSystemRegistry.characterManager);
 
-		if (GameInfo.isOnline) {
-			// for (Enemy enemy : mCurrentGameInfo.listIdEnemyInMap) {
-			// if
-			// (!BaseObject.sSystemRegistry.logicMap.mArrayMap[enemy.yTile][enemy.xTile])
-			// {
-			// UnitCharacter character = new UnitCharacterSwordmen(
-			// longTermTextureLibrary,
-			// BaseObject.sSystemRegistry.mapTiles.arrayMap[enemy.yTile][enemy.xTile],
-			// enemy.playerId == CurrentUserInfo.mPlayerInfo.ID,
-			// enemy.getEnemyType(), enemy.armyId);
-			// } else {
-			// DebugLog.e("DUC",
-			// "Khoi tao character tai 1 vi tri ko di  chuyen dc");
-			// }
-			// }
-			// Add King
-			for (EnemyType enemyType : mCurrentGameInfo.listEnemytype) {
-				if (enemyType.armyType == GameInfo.idTypeKing) {
-					addKing(longTermTextureLibrary, mCurrentGameInfo.xTileKing,
-							mCurrentGameInfo.yTileKing, enemyType);
-					break;
-				}
-			}
-		} else {
-			// For test
-			for (int i = 0; i < 14; i++) {
-				EnemyType enemyType = new EnemyType();
-				enemyType.hp = 120;
-				enemyType.mana = 78;
-				enemyType.movecost = 8;
-				enemyType.attackcost = 35;
-				enemyType.damageMin = 28;
-				enemyType.damageMax = 32;
-				enemyType.rangeattack = 2;
-				enemyType.rangeview = 5;
-
-				int xTile = Utils.RANDOM.nextInt(14);
-				int yTile = i;
-				if (!BaseObject.sSystemRegistry.logicMap.mArrayMap[yTile][xTile]) {
-					UnitCharacter character = new UnitCharacterSwordmen(
-							longTermTextureLibrary,
-							BaseObject.sSystemRegistry.mapTiles.arrayMap[yTile][xTile],
-							Utils.RANDOM.nextInt(2) == 0 ? true : false,
-							enemyType, i);
-				}
+		// for (Enemy enemy : mCurrentGameInfo.listIdEnemyInMap) {
+		// if
+		// (!BaseObject.sSystemRegistry.logicMap.mArrayMap[enemy.yTile][enemy.xTile])
+		// {
+		// UnitCharacter character = new UnitCharacterSwordmen(
+		// longTermTextureLibrary,
+		// BaseObject.sSystemRegistry.mapTiles.arrayMap[enemy.yTile][enemy.xTile],
+		// enemy.playerId == CurrentUserInfo.mPlayerInfo.ID,
+		// enemy.getEnemyType(), enemy.armyId);
+		// } else {
+		// DebugLog.e("DUC",
+		// "Khoi tao character tai 1 vi tri ko di  chuyen dc");
+		// }
+		// }
+		// Add My King
+		for (EnemyType enemyType : mCurrentGameInfo.listEnemytype) {
+			if (enemyType.armyType == GameInfo.idTypeKing) {
+				addMyKing(longTermTextureLibrary, mCurrentGameInfo.xTileKing,
+						mCurrentGameInfo.yTileKing, enemyType);
+				break;
 			}
 		}
 		{
 			BaseObject.sSystemRegistry.numberDrawableTime = new NumberDrawable(
-					longTermTextureLibrary, 256, 256, 256, 256, 30, 30,
+					longTermTextureLibrary, 256, 256, 256, 256, 40, 40,
+					NumberDrawable.idDrawableNumber2);
+			BaseObject.sSystemRegistry.numberDrawableTimeInTurn = new NumberDrawable(
+					longTermTextureLibrary, 256, 256, 256, 256, 60, 60,
 					NumberDrawable.idDrawableNumber2);
 			BaseObject.sSystemRegistry.numberDrawableTakeDame = new NumberDrawable(
-					longTermTextureLibrary, 256, 256, 256, 256, 24, 24,
+					longTermTextureLibrary, 256, 256, 256, 256, 34, 34,
 					NumberDrawable.idDrawableNumber2);
 			BaseObject.sSystemRegistry.numberDrawableCostInDialogAddEnemy = new NumberDrawable(
-					longTermTextureLibrary, 256, 256, 256, 256, 20, 20,
+					longTermTextureLibrary, 256, 256, 256, 256, 30, 30,
 					NumberDrawable.idDrawableNumber2);
 		}
 		// Sreen
@@ -342,7 +331,7 @@ public class Game extends AllocationGuard {
 		}
 	}
 
-	public void onResume(Context context, boolean force) {
+	public void onResume(CoreActiity context, boolean force) {
 		if (force && mRunning) {
 			mGameThread.resumeGame();
 		} else {
@@ -425,10 +414,11 @@ public class Game extends AllocationGuard {
 		return mBootstrapComplete;
 	}
 
-	private void addKing(TextureLibrary textureLibrary, int xTile, int yTile,
+	private void addMyKing(TextureLibrary textureLibrary, int xTile, int yTile,
 			EnemyType enemyType) {
 		if (!BaseObject.sSystemRegistry.logicMap.mArrayMap[yTile][xTile]) {
-			UnitCharacter character = new UnitCharacterSwordmen(textureLibrary,
+			BaseObject.sSystemRegistry.characterManager.myKing = new UnitCharacterSwordmen(
+					textureLibrary,
 					BaseObject.sSystemRegistry.mapTiles.arrayMap[yTile][xTile],
 					true, enemyType, -1);
 		} else {

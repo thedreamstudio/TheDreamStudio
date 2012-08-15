@@ -105,8 +105,25 @@ public class GlobalService {
 		m.cleanup();
 	}
 
-	public void GET_CLIENT_INFO() {
+	/**
+	 * 
+	 * @param platform
+	 * @param model
+	 * @param version
+	 * @param language
+	 *            0:vn ; 1:eng
+	 */
+	public void GET_CLIENT_INFO(String platform, String model, String version,
+			byte language) {
 		Message m = new Message(CommandClientToServer.GET_CLIENT_INFO);
+		try {
+			m.writer().writeUTF(platform);
+			m.writer().writeUTF(model);
+			m.writer().writeUTF(version);
+			m.writer().writeByte(language);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		mSession.sendMessage(m);
 		m.cleanup();
 	}

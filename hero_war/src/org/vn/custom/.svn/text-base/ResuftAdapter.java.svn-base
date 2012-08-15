@@ -1,10 +1,9 @@
 package org.vn.custom;
 
 import org.vn.herowar.R;
-import org.vn.model.Board;
+import org.vn.model.Result;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,19 +11,18 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class BoardAdapter extends BaseAdapter {
+public class ResuftAdapter extends BaseAdapter {
 	private Context context;
-	private final Board[] mobileValues;
+	private final Result pResult;
 
-	public BoardAdapter(Context context, Board[] mobileValues) {
+	public ResuftAdapter(Context context, Result result) {
 		this.context = context;
-		this.mobileValues = mobileValues;
+		this.pResult = result;
 	}
 
 	private class ViewHolder {
-		public TextView text;
-		public ImageView per1;
-		public ImageView per2;
+		public ImageView per;
+		public TextView text1;
 	}
 
 	@Override
@@ -35,35 +33,31 @@ public class BoardAdapter extends BaseAdapter {
 		if (gridView == null) {
 			gridView = new View(context);
 			// get layout from mobile.xml
-			gridView = inflater.inflate(R.layout.item_board, null);
+			gridView = inflater.inflate(R.layout.item_resuft, null);
 
 			ViewHolder viewHolder = new ViewHolder();
-			viewHolder.text = (TextView) gridView
-					.findViewById(R.id.grid_item_label);
-			viewHolder.per1 = (ImageView) gridView.findViewById(R.id.per1);
-			viewHolder.per2 = (ImageView) gridView.findViewById(R.id.per2);
+			viewHolder.per = (ImageView) gridView
+					.findViewById(R.id.image_winner);
+			viewHolder.text1 = (TextView) gridView
+					.findViewById(R.id.name_player);
 			gridView.setTag(viewHolder);
 		}
 		ViewHolder holder = (ViewHolder) gridView.getTag();
-		holder.text.setText(context.getString(R.string.board)
-				+ mobileValues[position].id);
-		if (mobileValues[position].nPlayer > 0) {
-			holder.per1.setColorFilter(Color.TRANSPARENT);
+		if (position == 0) {
+			holder.text1.setText(context.getString(R.string.is_winner,
+					pResult.winnerName));
+			holder.per.setVisibility(View.VISIBLE);
 		} else {
-			holder.per1.setColorFilter(Color.BLACK);
+			holder.text1.setText(context.getString(R.string.is_loser,
+					pResult.loserName));
+			holder.per.setVisibility(View.INVISIBLE);
 		}
-		if (mobileValues[position].nPlayer > 1) {
-			holder.per2.setColorFilter(Color.TRANSPARENT);
-		} else {
-			holder.per2.setColorFilter(Color.BLACK);
-		}
-
 		return gridView;
 	}
 
 	@Override
 	public int getCount() {
-		return mobileValues.length;
+		return 2;
 	}
 
 	@Override

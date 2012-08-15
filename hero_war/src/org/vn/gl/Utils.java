@@ -23,6 +23,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 import java.util.zip.ZipInputStream;
 
@@ -33,6 +34,7 @@ import org.apache.http.entity.BufferedHttpEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.vn.constant.Constants;
 
 import android.app.Activity;
 import android.app.ActivityManager;
@@ -42,6 +44,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.ConfigurationInfo;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -978,5 +981,26 @@ public class Utils {
 			//
 		}
 		return false;
+	}
+
+	public static void setLocale(Context context, String language) {
+		Locale locale2 = new Locale(language);
+		Locale.setDefault(locale2);
+		Configuration config2 = new Configuration();
+		config2.locale = locale2;
+		context.getResources().updateConfiguration(config2,
+				context.getResources().getDisplayMetrics());
+
+		// Editor editor = preferences.edit();
+		// editor.putString(Constants.PREF_SETTINGS_LANGUAGE, language);
+		// editor.commit();
+	}
+
+	public static void setLocaleVn(Context context) {
+		setLocale(context, Constants.VI_LANGUAGE);
+	}
+
+	public static void setLocaleEng(Context context) {
+		setLocale(context, Constants.EN_LANGUAGE);
 	}
 }

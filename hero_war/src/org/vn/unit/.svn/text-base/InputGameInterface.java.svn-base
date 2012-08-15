@@ -146,7 +146,7 @@ public class InputGameInterface extends BaseObject {
 			mPosBtChat = new Vector2(GameInfo.DEFAULT_WIDTH
 					- mDrawableBitmapChat.getWidth() - 17,
 					GameInfo.DEFAULT_HEIGHT - mDrawableBitmapChat.getHeight()
-							- 27);
+							- 30);
 			// mDrawableBitmapChat.setGlBlendFun(GL10.GL_ONE, GL10.GL_ONE);
 		}
 		mDrawableBitmapTouch = new DrawableBitmap(
@@ -180,13 +180,19 @@ public class InputGameInterface extends BaseObject {
 				mTimeTickInTurn -= timeDelta;
 				if (mTimeTickInTurn < 0) {
 					mTimeTickInTurn = 0;
-					if (GameInfo.isOnline) {
-						// sSystemRegistry.mGS.NEXT_TURN();
-					}
 				}
-				sSystemRegistry.numberDrawableTime.drawNumberWithAlpha(30,
-						GameInfo.DEFAULT_HEIGHT - 30, (int) mTimeTickInTurn, 1,
-						false, false, Priority.Hind);
+				if (mIdPlayerTurn == CurrentUserInfo.mPlayerInfo.ID) {
+					sSystemRegistry.numberDrawableTimeInTurn
+							.drawNumberWithAlpha(400,
+									GameInfo.DEFAULT_HEIGHT - 80,
+									(int) mTimeTickInTurn, 1, false, false,
+									Priority.Hind);
+				} else {
+					sSystemRegistry.numberDrawableTime.drawNumberWithAlpha(30,
+							GameInfo.DEFAULT_HEIGHT - 35,
+							(int) mTimeTickInTurn, 1, false, false,
+							Priority.Hind);
+				}
 			}
 		}
 
@@ -399,23 +405,23 @@ public class InputGameInterface extends BaseObject {
 
 	public void nextTurnIput(int idInTurn, Long timeTick) {
 		mIdPlayerTurn = idInTurn;
-		if (mIdPlayerTurn == CurrentUserInfo.mPlayerInfo.ID) {
+		// if (mIdPlayerTurn == CurrentUserInfo.mPlayerInfo.ID)
+		{
 			mTimeTickInTurn = (float) timeTick / 1000;
-		} else {
-			mTimeTickInTurn = 0;
 		}
+		// else {
+		// mTimeTickInTurn = 0;
+		// }
 		sSystemRegistry.characterManager.nextTurn();
+		sSystemRegistry.soundManager.playNextTurn();
 	}
 
 	public boolean isControl() {
-		if (GameInfo.isOnline) {
-			if (mCurrentGameInfo.isInGame && mTimeTickInTurn > 0) {
-				return true;
-			}
-			return false;
-		} else {
+		if (mCurrentGameInfo.isInGame && mTimeTickInTurn > 0
+				&& mIdPlayerTurn == CurrentUserInfo.mPlayerInfo.ID) {
 			return true;
 		}
+		return false;
 	}
 
 	private void ProcessingActionFromServer() throws Exception {

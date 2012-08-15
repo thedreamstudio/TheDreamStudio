@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.vn.gl.BaseObject;
 import org.vn.gl.DrawableMesh;
+import org.vn.model.EnemyType;
 import org.vn.model.Move;
 import org.vn.unit.DirectionMap.doSomeThingWithTile;
 
@@ -25,16 +26,24 @@ public abstract class UnitCharacter extends BaseObject {
 	 */
 	protected ArrayList<UnitCharacter> mListCharCanAttack = new ArrayList<UnitCharacter>();
 
+	/**
+	 * Thong so
+	 */
+	public EnemyType mEnemyType;
+
 	public boolean isMapChange = false;
-	private final int mRangerMove;
+	private int mRangerMove;
 	private final int mRangerAttack;
 	protected boolean isProcessMove = false;
 	protected boolean isMyTeam;
 	public int idEnemy;
 
 	public UnitCharacter(Tile tileStart, boolean pIsMyTeam, int pRangerMove,
-			int pRangerAttack, int pIdEnemy) {
-		mRangerMove = pRangerMove;
+			int pRangerAttack, int pIdEnemy, EnemyType pEnemyType) {
+		mEnemyType = pEnemyType;
+		mRangerMove = pEnemyType.movecost <= 0 ? 0
+				: (pEnemyType.mana / pEnemyType.movecost);
+		mRangerMove = Math.min(mRangerMove, 11);
 		mRangerAttack = pRangerAttack;
 		isMyTeam = pIsMyTeam;
 		mTileTaget = tileStart;

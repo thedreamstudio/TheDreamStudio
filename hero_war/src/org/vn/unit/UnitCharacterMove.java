@@ -1,6 +1,7 @@
 package org.vn.unit;
 
 import org.vn.gl.BaseObject;
+import org.vn.model.EnemyType;
 import org.vn.model.Move;
 import org.vn.model.Move.TypeMove;
 
@@ -15,8 +16,10 @@ public abstract class UnitCharacterMove extends UnitCharacter {
 	protected TypeMove mTypeMoveCurrent = TypeMove.right_bot;
 
 	public UnitCharacterMove(Tile tileStart, boolean pIsMyTeam,
-			int pRangerMove, int pRangerAttack, int pIdEnemy) {
-		super(tileStart, pIsMyTeam, pRangerMove, pRangerAttack, pIdEnemy);
+			int pRangerMove, int pRangerAttack, int pIdEnemy,
+			EnemyType pEnemyType) {
+		super(tileStart, pIsMyTeam, pRangerMove, pRangerAttack, pIdEnemy,
+				pEnemyType);
 	}
 
 	@Override

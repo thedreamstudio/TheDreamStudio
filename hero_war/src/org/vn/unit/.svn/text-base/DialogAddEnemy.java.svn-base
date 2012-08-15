@@ -26,7 +26,7 @@ public class DialogAddEnemy extends BaseObject {
 	private Tile mTileSeleted = null;
 	private ButtonEnemy[] mButton;
 	private ButtonEnemy mButtonSeleted = null;
-	
+
 	public DrawableBitmap mDrawableCoin;
 
 	/** Dialog khung the hien info ben goc trai */
@@ -189,7 +189,8 @@ public class DialogAddEnemy extends BaseObject {
 				mDrawableBitmap.setTexture(textureReady_Up);
 			};
 		};
-		mBtReady.pos.set(790 - mBtReady.mDrawableBitmap.getWidth(), 10);
+		mBtReady.pos.set(540, GameInfo.DEFAULT_HEIGHT
+				- mBtReady.mDrawableBitmap.getHeight() - 10);
 		mMoney = CurrentGameInfo.getIntance().gold;
 		// Bitmap ve~ info
 		mDrawableInfo = new DrawableBitmap(null, 180, 180);
@@ -198,9 +199,9 @@ public class DialogAddEnemy extends BaseObject {
 		mDrawableCoin = new DrawableBitmap(textureLibrary.allocateTexture(
 				R.drawable.coin, "coin"), 50, 50);
 
-		mBtSkipTurn = new Button(new DrawableBitmap(
-				textureLibrary.allocateTexture(R.drawable.skip, "skip"), 100,
-				100)) {
+		mBtSkipTurn = new Button(
+				new DrawableBitmap(textureLibrary.allocateTexture(
+						R.drawable.skip, "skip"), 70, 70)) {
 			@Override
 			public boolean onClick() {
 				sSystemRegistry.inputGameInterface.mTimeTickInTurn = 0;
@@ -209,16 +210,17 @@ public class DialogAddEnemy extends BaseObject {
 			}
 
 			public void setDrawOfffocus() {
-				mDrawableBitmap.setWidth(100);
-				mDrawableBitmap.setHeight(100);
+				mDrawableBitmap.setWidth(70);
+				mDrawableBitmap.setHeight(70);
 			};
 
 			public void setDrawOnfocus() {
-				mDrawableBitmap.setWidth(120);
-				mDrawableBitmap.setHeight(120);
+				mDrawableBitmap.setWidth(90);
+				mDrawableBitmap.setHeight(90);
 			};
 		};
-		mBtSkipTurn.pos.set(660, 10);
+		mBtSkipTurn.pos.set(630, GameInfo.DEFAULT_HEIGHT
+				- mBtSkipTurn.mDrawableBitmap.getHeight() - 20);
 	}
 
 	@Override

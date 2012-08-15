@@ -156,7 +156,7 @@ public class GlobalMessageHandler implements IMessageListener {
 				break;
 			case CommandClientToServer.SOMEONE_JOIN_BOARD: {
 				CurrentGameInfo currentGameInfo = CurrentGameInfo.getIntance();
-				currentGameInfo.reset();
+				currentGameInfo.mListPlayerInGame.clear();
 				currentGameInfo.boardId = msg.reader().readInt();
 				while (msg.reader().available() != 0) {
 					PlayerModel playerModel = new PlayerModel();
@@ -164,21 +164,38 @@ public class GlobalMessageHandler implements IMessageListener {
 					playerModel.name = msg.reader().readUTF();
 					if (playerModel.ID != -1) {
 						currentGameInfo.mListPlayerInGame.add(playerModel);
+						lightweightMsg.obj = playerModel.name;
 					}
 				}
 			}
 				break;
 			case CommandClientToServer.SOMEONE_LEAVE_BOARD: {
+				boolean isBackToWaiting = false;
 				int idPlayerLeave = msg.reader().readInt();
-				CurrentGameInfo currentGameInfo = CurrentGameInfo.getIntance();
-				for (PlayerModel playerModel : currentGameInfo.mListPlayerInGame) {
+				int idNewOwner = msg.reader().readInt();
+				// Neu chuyen? quyen` host va` da~ lo~ chon linh thi cho chon
+				// lai
+				if (mCurrentGameInfo.isInGame
+						&& idNewOwner == CurrentUserInfo.mPlayerInfo.ID) {
+					for (PlayerModel playerModel : mCurrentGameInfo.mListPlayerInGame) {
+						if (playerModel.ID == CurrentUserInfo.mPlayerInfo.ID
+								&& playerModel.isReady) {
+							isBackToWaiting = true;
+							break;
+						}
+					}
+				}
+
+				for (PlayerModel playerModel : mCurrentGameInfo.mListPlayerInGame) {
 					if (idPlayerLeave == playerModel.ID) {
-						currentGameInfo.mListPlayerInGame.remove(playerModel);
+						mCurrentGameInfo.mListPlayerInGame.remove(playerModel);
+						lightweightMsg.obj = playerModel.name;
 						break;
 					}
 				}
-				int idNewOwner = msg.reader().readInt();
-				currentGameInfo.ownerId = idNewOwner;
+
+				mCurrentGameInfo.ownerId = idNewOwner;
+				lightweightMsg.arg1 = isBackToWaiting ? 1 : 0;
 			}
 				break;
 			case CommandClientToServer.ARMY_SELECTION: {
@@ -274,6 +291,7 @@ public class GlobalMessageHandler implements IMessageListener {
 							: false;
 					for (PlayerModel playerModel : mCurrentGameInfo.mListPlayerInGame) {
 						if (playerModel.ID == userId) {
+							lightweightMsg.obj = playerModel.name;
 							playerModel.isReady = isReady;
 							break;
 						}
@@ -337,7 +355,7 @@ public class GlobalMessageHandler implements IMessageListener {
 			}
 				break;
 			case CommandClientToServer.END_GAME:
-				mCurrentGameInfo.reset();
+				mCurrentGameInfo.endGame();
 				Result result = new Result();
 				result.winnerID = msg.reader().readInt();
 				result.winnerName = msg.reader().readUTF();
@@ -348,6 +366,7 @@ public class GlobalMessageHandler implements IMessageListener {
 				result.loserMoney = msg.reader().readLong();
 				result.loserLevel = msg.reader().readInt();
 				lightweightMsg.obj = result;
+				mCurrentGameInfo.result = result;
 				break;
 			}
 			try {

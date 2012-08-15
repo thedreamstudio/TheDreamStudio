@@ -1,7 +1,7 @@
 K 25
 svn:wc:ra_dav:version-url
 V 50
-/svn/!svn/ver/103/trunk/hero_war/src/org/vn/custom
+/svn/!svn/ver/130/trunk/hero_war/src/org/vn/custom
 END
 EnemyWaitingAdapter.java
 K 25
@@ -25,5 +25,11 @@ BoardAdapter.java
 K 25
 svn:wc:ra_dav:version-url
 V 68
-/svn/!svn/ver/103/trunk/hero_war/src/org/vn/custom/BoardAdapter.java
+/svn/!svn/ver/130/trunk/hero_war/src/org/vn/custom/BoardAdapter.java
+END
+ResuftAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/!svn/ver/130/trunk/hero_war/src/org/vn/custom/ResuftAdapter.java
 END

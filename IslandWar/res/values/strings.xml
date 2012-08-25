@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="version_client">"version 0.2.1"</string>
+    <string name="hello">Island War!</string>
+    <string name="app_name">Nam Quốc Sơn Hà</string>
+    <string name="app_name_iland">IWar</string>
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_cancel">Thôi</string>
+    <string name="dialog_yes">Có</string>
+    <string name="dialog_no">Không</string>
+    <string name="exit">"bạn có muốn thoát không?"</string>
+    <string name="login_userName">"Tên"</string>
+    <string name="login_pass">"Mật khẩu"</string>
+    <string name="login_re_pass">"Nhập lại MK"</string>
+    <string name="login_loginBt">"Đăng nhập"</string>
+    <string name="login_ip_ko_dc_trong">"Ip khong dc trong"</string>
+    <string name="login_usename_ko_dc_trong">"Tên tài khoản không được rỗng. Bạn vui lòng nhập tên tài khoản."</string>
+    <string name="login_pass_ko_dc_trong">"Mật khẩu không được rỗng. Bạn vui lòng nhập mất khẩu."</string>
+    <string name="login_pass_re_pass_fail">"Hai mật khẩu nhập không khớp nhau. Bạn vui lòng nhập lại."</string>
+    <string name="login_ko_conect_toi_server">"Không thể kết nối đến máy chủ."</string>
+    <string name="login_saipass_hoacid">"Tài khoản đăng nhập không đúng. bạn vui lòng nhập lại tên và mật khẩu."</string>
+    <string name="loading">"Đang tải"</string>
+    <string name="LOST_CONNECTION">"Mất kết nối"</string>
+    <string name="JOIN_BOARD_FALL">"Vào bàn thất bại."</string>
+    <string name="Ip">"Ip"</string>
+    <string name="Dont_enought_money">"Bạn không đủ tiền để mua lính nữa!"</string>
+    <string name="notification">"Thông báo"</string>
+    <string name="network_settings">Hiện tại máy không kết nối mạng. Xin vui lòng thiết
+		lập chế độ mạng trên máy để có thể chơi game.\nBạn có muốn thiết
+		lập
+		không?</string>
+    <string name="Content">"Nội dung"</string>
+    <string name="Chat">"Chat"</string>
+    <string name="Go_in_map">"Vào game"</string>
+    <string name="Phone_Number">"Số điện thoại"</string>
+    <string name="Regiter_fail">"Đăng kí thất bại. Bạn vui lòng đăng kí với tên tài khoản khác."</string>
+    <string name="The_game_has_start">"Cuộc chơi đã bắt đầu."</string>
+    <string name="ready_in_game">%1$s đã sẵn sàng.</string>
+    <string name="join_in_game">%1$s đã vào game.</string>
+    <string name="leave_in_game">%1$s đã thoát game.</string>
+    <string name="infor_before_the_game">Bạn hãy chọn lính trước khi bắt đầu ván chơi.</string>
+    <string name="Vn">Việt Nam</string>
+    <string name="Eng">English</string>
+    <string name="Regiter">"Đăng ký"</string>
+    <string name="Login">"Đăng nhập"</string>
+    <string name="board">Bàn</string>
+    <string name="lua_chon_hinh_thuc_thanh_toan">"Vui lòng lựa chọn hình thức thanh toán"</string>
+    <string name="Chuc_nang_cap_nhat_sau">Chức năng này sẽ được cập nhật phiên bản sau</string>
+    <string name="next_turn">Lượt được chuyển cho %1$s</string>
+    <string name="next_you_turn">Lượt được chuyển cho bạn</string>
+    <string name="dat_linh_trong_vung_sang">"Vị trí đặt lính phải nằm trong vùng sáng"</string>
+    <string name="is_winner">%1$s là người chiến thắng trong trận này</string>
+    <string name="is_loser">%1$s thua</string>
+    <string name="Turn_on_fog">Bật chế độ sương mù</string>
+    <string name="Turn_off_fog">Tắt chế độ sương mù</string>
+    <string name="Request_buy_enemy">Đã gởi mua lính</string>
+
+</resources>

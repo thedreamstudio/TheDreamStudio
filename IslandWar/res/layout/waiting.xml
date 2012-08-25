@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/back_ground_board" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="10dp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.6"
+            android:background="@drawable/bt_1"
+            android:orientation="vertical"
+            android:padding="20dp" >
+
+            <EditText
+                android:id="@+id/editTextChatWaiting"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bt_5"
+                android:hint="@string/Content"
+                android:padding="10dp"
+                android:textColor="#ffffff" >
+
+                <requestFocus />
+            </EditText>
+
+            <ListView
+                android:id="@+id/listViewChatInWaiting"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:cacheColorHint="#00000000"
+                android:textColor="#ffffff" >
+            </ListView>
+        </LinearLayout>
+
+        <ListView
+            android:id="@+id/listViewPlayerInBoard"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginRight="200dp"
+            android:layout_weight="0.4"
+            android:background="@drawable/bt_1"
+            android:cacheColorHint="#00000000"
+            android:padding="10dp" >
+        </ListView>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btChatWaiting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|right"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="35dp"
+        android:background="@drawable/bt_custom3"
+        android:padding="10dp"
+        android:text="@string/Chat"
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
+
+    <Button
+        android:id="@+id/btReadyEnemyWaiting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/bt_custom3"
+        android:padding="10dp"
+        android:text="@string/Go_in_map"
+        android:textColor="#ffffff"
+        android:textSize="30dp" />
+
+</FrameLayout>

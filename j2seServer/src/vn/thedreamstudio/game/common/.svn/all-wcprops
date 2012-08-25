@@ -1,0 +1,41 @@
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svn/!svn/ver/146/trunk/j2seServer/src/vn/thedreamstudio/game/common
+END
+AttackResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/!svn/ver/146/trunk/j2seServer/src/vn/thedreamstudio/game/common/AttackResult.java
+END
+GamePlayer.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/!svn/ver/146/trunk/j2seServer/src/vn/thedreamstudio/game/common/GamePlayer.java
+END
+Board.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/!svn/ver/146/trunk/j2seServer/src/vn/thedreamstudio/game/common/Board.java
+END
+Turn.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/!svn/ver/146/trunk/j2seServer/src/vn/thedreamstudio/game/common/Turn.java
+END
+MGameController.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/!svn/ver/146/trunk/j2seServer/src/vn/thedreamstudio/game/common/MGameController.java
+END
+MatchResult.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/!svn/ver/146/trunk/j2seServer/src/vn/thedreamstudio/game/common/MatchResult.java
+END
